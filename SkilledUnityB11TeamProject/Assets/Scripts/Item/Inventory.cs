@@ -202,7 +202,7 @@ public class Inventory : MonoBehaviour
 
 	public void OnDropButton()
 	{
-		RemoveSelectedItem();
+		//RemoveSelectedItem();
 	}
 
 	//private void RemoveSelectedItem()
