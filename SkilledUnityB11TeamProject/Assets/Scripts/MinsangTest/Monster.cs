@@ -7,11 +7,11 @@ public class Monster : MonoBehaviour
 {
     [Header("Stat")]
     public MonsterDataSO data;
-    [SerializeField] private int _nowHP;        // 인스펙터에서 확인하려고 직렬화 
+    [SerializeField] private int _nowHP;        // 인스펙터에서 확인용 직렬화. 추후 제거
 
     private NavMeshAgent _agent;
     private Animator _animator;
-    private SkinnedMeshRenderer[] meshRenderers;
+    private SkinnedMeshRenderer _meshRenderers;
 
     private readonly int IsDie = Animator.StringToHash("IsDie");
 
@@ -21,18 +21,18 @@ public class Monster : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
-        meshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        _meshRenderers = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void OnEnable()
     {
-        isAlive = true;
+        _meshRenderers.material = data.material;
         _nowHP = data.hp;
         _agent.speed = data.speed;
         gameObject.transform.position = data.spawnPosition;
-
         gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
 
+        isAlive = true;
         _agent.SetDestination(data.targetPosition);
         InvokeRepeating(nameof(TEST), 0f, 1f);
     }
