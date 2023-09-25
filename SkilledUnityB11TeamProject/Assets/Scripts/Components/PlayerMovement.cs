@@ -29,12 +29,14 @@ public class PlayerMovement : MonoBehaviour
         _controller = GetComponent<InputController>();
         _rigid = GetComponent<Rigidbody>();
         Camera cam = Camera.main;
+        
         cam.transform.SetParent(_cameras,false);
+        cam.transform.localPosition = Vector3.zero;
+       
     }
 
     private void FixedUpdate()
     {
-        
         if (_curdirection != Vector3.zero || _rigid.velocity != Vector3.zero)
         {
             Move();
@@ -57,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
         float xRot = mouseDelta.x * LookSensitivity;
         transform.eulerAngles += new Vector3(0, xRot, 0);
+        mouseDelta = Vector3.zero;
     }
 
     private bool isCanLook()
