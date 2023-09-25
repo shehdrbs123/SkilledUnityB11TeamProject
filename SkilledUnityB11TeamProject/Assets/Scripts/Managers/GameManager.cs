@@ -9,10 +9,10 @@ public class GameManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                GameObject obj = GameObject.FindWithTag("GameObject");
+                GameObject obj = GameObject.FindWithTag("GameManager");
                 if (obj == null)
                 {
-                    obj = new GameObject("GameObject");
+                    obj = new GameObject("GameManager");
                     _instance = obj.AddComponent<GameManager>();
                 }
             }
