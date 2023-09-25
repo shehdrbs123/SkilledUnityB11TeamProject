@@ -1,18 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class BaseUI : MonoBehaviour
+public abstract class BaseUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected bool isIgnoreInput;
+    
+    protected static UIManager _uiManager;
+     
+    protected virtual void Awake()
     {
-        
+        _uiManager = GameManager.Instance._uiManager;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected void OnEnable()
     {
-        
+        if(_uiManager && isIgnoreInput)
+            _uiManager.EnablePanel(gameObject);
+    }
+
+    protected void OnDisable()
+    {
+        if(_uiManager && isIgnoreInput)
+            _uiManager.DisablePanel(gameObject);
     }
 }
