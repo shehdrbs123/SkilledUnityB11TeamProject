@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ebad98b28e4b34d95c02b298c5757f, type: 3}
+  m_Name: Mineral
+  m_EditorClassIdentifier: 
+  itemName: "\uBBF8\uB124\uB784\uAD11\uC11D"
+  description: "\uD3EC\uD0D1 \uAC74\uC124\uC774 \uAC00\uB2A5\uD55C \uC7AC\uB8CC\uC785\uB2C8\uB2E4."
+  type: 0
+  icon: {fileID: 0}
+  dropPrefab: {fileID: 1818332099616921954, guid: 30a26bac0ab527048a8bfb3201f4cf00, type: 3}
+  canStack: 1
+  maxStackAmount: 50
