@@ -338,6 +338,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c609da51eea9b724f94aa4df4e868fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _listConditions:
+  - type: 0
+    curValue: 100
+    maxValue: 100
+    startValue: 100
+    decayRate: 0.2
+    regenRate: 0
+  - type: 1
+    curValue: 100
+    maxValue: 100
+    startValue: 100
+    decayRate: 0.2
+    regenRate: 0
+  - type: 2
+    curValue: 100
+    maxValue: 100
+    startValue: 100
+    decayRate: 0.2
+    regenRate: 0
 --- !u!4 &1479726902
 Transform:
   m_ObjectHideFlags: 0
