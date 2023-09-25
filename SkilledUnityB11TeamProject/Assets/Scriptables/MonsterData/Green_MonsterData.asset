@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c5262eb363e5b44b5d752bfcd3e0f3, type: 3}
+  m_Name: Green_MonsterData
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: eb8fac8d0552e3f499a0eca1d3932a07, type: 2}
+  hp: 10
+  speed: 5
+  spawnPosition: {x: -85, y: 0, z: 105}
+  targetPosition: {x: 43, y: 0, z: -85}
+  dropResources: []
