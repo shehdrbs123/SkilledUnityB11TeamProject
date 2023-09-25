@@ -28,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _controller = GetComponent<InputController>();
         _rigid = GetComponent<Rigidbody>();
-        
+        Camera cam = Camera.main;
+        cam.transform.SetParent(_cameras,false);
     }
 
     private void FixedUpdate()
