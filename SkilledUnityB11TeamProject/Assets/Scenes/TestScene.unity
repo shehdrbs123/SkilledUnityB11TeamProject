@@ -4099,7 +4099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8047365501061456580, guid: 94e8b17e8d28826488b6cde2a11f3838, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.509
       objectReference: {fileID: 0}
     - target: {fileID: 8047365501061456580, guid: 94e8b17e8d28826488b6cde2a11f3838, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4133,23 +4133,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8330875825484202192, guid: 94e8b17e8d28826488b6cde2a11f3838, type: 3}
-      propertyPath: m_Size.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330875825484202192, guid: 94e8b17e8d28826488b6cde2a11f3838, type: 3}
-      propertyPath: m_Size.y
-      value: 0.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330875825484202192, guid: 94e8b17e8d28826488b6cde2a11f3838, type: 3}
-      propertyPath: m_Size.z
-      value: 0.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 8330875825484202192, guid: 94e8b17e8d28826488b6cde2a11f3838, type: 3}
-      propertyPath: m_Center.y
-      value: 0.43
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2493779556038244600, guid: 94e8b17e8d28826488b6cde2a11f3838, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4162,30 +4147,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1538309141828687559, guid: 6660d89701bcb5040b43329e426b0cb3, type: 3}
-      propertyPath: m_Size.x
-      value: 0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538309141828687559, guid: 6660d89701bcb5040b43329e426b0cb3, type: 3}
-      propertyPath: m_Size.y
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538309141828687559, guid: 6660d89701bcb5040b43329e426b0cb3, type: 3}
-      propertyPath: m_Size.z
-      value: 1.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538309141828687559, guid: 6660d89701bcb5040b43329e426b0cb3, type: 3}
-      propertyPath: m_Center.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538309141828687559, guid: 6660d89701bcb5040b43329e426b0cb3, type: 3}
-      propertyPath: m_Center.y
-      value: 0.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538309141828687559, guid: 6660d89701bcb5040b43329e426b0cb3, type: 3}
-      propertyPath: m_Center.z
-      value: 0.06
-      objectReference: {fileID: 0}
     - target: {fileID: 3043074151117903447, guid: 6660d89701bcb5040b43329e426b0cb3, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -4234,7 +4195,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Resource_OilRock
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5855943438421407518, guid: 6660d89701bcb5040b43329e426b0cb3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
