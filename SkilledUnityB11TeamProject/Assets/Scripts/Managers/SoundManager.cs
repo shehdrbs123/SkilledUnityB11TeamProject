@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;        // 후에 gameManager 사용하면서 싱글톤 해제
-
     [SerializeField] [Range(0f, 1f)] private float soundEffectVolume;
     [SerializeField] [Range(0f, 1f)] private float soundEffectPitchVariance;
     [SerializeField] [Range(0f, 1f)] private float bgmVolume;
 
     private PrefabManager prefabManager;
 
-    private AudioSource bgmAudioSource;
+    [SerializeField] private AudioSource bgmAudioSource;
     public AudioClip bgmClip;
 
     private void Awake()
     {
-        instance = this;
-
-        bgmAudioSource = GetComponent<AudioSource>();
         bgmAudioSource.volume = bgmVolume;
         bgmAudioSource.loop = true;
 
@@ -33,15 +28,15 @@ public class SoundManager : MonoBehaviour
 
     public static void ChangeBackGroundMusic(AudioClip music)
     {
-        instance.bgmAudioSource.Stop();
-        instance.bgmAudioSource.clip = music;
-        instance.bgmAudioSource.Play();
+        GameManager.Instance._soundManager.bgmAudioSource.Stop();
+        GameManager.Instance._soundManager.bgmAudioSource.clip = music;
+        GameManager.Instance._soundManager.bgmAudioSource.Play();
     }
 
     public static void PlayClip(AudioClip clip)
     {
-        GameObject obj = instance.prefabManager.SpawnFromPool(PoolType.SFXAudio);
+        GameObject obj = GameManager.Instance._soundManager.prefabManager.SpawnFromPool(PoolType.SFXAudio);
         obj.SetActive(true);
-        obj.GetComponent<SoundSource>().Play(clip, instance.soundEffectVolume, instance.soundEffectPitchVariance);
+        obj.GetComponent<SoundSource>().Play(clip, GameManager.Instance._soundManager.soundEffectVolume, GameManager.Instance._soundManager.soundEffectPitchVariance);
     }
 }

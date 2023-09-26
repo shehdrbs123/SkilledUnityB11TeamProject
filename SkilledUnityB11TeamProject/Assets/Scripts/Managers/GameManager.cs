@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     public UIManager _uiManager;
     public BuildManager _buildManager;
+    public DayManager _dayManager;
+    public MonsterSpawnManager _monsterSpawnManager;
+    public SoundManager _soundManager;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
