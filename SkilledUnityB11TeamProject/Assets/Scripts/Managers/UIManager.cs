@@ -45,6 +45,17 @@ public class UIManager : MonoBehaviour
         return ui;
     }
 
+    public GameObject GetUIClone(string name)
+    {
+        GameObject ui=null;
+        if (_uiPrefabs.TryGetValue(name,out GameObject obj))
+            ui = Instantiate(obj);
+        else
+            Debug.Log($"{name}은 uiManager에 등록되지 않은 프리팹입니다");
+
+        return ui;
+    }
+
     public void EnablePanel(GameObject o)
     {
         _uiCounter.Add(o);

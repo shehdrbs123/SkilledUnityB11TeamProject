@@ -29,9 +29,11 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
     public UIManager _uiManager { get; private set; }
+    public BuildManager _buildManager { get; private set; }
     private void Awake()
     {
         _uiManager = GetComponent<UIManager>();
+        _buildManager = GetComponent<BuildManager>();
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
