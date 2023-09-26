@@ -47,6 +47,7 @@ public class ItemSlotUI : MonoBehaviour
 
 	public void OnButtonClick() // 인벤토리에서 내가 아이템 목록을 클릭했을 때 정보가 나옴
 	{
-		Inventory.instance.SelectItem(index);
+		//Inventory.instance.SelectItem(index);
+		GameManager.Instance.inventory.SelectItem(index);
 	}
 }

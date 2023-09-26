@@ -7,14 +7,11 @@ public class EquipManager : MonoBehaviour
 {
 	public Equip curEquip;
 	public Transform equipParant;
-
-	public static EquipManager instance;
 	private PlayerMovement controller;
-	// private condition ����� ���ߵ�
+	
 	private void Awake()
 	{
 		controller = GetComponent<PlayerMovement>();
-		instance = this;
 	}
 	
 	public void OnAttackInput(InputAction.CallbackContext context)

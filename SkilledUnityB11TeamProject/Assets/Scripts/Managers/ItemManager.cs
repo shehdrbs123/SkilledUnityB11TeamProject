@@ -9,7 +9,7 @@ public class ItemManager : MonoBehaviour
 
 	//[SerializeField] private ItemData mineral;
 	//[SerializeField] private ItemData oilRock;
-	//[SerializeField] private ItemData Pickax;
+	public ItemData Pickax; 
 	private void Awake()
 	{
 		var a = Resources.LoadAll<ItemData>(Path.Combine("Scriptables", "Item"));

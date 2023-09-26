@@ -25,33 +25,29 @@ public class Inventory : BaseUI
 	private int selectedItemIndex;
 	public TextMeshProUGUI selectedItemName;
 	public TextMeshProUGUI selectedItemDescription;
-	public TextMeshProUGUI selectedItemStatNames;
-	public TextMeshProUGUI selectedItemStatValues;
+	//public TextMeshProUGUI selectedItemStatNames;
+	//public TextMeshProUGUI selectedItemStatValues;
 	public GameObject useButton;
 	public GameObject equipButton;
 	public GameObject unEquipButton;
 	public GameObject dropButton;
 
-	public ItemData pickaxe; //������ GameManager���� �����;� �� �κ�
+	private ItemData pickaxe; 
 	private int curEquipIndex;
 	private PlayerMovement controller;
 	[Header("Events")]
 	public UnityEvent onOpenInventory;
 	public UnityEvent onCloseInventory;
-
-	public static Inventory instance;
-
-
 	// Start is called before the first frame update
+
 	private void Awake()
 	{
-		instance = this;
 		controller = GetComponent<PlayerMovement>();
-		//����� �����;ߵ�
 	}
 
 	private void Start()
-	{	
+	{
+		pickaxe = GameManager.Instance._itemManager.Pickax;
 		inventoryWindow.SetActive(false);
 		slots = new ItemSlot[uiSlot.Length];
 
@@ -63,7 +59,7 @@ public class Inventory : BaseUI
 
 		}
 		ClearSelectedItemWindow();
-		AddItem(pickaxe); //������ GameManager���� �����;� �� �κ�
+		AddItem(pickaxe); 
 	}
 
 	public void Toggle()
@@ -128,7 +124,7 @@ public class Inventory : BaseUI
 		}
 	}
 
-	ItemSlot GetItemStack(ItemData item) //������ ã�ƿ��� �Լ�
+	ItemSlot GetItemStack(ItemData item) 
 	{
 		for (int i = 0; i < slots.Length; i++)
 		{
@@ -138,7 +134,7 @@ public class Inventory : BaseUI
 		return null;
 	}
 
-	ItemSlot GetEmptySlot() //�������� ����ִٸ�
+	ItemSlot GetEmptySlot() 
 	{
 		for (int i = 0; i < slots.Length; i++)
 		{
@@ -216,7 +212,8 @@ public class Inventory : BaseUI
 
 		uiSlot[selectedItemIndex].equipped = true;
 		curEquipIndex = selectedItemIndex;
-		EquipManager.instance.EquipNew(selectedItem.item);
+		//EquipManager.instance.EquipNew(selectedItem.item);
+		GameManager.Instance._equipManager.EquipNew(selectedItem.item);
 		UpdateUI();
 
 		SelectItem(selectedItemIndex);
@@ -225,7 +222,8 @@ public class Inventory : BaseUI
 	void UnEquip(int index)
 	{
 		uiSlot[index].equipped = false;
-		EquipManager.instance.UnEquip();
+		//EquipManager.instance.UnEquip();
+		GameManager.Instance._equipManager.UnEquip();
 		UpdateUI();
 
 		if(selectedItemIndex == index)

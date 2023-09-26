@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
-	public ItemData itemToGive; // 게임매니저에서 받아와야할 부분
+	public ItemData itemToGive; 
 	public int quantityPerHit = 1;
 	public int capacity;
 
@@ -14,7 +14,8 @@ public class Resource : MonoBehaviour
 		{
 			if (capacity <= 0) { break; }
 			capacity -= 1;
-			Inventory.instance.AddItem(itemToGive);
+			//Inventory.instance.AddItem(itemToGive);
+			GameManager.Instance.inventory.AddItem(itemToGive);
 		}
 
 		if (capacity <= 0)
