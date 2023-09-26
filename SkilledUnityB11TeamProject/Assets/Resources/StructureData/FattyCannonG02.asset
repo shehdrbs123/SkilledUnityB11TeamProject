@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FattyCannonG02
   m_EditorClassIdentifier: 
   StructureUISprite: {fileID: 21300000, guid: 7996e2a8c839e694bbaae6d194ed453c, type: 3}
-  StructurePrefabs: {fileID: 1875090778556656, guid: 7191a0df8b6695d449a0f18a361bc311, type: 3}
+  StructurePrefab: {fileID: 1875090778556656, guid: 7191a0df8b6695d449a0f18a361bc311, type: 3}

@@ -28,12 +28,16 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
 
     private GameObject player;
-    public UIManager _uiManager { get; private set; }
-    public BuildManager _buildManager { get; private set; }
+    public UIManager _uiManager;
+    public BuildManager _buildManager;
+    public DayManager _dayManager;
+    public MonsterSpawnManager _monsterSpawnManager;
+    public SoundManager _soundManager;
+    public ItemManager _itemManager;
+    public EquipManager _equipManager;
+    public Inventory inventory;
     private void Awake()
     {
-        _uiManager = GetComponent<UIManager>();
-        _buildManager = GetComponent<BuildManager>();
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
