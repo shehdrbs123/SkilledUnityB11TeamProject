@@ -1,17 +1,46 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
+    private Dictionary<string, GameObject> _uiPrefabs;
+    private Dictionary<string, GameObject> _uiInstances;
     private HashSet<GameObject> _uiCounter;
 
     private List<InputAction> _inputs;
     private void Awake()
     {
         _uiCounter = new HashSet<GameObject>();
+        _uiPrefabs = new Dictionary<string, GameObject>();
+        
+        var a = Resources.LoadAll<GameObject>(Path.Combine("UI"));
+        
+        foreach (var value in a)
+        {
+            _uiPrefabs.Add(value.name,value);
+        }
+    }
+
+    public GameObject GetUI(string name)
+    {
+        GameObject ui;
+        if (!_uiInstances.TryGetValue(name, out ui))
+        {
+            if (_uiPrefabs.TryGetValue(name,out GameObject obj))
+            {
+                ui = Instantiate(obj);
+            }
+            else
+            {
+                Debug.Log($"{name}은 uiManager에 등록되지 않은 프리팹입니다");
+            }
+        }
+
+        return ui;
     }
 
     public void EnablePanel(GameObject o)
