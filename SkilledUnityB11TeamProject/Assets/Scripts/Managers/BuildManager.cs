@@ -11,6 +11,7 @@ public class BuildManager : MonoBehaviour
      [SerializeField] private LayerMask StructureLayer;
      [SerializeField] private float range;
 
+     [SerializeField] private float rotateSpeed;
      //빌드모드 플레이
      private InputAction _fire1Action;
      private InputAction _fire2Action;
@@ -66,19 +67,32 @@ public class BuildManager : MonoBehaviour
                     Debug.Log("hit");
                     obj.SetActive(true);
                     obj.transform.position = hit.point;
+                    
                     if (_fire1Action.IsPressed())
                     {
                          isBuildMode = false;
                     }
 
+                    if (_fire2Action.IsPressed())
+                    {
+                         isBuildMode = false;
+                         Destroy(obj);
+                    }
+
                     if (_ScrollAction.triggered)
                     {
-                         Debug.Log("dddd");
+                         Vector2 scrollDirection = _ScrollAction.ReadValue<Vector2>();
+                         Vector3 eulerAngle = obj.transform.eulerAngles;
+                         if (scrollDirection.y > 0)
+                              eulerAngle.y += rotateSpeed*Time.deltaTime;
+                         else
+                              eulerAngle.y -= rotateSpeed*Time.deltaTime;
+
+                         obj.transform.eulerAngles = eulerAngle;
                     }
                }
                else
                {
-                    Debug.Log("noHit");
                     obj.SetActive(false);
                }
                
