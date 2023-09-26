@@ -11,4 +11,15 @@ public class MonsterSpawnManager : MonoBehaviour
     {
         prefabManager = GetComponent<PrefabManager>();
     }
+
+    //private void Start()
+    //{
+    //    InvokeRepeating(nameof(TEST), 0f, 1f);
+    //}
+
+    //private void TEST()
+    //{
+    //    GameObject go = prefabManager.SpawnFromPool(PoolType.Monster);
+    //    go.SetActive(true);
+    //}
 }

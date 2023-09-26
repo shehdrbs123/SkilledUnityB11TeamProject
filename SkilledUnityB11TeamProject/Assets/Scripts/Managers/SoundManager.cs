@@ -36,7 +36,6 @@ public class SoundManager : MonoBehaviour
     public static void PlayClip(AudioClip clip)
     {
         GameObject obj = GameManager.Instance._soundManager.prefabManager.SpawnFromPool(PoolType.SFXAudio);
-        obj.SetActive(true);
         obj.GetComponent<SoundSource>().Play(clip, GameManager.Instance._soundManager.soundEffectVolume, GameManager.Instance._soundManager.soundEffectPitchVariance);
     }
 }
