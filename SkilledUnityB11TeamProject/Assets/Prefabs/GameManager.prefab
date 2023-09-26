@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56780f7bafb6cee4a8ed7c7560cd090f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pickax: {fileID: 11400000, guid: e26d77f95393941458255bd71faf3e4e, type: 2}
 --- !u!1 &5508718834227271635
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +761,7 @@ Transform:
   - {fileID: 1160617853714207706}
   - {fileID: 2721586433190370979}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1182428806516601007
 MonoBehaviour:
@@ -779,6 +780,9 @@ MonoBehaviour:
   _dayManager: {fileID: 889955291167440014}
   _monsterSpawnManager: {fileID: 2718285288470614095}
   _soundManager: {fileID: 1181770288461170640}
+  _itemManager: {fileID: 224661453482673458}
+  _equipManager: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &5838510771337718052
 GameObject:
   m_ObjectHideFlags: 0

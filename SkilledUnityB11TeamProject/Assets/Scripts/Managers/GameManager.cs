@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour
     public DayManager _dayManager;
     public MonsterSpawnManager _monsterSpawnManager;
     public SoundManager _soundManager;
-
+    public ItemManager _itemManager;
+    public EquipManager _equipManager;
+    public Inventory inventory;
     private void Awake()
     {
         if (_instance != null && _instance != this)
