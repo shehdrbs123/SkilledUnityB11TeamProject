@@ -2,23 +2,27 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 [ExecuteInEditMode]
 public class TextureMaker : MonoBehaviour
 {
-    [SerializeField]private Camera camera;
+    [SerializeField]private Camera Cam;
     [SerializeField]private string TargetPrefabsPath;
     private string path;
+
     private RenderTexture rTex;
 
     public void MakeTexture()
     {
         string directory = Directory.GetCurrentDirectory();
         path = Path.Combine(directory, "Assets", "Art", "Textures");
-        path = Path.Combine(path, $"Texture{Directory.GetFiles(path).Length}.png");
         
-        rTex = camera.targetTexture;
-
+        
+        rTex = Cam.targetTexture;
+        
         
         StartCoroutine(Making());
 
@@ -30,12 +34,18 @@ public class TextureMaker : MonoBehaviour
 
         foreach (var ob in obj)
         {
+            GameObject copyedObj = Instantiate(ob);
+            ob.transform.position = Vector3.zero;
+
+            yield return new WaitForSeconds(0.5f);
             
-            yield return 
+            string imagePath = Path.Combine(path, $"Texture{Directory.GetFiles(path).Length}.png");
+            SaveTexture(imagePath);
+            DestroyImmediate(copyedObj);
         }
     }
 
-    private IEnumerator SaveTexture(GameObject)
+    private void SaveTexture(string filePath)
     {
         Texture2D texture = new Texture2D(rTex.width, rTex.height);
         RenderTexture.active = rTex;
@@ -46,13 +56,13 @@ public class TextureMaker : MonoBehaviour
         byte[] bytes = texture.EncodeToPNG();
 
         // 파일로 저장
-        System.IO.File.WriteAllBytes(path, bytes);
+        System.IO.File.WriteAllBytes(filePath, bytes);
 
         // 메모리에서 해제
         RenderTexture.active = null;
         DestroyImmediate(texture);
 
-        Debug.Log("Render Texture saved to: " + path);
+        Debug.Log("Render Texture saved to: " + filePath);
     }
     
 }
