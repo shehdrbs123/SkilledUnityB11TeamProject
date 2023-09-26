@@ -14,8 +14,11 @@ public class Monster : MonoBehaviour
     private SkinnedMeshRenderer _meshRenderers;
 
     private readonly int IsDie = Animator.StringToHash("IsDie");
+    private readonly int IsHIt = Animator.StringToHash("IsHit");
+    private readonly WaitForSeconds hitDelay = new WaitForSeconds(0.75f);
 
-    private bool isAlive;
+    private bool isAlive = true;
+    private bool isInvincible = false;
 
     private void Awake()
     {
@@ -26,20 +29,45 @@ public class Monster : MonoBehaviour
 
     private void OnEnable()
     {
+        isAlive = true;
         _meshRenderers.material = data.material;
         _nowHP = data.hp;
         _agent.speed = data.speed;
         gameObject.transform.position = data.SPAWN_POSITION;
         gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
 
-        isAlive = true;
         _agent.SetDestination(data.TARGET_POSITION);
     }
 
-    private void Update()
+    public void Hit(int damage)
     {
-        if (_nowHP <= 0 && isAlive)
+        if (isInvincible && isAlive)
+            return;
+
+        _nowHP -= damage;
+
+        if (_nowHP <= 0)
+        {
             Die();
+        }
+        else
+        {
+            StartCoroutine(CoHitAnimation());
+        }
+    }
+
+    private IEnumerator CoHitAnimation()
+    {
+        isInvincible = true;
+        _agent.isStopped = true;
+        _animator.SetTrigger(IsHIt);
+        _meshRenderers.material.color = new Color(1.0f, 0.6f, 0.6f);
+
+        yield return hitDelay;
+
+        isInvincible = false;
+        _agent.isStopped = false;
+        _meshRenderers.material.color = Color.white;
     }
 
     public void Die()
