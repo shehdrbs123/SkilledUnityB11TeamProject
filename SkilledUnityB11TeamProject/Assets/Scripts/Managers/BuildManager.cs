@@ -1,15 +1,32 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BuildManager : MonoBehaviour
 {
      private BuildDataSO[] buildDatas;
 
-     private GameObject Player;
+     [SerializeField] private LayerMask groundLayer;
+     [SerializeField] private LayerMask StructureLayer;
+     [SerializeField] private float range;
+
+     //빌드모드 플레이
+     private InputAction _fire1Action;
+     private InputAction _fire2Action;
+     private InputAction _ScrollAction;
+     private bool isBuildMode = false;
+     private Camera _Camera;
      private void Awake()
      {
           buildDatas = Resources.LoadAll<BuildDataSO>("StructureData");
      }
+
+     private void Start()
+     {
+          
+     }
+
 
      public BuildDataSO GetBuildData(int idx)
      {
@@ -23,6 +40,49 @@ public class BuildManager : MonoBehaviour
 
      public void SetBuildMode(BuildDataSO data)
      {
+          if (_fire1Action == null)
+          {
+               GameObject player = GameManager.Instance.GetPlayer();
+               PlayerInput input = player.GetComponent<PlayerInput>();
+               _fire1Action = input.actions.FindAction("Fire1");
+               _fire2Action = input.actions.FindAction("Fire2");
+               _ScrollAction = input.actions.FindAction("Scroll");
+               _Camera = Camera.main;
+          }
+          isBuildMode = true; 
           
+          StartCoroutine(OperateBuild(data));
+     }
+
+     private IEnumerator OperateBuild(BuildDataSO data)
+     {
+          GameObject obj = Instantiate(data.StructurePrefab);
+          while (isBuildMode)
+          {
+               Ray lay = _Camera.ScreenPointToRay(new Vector3(Screen.width * .5f, Screen.height * .5f));
+               RaycastHit hit;
+               if (Physics.Raycast(lay,out hit, range, groundLayer))
+               {
+                    Debug.Log("hit");
+                    obj.SetActive(true);
+                    obj.transform.position = hit.point;
+                    if (_fire1Action.IsPressed())
+                    {
+                         isBuildMode = false;
+                    }
+
+                    if (_ScrollAction.triggered)
+                    {
+                         Debug.Log("dddd");
+                    }
+               }
+               else
+               {
+                    Debug.Log("noHit");
+                    obj.SetActive(false);
+               }
+               
+               yield return null;
+          }
      }
 }

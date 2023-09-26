@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 671943833}
   - component: {fileID: 671943832}
   - component: {fileID: 671943831}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,6 +616,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1694961867246602527, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694961867246602527, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 1694961867246602527, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: StructureLayer.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 3292718435623128802, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -658,6 +670,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3292718435623128802, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203955284755130934, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5787759454351100960, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
@@ -708,6 +724,10 @@ PrefabInstance:
     - target: {fileID: 508462003270379190, guid: 21f5ac62447d436498ead4285fe35bac, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 615482028044242402, guid: 21f5ac62447d436498ead4285fe35bac, type: 3}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 781478142387841025, guid: 21f5ac62447d436498ead4285fe35bac, type: 3}
       propertyPath: m_IsActive
