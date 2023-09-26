@@ -32,6 +32,7 @@ public class Inventory : MonoBehaviour
 	public GameObject unEquipButton;
 	public GameObject dropButton;
 
+	public ItemData pickaxe; //본래는 GameManager에서 가져와야 할 부분
 	private int curEquipIndex;
 	private PlayerController controller;
 	[Header("Events")]
@@ -46,10 +47,11 @@ public class Inventory : MonoBehaviour
 	{
 		instance = this;
 		controller = GetComponent<PlayerController>();
+		//컨디션 가져와야됨
 	}
 
 	private void Start()
-	{
+	{	
 		inventoryWindow.SetActive(false);
 		slots = new ItemSlot[uiSlot.Length];
 
@@ -61,6 +63,7 @@ public class Inventory : MonoBehaviour
 
 		}
 		ClearSelectedItemWindow();
+		AddItem(pickaxe); //본래는 GameManager에서 가져와야 할 부분
 	}
 
 	public void Toggle()
@@ -158,8 +161,8 @@ public class Inventory : MonoBehaviour
 		selectedItemName.text = selectedItem.item.itemName;
 		selectedItemDescription.text = selectedItem.item.description;
 
-		selectedItemStatNames.text = string.Empty;
-		selectedItemStatValues.text = string.Empty;
+		//selectedItemStatNames.text = string.Empty;
+		//selectedItemStatValues.text = string.Empty;
 
 		//for (int i = 0; i < selectedItem.item.consumables.Length; i++)
 		//{

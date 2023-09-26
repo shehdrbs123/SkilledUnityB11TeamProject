@@ -25,7 +25,7 @@ public class ItemSlotUI : MonoBehaviour
 		outline.enabled = equipped;
 	}
 
-	public void Set(ItemSlot slot)
+	public void Set(ItemSlot slot) //아이템 값을 전달 후 세팅
 	{
 		curSlot = slot;
 		icon.gameObject.SetActive(true);
@@ -45,7 +45,7 @@ public class ItemSlotUI : MonoBehaviour
 		quantityText.text = string.Empty;
 	}
 
-	public void OnButtonClick() // 미구현
+	public void OnButtonClick() // 인벤토리에서 내가 아이템 목록을 클릭했을 때 정보가 나옴
 	{
 		Inventory.instance.SelectItem(index);
 	}

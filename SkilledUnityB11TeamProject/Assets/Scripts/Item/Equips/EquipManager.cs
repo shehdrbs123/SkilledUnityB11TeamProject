@@ -14,6 +14,7 @@ public class EquipManager : MonoBehaviour
 	private void Awake()
 	{
 		controller = GetComponent<PlayerController>();
+		instance = this;
 	}
 	
 	public void OnAttackInput(InputAction.CallbackContext context)

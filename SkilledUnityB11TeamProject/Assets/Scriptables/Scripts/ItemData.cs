@@ -14,6 +14,12 @@ public enum ConsumableType
 	Thirst
 }
 
+public class ItemDataConsumable
+{
+	public ConsumableType type;
+	public float value;
+}
+
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]
 public class ItemData : ScriptableObject
 {
@@ -27,7 +33,8 @@ public class ItemData : ScriptableObject
 	public bool canStack;
 	public int maxStackAmount;
 
-	//[Header("Consumable")] 소모형 아이템이 생성되면 시작
+	//[Header("Consumable")]
+	//public ItemDataConsumable[] consumables; 소모형 아이템이 생성되면 시작
 
 	[Header("Equip")]
 	public GameObject equipPrefab;
