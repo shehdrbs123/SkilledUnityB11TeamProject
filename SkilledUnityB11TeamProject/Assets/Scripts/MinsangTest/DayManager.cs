@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    [Range(0f, 1f)] public float time;
+    [Header("Date")]
+    public int day = 0;
+    [Range(0.0f, 1.0f)] public float time;
+    public bool isNight = false;
+
+    [Header("Setting")]
     public float fullDayLength;
-    public float startTime = 0.4f;
+    public float startTime;
     private float timeRate;
     public Vector3 noon;
-    public bool isNight = false;
 
     [Header("Sun")]
     public Light sun;
@@ -36,20 +40,21 @@ public class DayManager : MonoBehaviour
     private void Update()
     {
         time = (time + timeRate * Time.deltaTime) % 1.0f;
-        isNight = (time > 0.5);
+        isNight = (time <= 0.2f || 0.8f <= time);
+        RenderSettings.skybox = isNight ? moonSkybox : sunSkybox;
 
-        UpdateLighting(sun, sunColor, sunIntensity, sunSkybox);
-        UpdateLighting(moon, moonColor, moonIntensity, moonSkybox);
+        UpdateLighting(sun, sunColor, sunIntensity);
+        UpdateLighting(moon, moonColor, moonIntensity);
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
     }
 
-    private void UpdateLighting(Light lightSource, Gradient colorGradient, AnimationCurve intensityCurve, Material sb)
+    private void UpdateLighting(Light lightSource, Gradient colorGradient, AnimationCurve intensityCurve)
     {
         float intensity = intensityCurve.Evaluate(time);
 
-        lightSource.transform.eulerAngles = (time - (lightSource == sun ? 0.25f : 0.75f)) * noon * 4.0f;
+        lightSource.transform.eulerAngles = (time - (lightSource == sun ? 0.25f : 0.75f)) * 4.0f * noon;
         lightSource.color = colorGradient.Evaluate(time);
         lightSource.intensity = intensity;
 
@@ -61,8 +66,9 @@ public class DayManager : MonoBehaviour
         else if (lightSource.intensity > 0 && !go.activeInHierarchy)
         {
             go.SetActive(true);
-        }
 
-        RenderSettings.skybox = sb;
+            if (!isNight)
+                day += 1;
+        }
     }
 }
