@@ -227,6 +227,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: beb21685-291d-4357-8a40-2435dbd74b2c
     m_ActionName: Player/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a8813779-f544-45b3-860f-39f40050b38c
+    m_ActionName: Player/Select1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e513415f-af2b-4090-990c-11c837eb64a7
+    m_ActionName: Player/Select2[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 694205068141714277}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &383050976880595583
 BoxCollider:
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340b0e587ac50a1439ebf281d86fd439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToGive: {fileID: 0}
+  itemToGive: {fileID: 11400000, guid: b93b9554fa18ee04eb419f3b72723f0c, type: 2}
   quantityPerHit: 1
   capacity: 10
 --- !u!1001 &2005680807707400381
