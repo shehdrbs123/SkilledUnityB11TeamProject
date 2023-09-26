@@ -95,7 +95,7 @@ public class Inventory : MonoBehaviour
 		return inventoryWindow.activeInHierarchy;
 	}
 
-	public void AddItem(ItemData item) //이거를 이용해서 아이템 채취시 얻기
+	public void AddItem(ItemData item) 
 	{
 		if (item.canStack)
 		{
@@ -173,7 +173,7 @@ public class Inventory : MonoBehaviour
 		useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
 		equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlot[index].equipped);
 		unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlot[index].equipped);
-		dropButton.SetActive(true);
+		dropButton.SetActive(selectedItem.item.type != ItemType.Equipable);
 	}
 
 	private void ClearSelectedItemWindow()

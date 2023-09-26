@@ -44,14 +44,12 @@ public class InteractionManager : MonoBehaviour
 				{
 					curInteractGameObject = hit.collider.gameObject;
 					curInteractable = hit.collider.GetComponent<IInteractable>();
-					SetPromptText();
 				}
 			}
 			else
 			{
 				curInteractGameObject = null;
 				curInteractable = null;
-				promptText.gameObject.SetActive(false);
 			}
 		}
 	}
