@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class BuildTargetButtonUI : MonoBehaviour
@@ -21,12 +20,6 @@ public class BuildTargetButtonUI : MonoBehaviour
     }
     private BuildDataSO _data;
     private BuildManager _buildManager;
-
-    private void Start()
-    {
-        _buildManager = GameManager.Instance._buildManager;
-    }
-
     public void UpdateData()
     {
         SetImage(_data.StructureUISprite);

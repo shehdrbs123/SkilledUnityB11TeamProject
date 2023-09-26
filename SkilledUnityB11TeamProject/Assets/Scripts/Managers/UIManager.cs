@@ -24,13 +24,6 @@ public class UIManager : MonoBehaviour
         {
             _uiPrefabs.Add(value.name,value);
         }
-        
-        
-    }
-
-    private void Start()
-    {
-        CheckInputAction();
     }
 
     public GameObject GetUI(string name)
@@ -108,20 +101,16 @@ public class UIManager : MonoBehaviour
 
     private void IgnoreInput(bool ignore)
     {
-        if (ignore)
+        foreach (var input in _inputs)
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            foreach (var input in _inputs)
+            if (ignore)
+            {
                 input.Disable();
-        }
-        else
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            foreach (var input in _inputs)
+            }
+            else
+            {
                 input.Enable();
+            }
         }
-        
     }
 }
