@@ -9,7 +9,7 @@ public class MonsterDataSO : ScriptableObject
     public Material material;
     public int hp;
     public float speed;
-    public readonly Vector3 spawnPosition = new Vector3(-85, 0, 105);
-    public readonly Vector3 targetPosition = new Vector3(45, 0, -85);
+    public readonly Vector3 SPAWN_POSITION = new Vector3(-85, 0, 105);
+    public readonly Vector3 TARGET_POSITION = new Vector3(45, 0, -85);
     public GameObject[] dropResources;
 }

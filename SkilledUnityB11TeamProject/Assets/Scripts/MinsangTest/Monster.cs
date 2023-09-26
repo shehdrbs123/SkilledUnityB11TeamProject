@@ -29,12 +29,11 @@ public class Monster : MonoBehaviour
         _meshRenderers.material = data.material;
         _nowHP = data.hp;
         _agent.speed = data.speed;
-        gameObject.transform.position = data.spawnPosition;
+        gameObject.transform.position = data.SPAWN_POSITION;
         gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
 
         isAlive = true;
-        _agent.SetDestination(data.targetPosition);
-        InvokeRepeating(nameof(TEST), 0f, 1f);
+        _agent.SetDestination(data.TARGET_POSITION);
     }
 
     private void Update()
@@ -43,17 +42,11 @@ public class Monster : MonoBehaviour
             Die();
     }
 
-    private void TEST()
-    {
-        _nowHP -= 1;
-    }
-
     public void Die()
     {
         isAlive = false;
         _agent.isStopped = true;
         _animator.SetTrigger(IsDie);
-        CancelInvoke(nameof(TEST));
         Invoke(nameof(ReturnToSpawnPoint), 2);
     }
 
