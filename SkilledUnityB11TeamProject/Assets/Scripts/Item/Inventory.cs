@@ -28,6 +28,8 @@ public class Inventory : MonoBehaviour
 	public TextMeshProUGUI selectedItemStatNames;
 	public TextMeshProUGUI selectedItemStatValues;
 	public GameObject useButton;
+	public GameObject equipButton;
+	public GameObject unEquipButton;
 	public GameObject dropButton;
 
 	private int curEquipIndex;
@@ -166,6 +168,8 @@ public class Inventory : MonoBehaviour
 		//}
 
 		useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
+		equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlot[index].equipped);
+		unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlot[index].equipped);
 		dropButton.SetActive(true);
 	}
 
@@ -175,11 +179,13 @@ public class Inventory : MonoBehaviour
 		selectedItemName.text = string.Empty;
 		selectedItemDescription.text = string.Empty;
 
-		selectedItemStatNames.text = string.Empty;
-		selectedItemStatValues.text = string.Empty;
+		//selectedItemStatNames.text = string.Empty;
+		//selectedItemStatValues.text = string.Empty;  //먹을 것이 있을경우
 
-		useButton.SetActive(false);
+		equipButton.SetActive(false);
 		dropButton.SetActive(false);
+		useButton.SetActive(false);
+		unEquipButton.SetActive(false);
 	}
 
 	//public void OnUseButton()
@@ -200,27 +206,58 @@ public class Inventory : MonoBehaviour
 	//	RemoveSelectedItem();
 	//}
 
-	public void OnDropButton()
+	public void OnEquipButton()
 	{
-		//RemoveSelectedItem();
+		if (uiSlot[curEquipIndex].equipped)
+		{
+			UnEquip(curEquipIndex);
+		}
+
+		uiSlot[selectedItemIndex].equipped = true;
+		curEquipIndex = selectedItemIndex;
+		EquipManager.instance.EquipNew(selectedItem.item);
+		UpdateUI();
+
+		SelectItem(selectedItemIndex);
 	}
 
-	//private void RemoveSelectedItem()
-	//{
-	//	selectedItem.quantity--;
+	void UnEquip(int index)
+	{
+		uiSlot[index].equipped = false;
+		EquipManager.instance.UnEquip();
+		UpdateUI();
 
-	//	if (selectedItem.quantity <= 0)
-	//	{
-	//		if (uiSlot[selectedItemIndex].equipped)
-	//		{
-	//			UnEquip(selectedItemIndex);
-	//		}
+		if(selectedItemIndex == index)
+		{
+			SelectItem(index);
+		}
+	}
 
-	//		selectedItem.item = null;
-	//		ClearSelectedItemWindow();
-	//	}
-	//	UpdateUI();
-	//}
+	public void OnUnEquipButton()
+	{
+		UnEquip(selectedItemIndex);
+	}
+	public void OnDropButton()
+	{
+		RemoveSelectedItem();
+	}
+
+	private void RemoveSelectedItem()
+	{
+		selectedItem.quantity--;
+
+		if (selectedItem.quantity <= 0)
+		{
+			if (uiSlot[selectedItemIndex].equipped)
+			{
+				UnEquip(selectedItemIndex);
+			}
+
+			selectedItem.item = null;
+			ClearSelectedItemWindow();
+		}
+		UpdateUI();
+	}
 
 	public void RemoveItem(ItemData item)
 	{

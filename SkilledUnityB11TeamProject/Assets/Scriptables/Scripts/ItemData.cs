@@ -26,4 +26,10 @@ public class ItemData : ScriptableObject
 	[Header("Stacking")]
 	public bool canStack;
 	public int maxStackAmount;
+
+	//[Header("Consumable")] 소모형 아이템이 생성되면 시작
+
+	[Header("Equip")]
+	public GameObject equipPrefab;
+	
 }

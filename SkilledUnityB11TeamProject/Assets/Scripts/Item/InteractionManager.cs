@@ -9,7 +9,7 @@ public interface IInteractable
 	string GetInteractPrompt();
 	void OnInteract();
 }
-public class InteractManager : MonoBehaviour
+public class InteractionManager : MonoBehaviour
 {
     public float checkRate = 0.05f;
     private float lastCheckTime;
@@ -30,6 +30,7 @@ public class InteractManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		// 실시간으로 현재 바라보고 있는 정보를 curInteractable에 저장
 		if (Time.time - lastCheckTime > checkRate)
 		{
 			lastCheckTime = Time.time;
