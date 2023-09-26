@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
             if (_instance == null)
             {
                 GameObject obj = GameObject.FindWithTag("GameManager");
-                if (obj == null)
+                _instance = obj.GetComponent<GameManager>();
+                if (_instance == null)
                 {
                     obj = new GameObject("GameManager");
                     _instance = obj.AddComponent<GameManager>();
@@ -31,10 +32,17 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _uiManager = GetComponent<UIManager>();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _instance = this;
     }
 
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         player = GameObject.FindWithTag("Player");
     }
 

@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         _uiCounter = new HashSet<GameObject>();
+        _uiInstances = new Dictionary<string, GameObject>();
         _uiPrefabs = new Dictionary<string, GameObject>();
         
         var a = Resources.LoadAll<GameObject>(Path.Combine("UI"));
@@ -33,6 +34,7 @@ public class UIManager : MonoBehaviour
             if (_uiPrefabs.TryGetValue(name,out GameObject obj))
             {
                 ui = Instantiate(obj);
+                _uiInstances.Add(name,ui);
             }
             else
             {
@@ -66,11 +68,24 @@ public class UIManager : MonoBehaviour
                 PlayerInput playerInput = player.GetComponent<PlayerInput>();
                 _inputs.Add(playerInput.actions.FindAction("Move"));
                 _inputs.Add(playerInput.actions.FindAction("Look"));
-                _inputs.Add(playerInput.actions.FindAction("Fire"));
+                _inputs.Add(playerInput.actions.FindAction("Fire1"));
             }
         }
 
         IgnoreInput(_uiCounter.Count>0);
+    }
+
+    private void AddAction(string name, ref PlayerInput playerInput)
+    {
+        InputAction action = playerInput.actions.FindAction(name);
+        if(action!=null)
+            _inputs.Add(action);
+    #if UNITY_EDITOR
+        else
+        {
+            Debug.Log($"{name}의 입력은 없습니다, 바인딩 이름을 확인해 주세요");
+        }
+    #endif
     }
 
     private void IgnoreInput(bool ignore)
