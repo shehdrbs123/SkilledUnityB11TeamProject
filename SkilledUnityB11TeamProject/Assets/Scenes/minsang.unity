@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: ed1387202b1349540a5d6464f0f27488, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: e7e695d557cfa5b459c1c83419db147a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.114804454, g: 0.2799894, b: 0.33563367, a: 1}
+  m_IndirectSpecularColor: {r: 0.67118055, g: 0.7408391, b: 0.8133838, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6955,6 +6955,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  sunSkybox: {fileID: 2100000, guid: e7e695d557cfa5b459c1c83419db147a, type: 2}
   moon: {fileID: 1531004289}
   moonColor:
     serializedVersion: 2
@@ -7028,6 +7029,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  moonSkybox: {fileID: 2100000, guid: 8b63a0a7770365645baab3a8acc5cca2, type: 2}
   lightingIntensityMultiplier:
     serializedVersion: 2
     m_Curve:

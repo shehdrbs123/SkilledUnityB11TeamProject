@@ -15,11 +15,13 @@ public class DayManager : MonoBehaviour
     public Light sun;
     public Gradient sunColor;
     public AnimationCurve sunIntensity;
+    public Material sunSkybox;
 
     [Header("Moon")]
     public Light moon;
     public Gradient moonColor;
     public AnimationCurve moonIntensity;
+    public Material moonSkybox;
 
     [Header("Other Lighting")]
     public AnimationCurve lightingIntensityMultiplier;
@@ -33,17 +35,17 @@ public class DayManager : MonoBehaviour
 
     private void Update()
     {
-        // time = (time + timeRate * Time.deltaTime) % 1.0f;
+        time = (time + timeRate * Time.deltaTime) % 1.0f;
         isNight = (time > 0.5);
 
-        UpdateLighting(sun, sunColor, sunIntensity);
-        UpdateLighting(moon, moonColor, moonIntensity);
+        UpdateLighting(sun, sunColor, sunIntensity, sunSkybox);
+        UpdateLighting(moon, moonColor, moonIntensity, moonSkybox);
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
     }
 
-    private void UpdateLighting(Light lightSource, Gradient colorGradient, AnimationCurve intensityCurve)
+    private void UpdateLighting(Light lightSource, Gradient colorGradient, AnimationCurve intensityCurve, Material sb)
     {
         float intensity = intensityCurve.Evaluate(time);
 
@@ -60,5 +62,7 @@ public class DayManager : MonoBehaviour
         {
             go.SetActive(true);
         }
+
+        RenderSettings.skybox = sb;
     }
 }
