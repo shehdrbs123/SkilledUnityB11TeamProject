@@ -2,17 +2,19 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class BuildManager : MonoBehaviour
 {
-     private BuildDataSO[] buildDatas;
 
-     [SerializeField] private LayerMask groundLayer;
+     [SerializeField] private Material CanBuildMaterial;
+     [SerializeField] private Material CanNotBuildMaterial;
+     [SerializeField] private LayerMask BuildLayer;
      [SerializeField] private LayerMask StructureLayer;
-     [SerializeField] private float range;
-
+     [FormerlySerializedAs("range")] [SerializeField] private float canBuildRange;
      [SerializeField] private float rotateSpeed;
-     //빌드모드 플레이
+     
+     private BuildDataSO[] buildDatas;
      private InputAction _fire1Action;
      private InputAction _fire2Action;
      private InputAction _ScrollAction;
@@ -57,43 +59,58 @@ public class BuildManager : MonoBehaviour
 
      private IEnumerator OperateBuild(BuildDataSO data)
      {
-          GameObject obj = Instantiate(data.StructurePrefab);
+          GameObject buildObj = Instantiate(data.StructurePrefab);
+          Collider buildObjCollider = buildObj.GetComponent<Collider>();
+          MeshRenderer[] test = buildObj.GetComponentsInChildren<MeshRenderer>();
+          
+          Material defaultMateral = test[0].material;
+
           while (isBuildMode)
           {
                Ray lay = _Camera.ScreenPointToRay(new Vector3(Screen.width * .5f, Screen.height * .5f));
                RaycastHit hit;
-               if (Physics.Raycast(lay,out hit, range, groundLayer))
+               if (Physics.Raycast(lay,out hit, canBuildRange, BuildLayer))
                {
-                    Debug.Log("hit");
-                    obj.SetActive(true);
-                    obj.transform.position = hit.point;
-                    
-                    if (_fire1Action.IsPressed())
+                    buildObj.SetActive(true);
+                    buildObj.transform.position = hit.point;
+                    Collider[] otherStrCollider = Physics.OverlapBox(buildObjCollider.bounds.center, buildObjCollider.bounds.extents, Quaternion.identity,
+                         StructureLayer);
+                    if (otherStrCollider.Length > 0)
                     {
-                         isBuildMode = false;
+                         Array.ForEach(test,(x) => x.sharedMaterial = CanNotBuildMaterial);
                     }
-
-                    if (_fire2Action.IsPressed())
+                    else
                     {
-                         isBuildMode = false;
-                         Destroy(obj);
-                    }
+                         Array.ForEach(test,(x) => x.sharedMaterial = CanBuildMaterial);
+                         if (_fire1Action.IsPressed())
+                         {
+                              isBuildMode = false;
+                              Array.ForEach(test,(x) => x.sharedMaterial = defaultMateral);
+                              buildObj.layer = LayerMask.NameToLayer("Structure");
+                         }
 
-                    if (_ScrollAction.triggered)
-                    {
-                         Vector2 scrollDirection = _ScrollAction.ReadValue<Vector2>();
-                         Vector3 eulerAngle = obj.transform.eulerAngles;
-                         if (scrollDirection.y > 0)
-                              eulerAngle.y += rotateSpeed*Time.deltaTime;
-                         else
-                              eulerAngle.y -= rotateSpeed*Time.deltaTime;
+                         if (_fire2Action.IsPressed())
+                         {
+                              isBuildMode = false;
+                              Destroy(buildObj);
+                         }
 
-                         obj.transform.eulerAngles = eulerAngle;
+                         if (_ScrollAction.triggered)
+                         {
+                              Vector2 scrollDirection = _ScrollAction.ReadValue<Vector2>();
+                              Vector3 eulerAngle = buildObj.transform.eulerAngles;
+                              if (scrollDirection.y > 0)
+                                   eulerAngle.y += rotateSpeed*Time.deltaTime;
+                              else
+                                   eulerAngle.y -= rotateSpeed*Time.deltaTime;
+
+                              buildObj.transform.eulerAngles = eulerAngle;
+                         } 
                     }
                }
                else
                {
-                    obj.SetActive(false);
+                    buildObj.SetActive(false);
                }
                
                yield return null;

@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public struct Pool
 {
-    public PoolType type;       // Ç®¸µÇÒ ¿ÀºêÁ§Æ®
-    public GameObject prefab;   // ÇÁ¸®ÆÕ
-    public Transform holder;    // ¿ÀºêÁ§Æ® »ı¼º ºÎ¸ğ. PrefabMangaer ÄÄÆ÷³ÍÆ® ¾Æ·¡¿¡ »õ °ÔÀÓ¿ÀºêÁ§Æ®¸¦ ¸¸µé¾î¼­ ´Ş¾ÆÁÖ±â. Hierarchy Á¤¸®¿ë
+    public PoolType type;       // í’€ë§í•  ì˜¤ë¸Œì íŠ¸
+    public GameObject prefab;   // í”„ë¦¬íŒ¹
+    public Transform holder;    // ì˜¤ë¸Œì íŠ¸ ìƒì„± ë¶€ëª¨. PrefabMangaer ì»´í¬ë„ŒíŠ¸ ì•„ë˜ì— ìƒˆ ê²Œì„ì˜¤ë¸Œì íŠ¸ë¥¼ ë§Œë“¤ì–´ì„œ ë‹¬ì•„ì£¼ê¸°. Hierarchy ì •ë¦¬ìš©
 
     public Pool(PoolType _type, GameObject _prefab, Transform _holder)
     {
@@ -17,10 +17,10 @@ public struct Pool
     }
 }
 
-public enum PoolType            // PoolTypeÀÇ °ª¸¸Å­ ¿ÀºêÁ§Æ® Ç®¸µ
+public enum PoolType            // PoolTypeì˜ ê°’ë§Œí¼ ì˜¤ë¸Œì íŠ¸ í’€ë§
 {
-    Monster = 30,               // ¸ó½ºÅÍ
-    SFXAudio = 30,              // È¿°úÀ½
+    Monster = 30,               // ëª¬ìŠ¤í„°
+    SFXAudio = 30,              // íš¨ê³¼ìŒ
 }
 
 public class PrefabManager : MonoBehaviour
@@ -50,7 +50,7 @@ public class PrefabManager : MonoBehaviour
         poolDictionary.Add(pool.type, objectPool);
     }
 
-    public void AddAtPoolsOnScript(PoolType _type, GameObject _object)      // holder ÁöÁ¤ÇØÁÖÁö ¾ÊÀ¸¸é GameManager.PrefabManager ÇÏÀ§¿¡ È¦´õ°¡ »ı±è
+    public void AddAtPoolsOnScript(PoolType _type, GameObject _object)      // holder ì§€ì •í•´ì£¼ì§€ ì•Šìœ¼ë©´ GameManager.PrefabManager í•˜ìœ„ì— í™€ë”ê°€ ìƒê¹€
     {
         Transform tf = new GameObject("Holder").transform;
         tf.SetParent(transform);
