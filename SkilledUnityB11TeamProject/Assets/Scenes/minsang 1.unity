@@ -12023,6 +12023,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 889955291167440014, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: sunColor.key1.b
+      value: 0.5960751
+      objectReference: {fileID: 0}
+    - target: {fileID: 889955291167440014, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: sunColor.key1.g
+      value: 0.8918764
+      objectReference: {fileID: 0}
+    - target: {fileID: 889955291167440014, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: sunColor.key1.r
+      value: 0.8962264
+      objectReference: {fileID: 0}
+    - target: {fileID: 889955291167440014, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: sunIntensity.m_Curve.Array.data[2].value
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 889955291167440014, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: sunIntensity.m_Curve.Array.data[3].inSlope
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 889955291167440014, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: sunIntensity.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3292718435623128802, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
       propertyPath: m_RootOrder
       value: 0
