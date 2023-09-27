@@ -11,7 +11,7 @@ public class BuildManager : GridPanelManager
      [SerializeField] private Material CanNotBuildMaterial;
      [SerializeField] private LayerMask BuildLayer;
      [SerializeField] private LayerMask StructureLayer;
-     [FormerlySerializedAs("range")] [SerializeField] private float canBuildRange;
+     [FormerlySerializedAs("halfRadius")] [SerializeField] private float canBuildRange;
      [SerializeField] private float rotateSpeed;
      private BuildDataSO[] buildDatas;
      

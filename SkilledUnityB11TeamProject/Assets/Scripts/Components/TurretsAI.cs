@@ -8,9 +8,14 @@ public class TurretsAI : MonoBehaviour
 {
     [SerializeField] private Transform _head;
     [SerializeField] private TurretDataSO _data;
+    [SerializeField] private GameObject _rangeObject;
     [SerializeField] private ParticleSystem[] paricles;
+
     
     private Animator _animator;
+    private SphereCollider _rangeCols;
+    private CircleDraw _rangeRenderer;
+    
 
     private List<GameObject> _enemys;
     private float _currentAttackWait;
@@ -20,6 +25,11 @@ public class TurretsAI : MonoBehaviour
     {
         _enemys = new List<GameObject>();
         _animator = GetComponent<Animator>();
+        _rangeCols = _rangeObject.GetComponent<SphereCollider>();
+        _rangeRenderer = _rangeObject.GetComponent<CircleDraw>();
+
+        _rangeCols.radius = _data.halfRadius;
+        _rangeRenderer.radius = _data.halfRadius;
         attackAniHash = Animator.StringToHash("IsAttack");
     }
 
