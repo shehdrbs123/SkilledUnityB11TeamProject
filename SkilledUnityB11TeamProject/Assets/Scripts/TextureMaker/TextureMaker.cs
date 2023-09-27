@@ -15,17 +15,16 @@ public class TextureMaker : MonoBehaviour
 
     private RenderTexture rTex;
 
-    public void MakeTexture()
+    private void SetttingDefault()
     {
         string directory = Directory.GetCurrentDirectory();
         path = Path.Combine(directory, "Assets", "Art", "Textures");
-        
-        
         rTex = Cam.targetTexture;
-        
-        
+    }
+    public void MakeTexture()
+    {
+        SetttingDefault();
         StartCoroutine(Making());
-
     }
 
     private IEnumerator Making()
@@ -45,7 +44,14 @@ public class TextureMaker : MonoBehaviour
         }
     }
 
-    private void SaveTexture(string filePath)
+    public void SaveTexture()
+    {
+        SetttingDefault();
+        string imagePath = Path.Combine(path, $"Texture{Directory.GetFiles(path).Length}.png");
+        SaveTexture(imagePath);
+    }
+
+    public void SaveTexture(string filePath)
     {
         Texture2D texture = new Texture2D(rTex.width, rTex.height);
         RenderTexture.active = rTex;
