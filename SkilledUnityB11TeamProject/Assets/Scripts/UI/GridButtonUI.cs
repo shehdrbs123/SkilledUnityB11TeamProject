@@ -10,8 +10,6 @@ public abstract class GridButtonUI : MonoBehaviour
     protected Button _button;
     public abstract void Init(ScriptableObject data,Transform parent,UnityAction PanelOff);
     
-    
-    
     private void ButtonEnable(bool enable)
     {
         _button.interactable = enable;

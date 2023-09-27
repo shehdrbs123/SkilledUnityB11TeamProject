@@ -30,21 +30,22 @@ public class BuildTargetButtonUI : GridButtonUI
         BuildTargetButtonUI target = GetComponent<BuildTargetButtonUI>();
         _button = GetComponent<Button>();
 
-        target._data = data as BuildDataSO;
+        target.dataSo = data as BuildDataSO;
         _button.onClick.AddListener(target.CreateBuild);
         _button.onClick.AddListener(PanelOff);
             
         transform.SetParent(parent,false);
+        transform.localScale = Vector3.one;
     }
 
 
     public void CreateBuild()
     {
-        _buildManager.SetBuildMode(_data);
+        _buildManager.SetBuildMode(dataSo);
     }
 
     public void UpdateData()
     {
-        SetImage(_data.Image);
+        SetImage(dataSo.Image);
     }
 }

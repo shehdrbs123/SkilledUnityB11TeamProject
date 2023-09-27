@@ -23,6 +23,6 @@ public class CrattTable : MonoBehaviour, IInteractable
         GameObject panel = _uimanager.GetUI("GridPanelUI");
         GridPanelUI panelUI = panel.GetComponent<GridPanelUI>();
         
-        panelUI.Init(GameManager.Instance._craftManager,"CraftButtonUI");
+        panelUI.Init();
     }
 }
