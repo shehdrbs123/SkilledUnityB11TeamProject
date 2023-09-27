@@ -42,7 +42,7 @@ Transform:
   - {fileID: 1243355532860423210}
   - {fileID: 7798729185640958096}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9211856616913930283
 MonoBehaviour:
@@ -232,7 +232,7 @@ MonoBehaviour:
   _cameras: {fileID: 3344628594488421984}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   camCurXRot: 0
 --- !u!136 &6230169843117336098
 CapsuleCollider:
