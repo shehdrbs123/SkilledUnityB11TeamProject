@@ -213,7 +213,6 @@ public class Inventory : BaseUI
 
 		uiSlot[selectedItemIndex].equipped = true;
 		curEquipIndex = selectedItemIndex;
-		//EquipManager.instance.EquipNew(selectedItem.item);
 		GameManager.Instance._equipManager.EquipNew(selectedItem.item);
 		UpdateUI();
 
@@ -223,7 +222,6 @@ public class Inventory : BaseUI
 	void UnEquip(int index)
 	{
 		uiSlot[index].equipped = false;
-		//EquipManager.instance.UnEquip();
 		GameManager.Instance._equipManager.UnEquip();
 		UpdateUI();
 
