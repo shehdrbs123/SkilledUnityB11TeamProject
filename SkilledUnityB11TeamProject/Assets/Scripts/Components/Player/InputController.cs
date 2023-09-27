@@ -21,6 +21,7 @@ public class InputController : MonoBehaviour
             action.canceled += CallOnMove;
             action = playerInput.actions.FindAction("Look");
             action.performed += CallOnLookRotation;
+            action.canceled += CallOnLookRotation;
             action = playerInput.actions.FindAction("Fire1");
             action.started += CallOnFire1;
             action = playerInput.actions.FindAction("Fire2");
