@@ -203,6 +203,7 @@ public class Inventory : MonoBehaviour
 		}
 
 		uiSlot[0].equipped = true;
+		uiSlot[1].equipped = false;
 		curEquipIndex = 0;
 		GameManager.Instance._equipManager.EquipNew(pickaxe);
 		UpdateUI();
@@ -215,7 +216,7 @@ public class Inventory : MonoBehaviour
 		{
 			UnEquip(1);
 		}
-
+		uiSlot[0].equipped = false;
 		uiSlot[1].equipped = true;
 		curEquipIndex = 1;
 		GameManager.Instance._equipManager.EquipNew(hammer);
