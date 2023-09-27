@@ -375,9 +375,9 @@ MonoBehaviour:
   sun: {fileID: 4847192849733666866}
   sunColor:
     serializedVersion: 2
-    key0: {r: 1, g: 0.99539405, b: 0.6084906, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 1, g: 0.9960785, b: 0.6117647, a: 0}
+    key0: {r: 0.735849, g: 0.7324822, b: 0.3991634, a: 1}
+    key1: {r: 1, g: 0.9973113, b: 0.7311321, a: 1}
+    key2: {r: 0.7372549, g: 0.73333335, b: 0.40000004, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
@@ -759,7 +759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5787759454351100960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -771,7 +771,7 @@ Transform:
   - {fileID: 1160617853714207706}
   - {fileID: 2721586433190370979}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1182428806516601007
 MonoBehaviour:
@@ -792,6 +792,7 @@ MonoBehaviour:
   _soundManager: {fileID: 1181770288461170640}
   _itemManager: {fileID: 224661453482673458}
   _equipManager: {fileID: 0}
+  _interactionManager: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &5838510771337718052
 GameObject:
@@ -1014,9 +1015,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - type: 30
+  - type: 0
     prefab: {fileID: 7083465741751176283, guid: cfada0dfc781613429e8c6b9dad200b0, type: 3}
+    count: 30
     holder: {fileID: 8186851548089524128}
-  - type: 30
+  - type: 1
     prefab: {fileID: 8059661545040053436, guid: 34f09f121708bee43babfc1c7c79f451, type: 3}
+    count: 30
     holder: {fileID: 7672450421063860248}
