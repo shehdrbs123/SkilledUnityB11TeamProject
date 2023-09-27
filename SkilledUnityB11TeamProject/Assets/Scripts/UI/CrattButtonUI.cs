@@ -27,9 +27,9 @@ public class CrattButtonUI : GridButtonUI
         _button = GetComponent<Button>();
         
         _button.onClick.AddListener(PanelOff);
-       // _button.onClick.AddListener(MakeItem);
-       transform.SetParent(parent,false);
-       transform.localScale = Vector3.one;
+        _button.onClick.AddListener(MakeItem);
+        transform.SetParent(parent,false);
+        transform.localScale = Vector3.one;
     }
 
     private void MakeItem()

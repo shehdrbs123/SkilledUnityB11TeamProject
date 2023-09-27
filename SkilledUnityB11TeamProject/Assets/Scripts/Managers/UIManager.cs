@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
         if (_inputs == null)
         {
             _inputs = new List<InputAction>(10);
+<<<<<<< Updated upstream
             GameObject player = GameManager.Instance.GetPlayer();
             if (player)
             {
@@ -88,6 +89,19 @@ public class UIManager : MonoBehaviour
                 _inputs.Add(playerInput.actions.FindAction("Look"));
                 _inputs.Add(playerInput.actions.FindAction("Fire1"));
             }
+=======
+            
+        }
+        GameObject player = GameManager.Instance.GetPlayer();
+        if (player && _inputs.Count<=0)
+        {
+            PlayerInput playerInput = player.GetComponent<PlayerInput>();
+            _inputs.Add(playerInput.actions.FindAction("Move"));
+            _inputs.Add(playerInput.actions.FindAction("Look"));
+            _inputs.Add(playerInput.actions.FindAction("Fire1"));
+            _inputs.Add(playerInput.actions.FindAction("Fire2"));
+            _inputs.Add(playerInput.actions.FindAction("Interact"));
+>>>>>>> Stashed changes
         }
 
         IgnoreInput(_uiCounter.Count>0);
