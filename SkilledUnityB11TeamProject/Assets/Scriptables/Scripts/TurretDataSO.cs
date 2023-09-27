@@ -9,6 +9,5 @@ public class TurretDataSO : ScriptableObject
     public float range;
     public float Damage;
     public float attackRate;
-    
 
 }
