@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -27,6 +28,8 @@ public class GridPanelUI : BaseUI
             int count = manager.GetElementsCount();
             for (int i = 0; i < count; ++i)
             {
+                if (_uiManager == null)
+                    _uiManager = GameManager.Instance._uiManager;
                 GameObject obj = _uiManager.GetUIClone(buttonUIName);
                 obj.GetComponent<GridButtonUI>().Init(manager.GetData(i),_contentPanel,() => gameObject.SetActive(false));
             }
