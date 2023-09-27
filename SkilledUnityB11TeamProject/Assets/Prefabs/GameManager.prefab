@@ -733,6 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pickax: {fileID: 11400000, guid: e26d77f95393941458255bd71faf3e4e, type: 2}
+  Hammer: {fileID: 11400000, guid: 1996ec7b5d9c8c8418c703d154dc3afd, type: 2}
 --- !u!1 &5508718834227271635
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,7 +817,7 @@ Transform:
   - {fileID: 2721586433190370979}
   - {fileID: 5977826083074903824}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1182428806516601007
 MonoBehaviour:
