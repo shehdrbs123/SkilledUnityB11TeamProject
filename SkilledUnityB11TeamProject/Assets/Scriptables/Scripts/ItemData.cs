@@ -11,9 +11,9 @@ public enum ItemType
 public enum ConsumableType
 {
     Hunger,
-	Thirst
+	Thirsty
 }
-
+[System.Serializable]
 public class ItemDataConsumable
 {
 	public ConsumableType type;
@@ -33,8 +33,8 @@ public class ItemData : ScriptableObject
 	public bool canStack;
 	public int maxStackAmount;
 
-	//[Header("Consumable")]
-	//public ItemDataConsumable[] consumables;
+	[Header("Consumable")]
+	public ItemDataConsumable[] consumables;
 
 	[Header("Equip")]
 	public GameObject equipPrefab;

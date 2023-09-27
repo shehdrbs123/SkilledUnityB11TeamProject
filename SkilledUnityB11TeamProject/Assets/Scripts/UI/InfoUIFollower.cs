@@ -26,15 +26,16 @@ public class InfoUIFollower : MonoBehaviour, IPointerMoveHandler,IPointerEnterHa
 
     public void OnPointerMove(PointerEventData eventData)
     {
-        float xPos = eventData.position.x + (_infoPanelTransform.rect.width * 0.25f); //+ _offset.x;
-        float yPos = eventData.position.y - (_infoPanelTransform.rect.height * 0.25f); // - _offset.y;
+        float xPos = eventData.position.x + (_infoPanelTransform.rect.width * 0.5f) + _offset.x;
+        float yPos = eventData.position.y - (_infoPanelTransform.rect.height * 0.5f) - _offset.y;
 
         _infoPanelTransform.position = new Vector2(xPos, yPos);
     }
 
     private void OnDisable()
     {
-        _InfoPanel.gameObject.SetActive(false);
+        if(_InfoPanel)
+            _InfoPanel.gameObject.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
