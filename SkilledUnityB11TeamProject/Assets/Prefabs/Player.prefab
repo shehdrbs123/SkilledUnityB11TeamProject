@@ -42,7 +42,7 @@ Transform:
   - {fileID: 1243355532860423210}
   - {fileID: 7798729185640958096}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9211856616913930283
 MonoBehaviour:
@@ -168,6 +168,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c7ddf6e2-bd4a-476d-a70d-50f4f47ae696
     m_ActionName: PlayerKeyboardMouse/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4644284508036538926}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: OnPickaxEquipButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d17bae25-c5d5-4b8b-af43-06d82f3ae562
+    m_ActionName: PlayerKeyboardMouse/Pickax[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4644284508036538926}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: OnHammerEquipButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e783e6a7-31d6-4180-8bc5-341f54bd14b7
+    m_ActionName: PlayerKeyboardMouse/Hammer[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerKeyboardMouse
@@ -279,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2893a9bdde31cf54c8b4a544206e7bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIgnoreInput: 1
+  isIgnoreInput: 0
   uiSlot:
   - {fileID: 72538219502097171}
   - {fileID: 8577736951128834124}
@@ -290,7 +322,6 @@ MonoBehaviour:
   - {fileID: 1526312453220425799}
   - {fileID: 1663402239534734977}
   inventoryWindow: {fileID: 3908078078779095123}
-  dropPosition: {fileID: 0}
   selectedItemName: {fileID: 2710318885195571343}
   selectedItemDescription: {fileID: 6302381782815857078}
   useButton: {fileID: 1263597184972919144}
