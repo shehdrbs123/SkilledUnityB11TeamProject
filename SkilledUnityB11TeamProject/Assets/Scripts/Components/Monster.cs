@@ -8,17 +8,12 @@ public class Monster : MonoBehaviour
     [Header("Stat")]
     public MonsterDataSO data;
     [SerializeField] private int _nowHP;        // 인스펙터에서 확인용 직렬화. 추후 제거
+    private bool isAlive = true;
+    private bool isInvincible = false;
 
     private NavMeshAgent _agent;
     private Animator _animator;
     private SkinnedMeshRenderer _meshRenderers;
-
-    private readonly int IsDie = Animator.StringToHash("IsDie");
-    private readonly int IsHIt = Animator.StringToHash("IsHit");
-    private readonly WaitForSeconds hitDelay = new WaitForSeconds(0.75f);
-
-    private bool isAlive = true;
-    private bool isInvincible = false;
 
     private void Awake()
     {
@@ -30,25 +25,36 @@ public class Monster : MonoBehaviour
     private void OnEnable()
     {
         isAlive = true;
-        _meshRenderers.material = data.material;
+        isInvincible = false;
         _nowHP = data.hp;
+        _meshRenderers.material = data.material;
+        _agent.enabled = true;
         _agent.speed = data.speed;
+        _agent.isStopped = false;
         gameObject.transform.position = data.SPAWN_POSITION;
         gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
 
         _agent.SetDestination(data.TARGET_POSITION);
     }
 
+    private void Update()
+    {
+        if (isAlive && _agent.remainingDistance <= 0)
+        {
+            StartCoroutine(CoAttack());
+        }
+    }
+
     public void Hit(int damage)
     {
-        if (isInvincible && isAlive)
+        if (isInvincible || !isAlive)
             return;
 
         _nowHP -= damage;
 
         if (_nowHP <= 0)
         {
-            Die();
+            StartCoroutine(CoDie());
         }
         else
         {
@@ -56,29 +62,65 @@ public class Monster : MonoBehaviour
         }
     }
 
+
     private IEnumerator CoHitAnimation()
     {
         isInvincible = true;
         _agent.isStopped = true;
-        _animator.SetTrigger(IsHIt);
-        _meshRenderers.material.color = new Color(1.0f, 0.6f, 0.6f);
 
-        yield return hitDelay;
+        _animator.SetTrigger(data.ANIM_HIT);
+        _meshRenderers.material.color = new Color(1.0f, 0.5f, 0.5f);
+
+        yield return data.DELAY_HIT;
 
         isInvincible = false;
         _agent.isStopped = false;
         _meshRenderers.material.color = Color.white;
     }
 
-    public void Die()
+    public IEnumerator CoDie()
     {
         isAlive = false;
+        isInvincible = true;
         _agent.isStopped = true;
-        _animator.SetTrigger(IsDie);
-        Invoke(nameof(ReturnToSpawnPoint), 2);
+        _agent.enabled = false;
+
+        _animator.SetTrigger(data.ANIM_DIE);
+
+        yield return data.DELAY_DIE;
+
+        StartCoroutine(CoDisapear());
+
+        yield return data.DELAY_DIE;
+
+        UnActive();
     }
 
-    private void ReturnToSpawnPoint()
+    IEnumerator CoDisapear()
+    {
+        while (gameObject.activeInHierarchy)
+        {
+            transform.Translate(Vector3.down * 0.05f);
+            yield return null;
+        }
+    }
+
+    private IEnumerator CoAttack()
+    {
+        isAlive = false;
+        isInvincible = true;
+        _agent.isStopped = true;
+
+        _animator.SetTrigger(data.ANIM_ATTACK);
+
+        yield return data.DELAY_ATTACK;
+
+        GameManager.Instance._lifeManager.GetDamaged();
+
+        UnActive();
+    }
+
+    private void UnActive()
     {
         gameObject.SetActive(false);
     }

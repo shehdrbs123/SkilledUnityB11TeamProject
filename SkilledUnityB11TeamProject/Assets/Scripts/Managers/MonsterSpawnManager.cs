@@ -4,22 +4,47 @@ using UnityEngine;
 
 public class MonsterSpawnManager : MonoBehaviour
 {
+    private DayManager dayManager;
     private PrefabManager prefabManager;
-    private int day = 0;
+
+    [SerializeField] private List<MonsterDataSO> monsterDatas;
+    
+    public int spawnCount = 5;
+    public int spawnDelay = 3;
+
+    private Coroutine now = null;
 
     private void Awake()
     {
-        prefabManager = GetComponent<PrefabManager>();
+        prefabManager = GameManager.Instance.prefabManager;
+        dayManager = GameManager.Instance._dayManager;
     }
 
-    //private void Start()
-    //{
-    //    InvokeRepeating(nameof(TEST), 0f, 1f);
-    //}
+    private void Update()
+    {
+        if (dayManager.isNight && now == null)
+        {
+            spawnCount += dayManager.day;
+            now = StartCoroutine(CoSpawn());
+        }
+        else if (!dayManager.isNight && now != null)
+        {
+            StopCoroutine(now);
+            now = null;
+        }
+    }
 
-    //private void TEST()
-    //{
-    //    GameObject go = prefabManager.SpawnFromPool(PoolType.Monster);
-    //    go.SetActive(true);
-    //}
+    private IEnumerator CoSpawn()
+    {
+        WaitForSeconds delay = new WaitForSeconds(spawnDelay);
+
+        for (int i = 0; i < spawnCount; i++)
+        {
+            GameObject mon = prefabManager.SpawnFromPool(PoolType.Monster);
+            mon.GetComponent<Monster>().data = monsterDatas[i % 3];
+            mon.SetActive(true);
+
+            yield return delay;
+        }
+    }
 }
