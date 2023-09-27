@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-public class BuildManager : MonoBehaviour
+public class BuildManager : MonoBehaviour, IGridPanelManager
 {
 
      [SerializeField] private Material CanBuildMaterial;
@@ -61,7 +61,7 @@ public class BuildManager : MonoBehaviour
      {
           GameObject buildObj = Instantiate(data.StructurePrefab);
           Collider buildObjCollider = buildObj.GetComponent<Collider>();
-          MeshRenderer[] test = buildObj.GetComponentsInChildren<MeshRenderer>();
+          MeshRenderer[] test = buildObj.GetComponentsInChildren<MeshRenderer>();//음영 바꾸기 위해서
           
           Material defaultMateral = test[0].material;
 
@@ -82,6 +82,7 @@ public class BuildManager : MonoBehaviour
                     else
                     {
                          Array.ForEach(test,(x) => x.sharedMaterial = CanBuildMaterial);
+                         
                          if (_fire1Action.IsPressed())
                          {
                               isBuildMode = false;
@@ -115,5 +116,10 @@ public class BuildManager : MonoBehaviour
                
                yield return null;
           }
+     }
+
+     public int GetElementsCount()
+     {
+          return GetBuildDataCount();
      }
 }

@@ -310,6 +310,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f6ec7240a2497ab30fd40b5c9962d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanBuildMaterial: {fileID: 2100000, guid: 2eef53372714f37448c3520a3cf6e8fe, type: 2}
+  CanNotBuildMaterial: {fileID: 2100000, guid: d81064c84f0c77040a6149bb482f4e02, type: 2}
+  BuildLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  StructureLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  canBuildRange: 10
+  rotateSpeed: 360
 --- !u!1 &5203955284755130934
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +746,7 @@ GameObject:
   - component: {fileID: 1182428806516601007}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -761,7 +771,7 @@ Transform:
   - {fileID: 1160617853714207706}
   - {fileID: 2721586433190370979}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1182428806516601007
 MonoBehaviour:
