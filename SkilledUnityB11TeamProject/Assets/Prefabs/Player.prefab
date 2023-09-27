@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6230169843117336098}
   - component: {fileID: 3810769838847732628}
   - component: {fileID: 4644284508036538926}
+  - component: {fileID: 2087127548208353028}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -145,6 +146,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7d2c6b01-531a-47fb-a670-2d3f1ead5e20
     m_ActionName: PlayerKeyboardMouse/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 87242fed-2c82-4b48-9c87-48edc2097691
+    m_ActionName: PlayerKeyboardMouse/Scroll[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerKeyboardMouse
@@ -256,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2893a9bdde31cf54c8b4a544206e7bf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIgnoreInput: 0
+  isIgnoreInput: 1
   uiSlot:
   - {fileID: 0}
   - {fileID: 0}
@@ -280,6 +285,24 @@ MonoBehaviour:
   onCloseInventory:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2087127548208353028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535354602150600775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfbae1f1d0683643b0f6afaeb337c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRate: 0.05
+  maxCheckDistance: 3
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  promptText: {fileID: 0}
 --- !u!1 &2670929479674672417
 GameObject:
   m_ObjectHideFlags: 0

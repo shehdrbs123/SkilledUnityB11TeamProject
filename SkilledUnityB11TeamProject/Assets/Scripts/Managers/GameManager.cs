@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public SoundManager _soundManager;
     public ItemManager _itemManager;
     public EquipManager _equipManager;
+    public InteractionManager _interactionManager;
     public Inventory inventory;
     private void Awake()
     {
