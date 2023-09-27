@@ -26,5 +26,7 @@ public class GridUITest : MonoBehaviour
                 ui.SetActive(!ui.activeSelf);                
             }
         }
+        
+        
     }
 }

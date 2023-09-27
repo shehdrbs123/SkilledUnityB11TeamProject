@@ -10,7 +10,7 @@ public abstract class BaseUI : MonoBehaviour
     
     protected static UIManager _uiManager;
      
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         _uiManager = GameManager.Instance._uiManager;
     }
