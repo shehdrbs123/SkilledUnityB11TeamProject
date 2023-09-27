@@ -18,7 +18,7 @@ public class BuildManager : GridPanelManager
      private InputAction _fire1Action;
      private InputAction _fire2Action;
      private InputAction _ScrollAction;
-     private bool isBuildMode;
+     public bool isBuildMode { get; private set; }
      private Camera _Camera;
      private void Awake()
      {

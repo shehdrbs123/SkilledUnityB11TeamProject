@@ -18,10 +18,13 @@ public class GridUITest : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
-            GameObject ui = GameManager.Instance._uiManager.GetUI("BuildPanelUI");
-            GridPanelUI panelui = ui.GetComponent<GridPanelUI>();
-            panelui.Init();
-            ui.SetActive(!ui.activeSelf);
+            if (!GameManager.Instance._buildManager.isBuildMode)
+            {
+                GameObject ui = GameManager.Instance._uiManager.GetUI("BuildPanelUI");
+                GridPanelUI panelui = ui.GetComponent<GridPanelUI>();
+                panelui.Init();
+                ui.SetActive(!ui.activeSelf);                
+            }
         }
     }
 }
