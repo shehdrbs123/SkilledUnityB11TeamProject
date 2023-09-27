@@ -42,6 +42,7 @@ public class Inventory : BaseUI
 
 	private void Awake()
 	{
+		base.Awake();
 		controller = GetComponent<PlayerMovement>();
 	}
 
