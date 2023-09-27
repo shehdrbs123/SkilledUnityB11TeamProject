@@ -81,7 +81,7 @@ public class Conditions : MonoBehaviour
     public Condition GetCondition(ConditionType type)
     {
         Condition value = null;
-        
+
         if (!conditions.TryGetValue(type, out value))
         {
 #if UNITY_EDITOR

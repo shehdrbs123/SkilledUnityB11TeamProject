@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "BuildDataSO", menuName = "Scriptable/Build Data")]
-public class BuildDataSO : ScriptableObject
+[CreateAssetMenu(fileName = "BuildData", menuName = "Scriptable/Build Data")]
+public class BuildDataSO : GridScriptableObject
 {
-    public Sprite StructureUISprite;
     public GameObject StructurePrefab;
-    
-    //private ItemData[] resoureces
-    //private int[] resourecsCount;
+
+    private ItemData[] resoureces;
+    private int[] resourecsCount;
 }

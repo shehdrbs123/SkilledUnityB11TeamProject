@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
-{ 
+{
     public static GameManager Instance
     {
         get
@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
             if (_instance == null)
             {
                 GameObject obj = GameObject.FindWithTag("GameManager");
-                _instance = obj.GetComponent<GameManager>();
+                if(obj != null)
+                    _instance = obj.GetComponent<GameManager>();
                 if (_instance == null)
                 {
-                    obj = new GameObject("GameManager");
-                    _instance = obj.AddComponent<GameManager>();
+                    obj = Instantiate(Resources.Load<GameObject>("GameManager"));
+                    _instance = obj.GetComponent<GameManager>();
                 }
             }
 
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     public EquipManager _equipManager;
     public InteractionManager _interactionManager;
     public Inventory inventory;
+    public CraftManager _craftManager;
     private void Awake()
     {
         if (_instance != null && _instance != this)
