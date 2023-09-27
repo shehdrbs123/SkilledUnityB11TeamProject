@@ -7,7 +7,7 @@ public class Monster : MonoBehaviour
 {
     [Header("Stat")]
     public MonsterDataSO data;
-    [SerializeField] private int _nowHP;        // ÀÎ½ºÆåÅÍ¿¡¼­ È®ÀÎ¿ë Á÷·ÄÈ­. ÃßÈÄ Á¦°Å
+    [SerializeField] private int _nowHP;        // ï¿½Î½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ È®ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½È­. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -39,8 +39,9 @@ public class Monster : MonoBehaviour
         _agent.SetDestination(data.TARGET_POSITION);
     }
 
-    public void Hit(int damage)
+    public void Hit(int damage,out bool isDie)
     {
+        isDie = false;
         if (isInvincible && isAlive)
             return;
 
@@ -49,6 +50,7 @@ public class Monster : MonoBehaviour
         if (_nowHP <= 0)
         {
             Die();
+            isDie = true;
         }
         else
         {
