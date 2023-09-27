@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretAI : MonoBehaviour
+public class TurretsAI : MonoBehaviour
 {
 
     private void OnTriggerEnter(Collider other)
