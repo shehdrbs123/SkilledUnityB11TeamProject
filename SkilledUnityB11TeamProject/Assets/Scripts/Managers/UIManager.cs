@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour
     private List<InputAction> _inputs;
     private void Awake()
     {
-        _uiCounter = new HashSet<GameObject>();
         _uiInstances = new Dictionary<string, GameObject>();
         _uiPrefabs = new Dictionary<string, GameObject>();
         
@@ -24,8 +23,6 @@ public class UIManager : MonoBehaviour
         {
             _uiPrefabs.Add(value.name,value);
         }
-        
-        
     }
 
     private void Start()
@@ -65,6 +62,8 @@ public class UIManager : MonoBehaviour
 
     public void EnablePanel(GameObject o)
     {
+        if (_uiCounter == null)
+            _uiCounter = new HashSet<GameObject>();    
         _uiCounter.Add(o);
         CheckInputAction();
     }
