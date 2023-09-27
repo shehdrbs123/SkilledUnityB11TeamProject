@@ -44,10 +44,12 @@ public class Inventory : BaseUI
 	{
 		base.Awake();
 		controller = GetComponent<PlayerMovement>();
+		GameManager.Instance.inventory = this;
 	}
 
 	private void Start()
 	{
+		
 		pickaxe = GameManager.Instance._itemManager.Pickax;
 		inventoryWindow.SetActive(false);
 		slots = new ItemSlot[uiSlot.Length];
@@ -156,15 +158,6 @@ public class Inventory : BaseUI
 		selectedItemName.text = selectedItem.item.itemName;
 		selectedItemDescription.text = selectedItem.item.description;
 
-		//selectedItemStatNames.text = string.Empty;
-		//selectedItemStatValues.text = string.Empty;
-
-		//for (int i = 0; i < selectedItem.item.consumables.Length; i++)
-		//{
-		//	selectedItemStatNames.text += selectedItem.item.consumables[i].type.ToString() + "\n";
-		//	selectedItemStatValues.text += selectedItem.item.consumables[i].value.ToString() + "\n";
-		//}
-
 		useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
 		equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlot[index].equipped);
 		unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlot[index].equipped);
@@ -177,32 +170,31 @@ public class Inventory : BaseUI
 		selectedItemName.text = string.Empty;
 		selectedItemDescription.text = string.Empty;
 
-		//selectedItemStatNames.text = string.Empty;
-		//selectedItemStatValues.text = string.Empty;  //���� ���� �������
-
 		equipButton.SetActive(false);
 		dropButton.SetActive(false);
 		useButton.SetActive(false);
 		unEquipButton.SetActive(false);
 	}
 
-	//public void OnUseButton()
-	//{
-	//	if (selectedItem.item.type == ItemType.Consumable)
-	//	{
-	//		for (int i = 0; i < selectedItem.item.consumables.Length; i++)
-	//		{
-	//			switch (selectedItem.item.consumables[i].type)
-	//			{
-	//				case ConsumableType.Health:
-	//					condition.Heal(selectedItem.item.consumables[i].value); break;
-	//				case ConsumableType.Hunger:
-	//					condition.Eat(selectedItem.item.consumables[i].value); break;
-	//			}
-	//		}
-	//	}
-	//	RemoveSelectedItem();
-	//}
+	public void OnUseButton()
+	{
+		if (selectedItem.item.type == ItemType.Consumable)
+		{
+			for (int i = 0; i < selectedItem.item.consumables.Length; i++)
+			{
+				switch (selectedItem.item.consumables[i].type)
+				{
+					case ConsumableType.Thirsty:
+						//condition.Heal(selectedItem.item.consumables[i].value); 
+						break;
+					case ConsumableType.Hunger:
+						//condition.Eat(selectedItem.item.consumables[i].value); 
+						break;
+				}
+			}
+		}
+		RemoveSelectedItem();
+	}
 
 	public void OnEquipButton()
 	{
