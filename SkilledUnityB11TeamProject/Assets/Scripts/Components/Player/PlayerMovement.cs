@@ -16,12 +16,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float xRotMax;
     [SerializeField] private float xRotMin;
-    [SerializeField]private Transform _cameras;
-    
+    [SerializeField] private Transform _cameras;
+    [SerializeField] private LayerMask groundLayerMask;
     private InputController _controller;
     private Rigidbody _rigid;
 
-
+    public float camCurXRot;
     private Vector3 _curdirection;
     private Vector2 mouseDelta;
     private void Awake()
@@ -53,14 +53,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void LookRotation()
     {
-        float yRot = mouseDelta.y * LookSensitivity;
-        yRot = Math.Clamp(yRot, xRotMin, xRotMax);
-        _cameras.localEulerAngles += new Vector3(-yRot,0,0);
+        //상하 회전
+        camCurXRot += mouseDelta.y * LookSensitivity;
+        camCurXRot = Mathf.Clamp(camCurXRot, xRotMin, xRotMax);
+        _cameras.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
 
-        float xRot = mouseDelta.x * LookSensitivity;
-        transform.eulerAngles += new Vector3(0, xRot, 0);
-        mouseDelta = Vector3.zero;
+        //좌우 회전
+        transform.eulerAngles += new Vector3(0, mouseDelta.x * LookSensitivity, 0);
+        //mouseDelta = Vector3.zero;
     }
+
+
 
     public bool isCanLook()
     {
@@ -101,6 +104,21 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-        return true;
+        Ray[] rays = new Ray[4]
+        {
+            new Ray(transform.position + (transform.forward * .2f) + (Vector3.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.forward * .2f)+(Vector3.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (transform.right * .2f)+ (Vector3.up * 0.01f), Vector3.down),
+            new Ray(transform.position + (-transform.right * .2f)+ (Vector3.up * 0.01f), Vector3.down)
+        };
+
+        for (int i = 0; i < rays.Length; ++i)
+        {
+            if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
