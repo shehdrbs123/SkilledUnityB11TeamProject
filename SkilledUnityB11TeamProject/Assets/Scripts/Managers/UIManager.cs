@@ -14,15 +14,18 @@ public class UIManager : MonoBehaviour
     private List<InputAction> _inputs;
     private void Awake()
     {
+        _uiCounter = new HashSet<GameObject>();
         _uiInstances = new Dictionary<string, GameObject>();
         _uiPrefabs = new Dictionary<string, GameObject>();
-        _uiCounter = new HashSet<GameObject>();
+        
         var a = Resources.LoadAll<GameObject>(Path.Combine("UI"));
         
         foreach (var value in a)
         {
             _uiPrefabs.Add(value.name,value);
         }
+        
+        
     }
 
     private void Start()
@@ -62,23 +65,11 @@ public class UIManager : MonoBehaviour
 
     public void EnablePanel(GameObject o)
     {
-        AddUICount(o);
-    }
-
-    public void AddUICount(GameObject o)
-    {
-        if (_uiCounter == null)
-            _uiCounter = new HashSet<GameObject>();    
         _uiCounter.Add(o);
         CheckInputAction();
     }
 
     public void DisablePanel(GameObject o)
-    {
-        RemoveUICount(o);
-    }
-    
-    public void RemoveUICount(GameObject o)
     {
         _uiCounter.Remove(o);
         CheckInputAction();
@@ -89,6 +80,16 @@ public class UIManager : MonoBehaviour
         if (_inputs == null)
         {
             _inputs = new List<InputAction>(10);
+<<<<<<< Updated upstream
+            GameObject player = GameManager.Instance.GetPlayer();
+            if (player)
+            {
+                PlayerInput playerInput = player.GetComponent<PlayerInput>();
+                _inputs.Add(playerInput.actions.FindAction("Move"));
+                _inputs.Add(playerInput.actions.FindAction("Look"));
+                _inputs.Add(playerInput.actions.FindAction("Fire1"));
+            }
+=======
             
         }
         GameObject player = GameManager.Instance.GetPlayer();
@@ -98,6 +99,9 @@ public class UIManager : MonoBehaviour
             _inputs.Add(playerInput.actions.FindAction("Move"));
             _inputs.Add(playerInput.actions.FindAction("Look"));
             _inputs.Add(playerInput.actions.FindAction("Fire1"));
+            _inputs.Add(playerInput.actions.FindAction("Fire2"));
+            _inputs.Add(playerInput.actions.FindAction("Interact"));
+>>>>>>> Stashed changes
         }
 
         IgnoreInput(_uiCounter.Count>0);
