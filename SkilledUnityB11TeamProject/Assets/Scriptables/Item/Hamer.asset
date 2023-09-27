@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Hamer
   description: is Hamer
   type: 1
-  icon: {fileID: 21300000, guid: 32fb7e0aee1614fe8ac38467a139e9a6, type: 3}
+  icon: {fileID: 21300000, guid: ae8e2d441e0a8dc44a072e76ab57cbed, type: 3}
   canStack: 0
   maxStackAmount: 0
   consumables: []
