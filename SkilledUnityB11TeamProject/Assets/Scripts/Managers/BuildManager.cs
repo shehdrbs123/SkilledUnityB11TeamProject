@@ -55,9 +55,9 @@ public class BuildManager : GridPanelManager
      {
           GameObject buildObj = Instantiate(data.StructurePrefab);
           Collider buildObjCollider = buildObj.GetComponent<Collider>();
-          MeshRenderer[] test = buildObj.GetComponentsInChildren<MeshRenderer>();//음영 바꾸기 위해서
-          
-          Material defaultMateral = test[0].material;
+          MeshRenderer[] buildMeshRenderer = buildObj.GetComponentsInChildren<MeshRenderer>();//음영 바꾸기 위해서
+          LineRenderer lineRenderer = buildObj.GetComponentInChildren<LineRenderer>();
+          Material defaultMateral = buildMeshRenderer[0].material;
 
           while (isBuildMode)
           {
@@ -71,16 +71,17 @@ public class BuildManager : GridPanelManager
                          StructureLayer);
                     if (otherStrCollider.Length > 0)
                     {
-                         Array.ForEach(test,(x) => x.sharedMaterial = CanNotBuildMaterial);
+                         Array.ForEach(buildMeshRenderer,(x) => x.sharedMaterial = CanNotBuildMaterial);
                     }
                     else
                     {
-                         Array.ForEach(test,(x) => x.sharedMaterial = CanBuildMaterial);
+                         Array.ForEach(buildMeshRenderer,(x) => x.sharedMaterial = CanBuildMaterial);
                          
                          if (_fire1Action.IsPressed())
                          {
                               isBuildMode = false;
-                              Array.ForEach(test,(x) => x.sharedMaterial = defaultMateral);
+                              Array.ForEach(buildMeshRenderer,(x) => x.sharedMaterial = defaultMateral);
+                              lineRenderer.gameObject.SetActive(false);
                               buildObj.layer = LayerMask.NameToLayer("Structure");
                          }
 
