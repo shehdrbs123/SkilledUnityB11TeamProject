@@ -543,6 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6751072921294138400}
   - component: {fileID: 595238192328462630}
+  - component: {fileID: 3791961346391441899}
   m_Layer: 0
   m_Name: Polygonal Metalon
   m_TagString: Untagged
@@ -645,6 +646,28 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.5955523, y: 0.47306192, z: 0.000007748604}
     m_Extent: {x: 2.277113, y: 1.2932206, z: 2.1682854}
   m_DirtyAABB: 0
+--- !u!64 &3791961346391441899
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811929887967035485}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
 --- !u!1 &2832023592692526724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2583338468011991381
 Transform:
   m_ObjectHideFlags: 0
@@ -1239,7 +1262,7 @@ Transform:
   - {fileID: 3201702544168250075}
   - {fileID: 3847901302148046638}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!95 &5665172947889817358
 Animator:
