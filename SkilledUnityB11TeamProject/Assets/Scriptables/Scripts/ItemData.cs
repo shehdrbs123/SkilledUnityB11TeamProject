@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public enum ConsumableType
 	Thirst
 }
 
+[System.Serializable]
 public class ItemDataConsumable
 {
 	public ConsumableType type;
@@ -33,9 +35,9 @@ public class ItemData : ScriptableObject
 	public bool canStack;
 	public int maxStackAmount;
 
-	//[Header("Consumable")]
-	//public ItemDataConsumable[] consumables;
-
 	[Header("Equip")]
 	public GameObject equipPrefab;
+
+	[Header("Consumable")]
+	public ItemDataConsumable[] consumables;
 }
