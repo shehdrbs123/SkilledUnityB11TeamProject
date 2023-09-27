@@ -2,32 +2,63 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
+
 
 public class GridPanelUI : BaseUI
 {
-    public string ButtonUIName;
+    public string buttonUIName;
     
     [SerializeField] private Transform _contentPanel;
-    
-    private BuildManager _buildManager;
-    private UIManager _uiManager;
-    //private List<GridButtonUI> buttonUI;
+    public Dictionary<string, List<GameObject>> buttonGroupDic;
 
     protected override void Awake()
     {
         base.Awake();
-        //buttonUI = new List<GridButtonUI>(20);
+        buttonGroupDic = new Dictionary<string, List<GameObject>>();
     }
+    
+
+    public void Init(GridPanelManager manager, string buttonUIName)
+    {
+        if (buttonGroupDic.TryGetValue(buttonUIName,out List<GameObject> list ))
+        {
+            list.ForEach(x => x.SetActive(true));
+        }
+        else
+        {
+            List<GameObject> buttons = new List<GameObject>(10);
+            buttonGroupDic.Add(buttonUIName,buttons);
+
+            GridPanelManager _manager = manager;
+            this.buttonUIName = buttonUIName;
+        
+            int count = _manager.GetElementsCount();
+            for (int i = 0; i < count; ++i)
+            {
+                GameObject obj = _uiManager.GetUIClone(buttonUIName);
+                obj.GetComponent<GridButtonUI>().Init(_manager.GetData(i),_contentPanel,() => gameObject.SetActive(false));
+                buttons.Add(obj);
+            }            
+        }
+    }
+    
+
     private void Start()
     {
-        _uiManager = GameManager.Instance._uiManager;
-        _buildManager = GameManager.Instance._buildManager;
-        int count = _buildManager.GetBuildDataCount();
-        for (int i = 0; i < count; ++i)
+        if (_uiManager == null)
         {
-            GameObject obj = _uiManager.GetUIClone(ButtonUIName);
-            obj.GetComponent<GridButtonUI>().Init(_buildManager.GetBuildData(i),_contentPanel);
+            Init(GameManager.Instance._buildManager,buttonUIName);
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        if (buttonGroupDic.TryGetValue(buttonUIName, out List<GameObject> buttons))
+        {
+            buttons.ForEach(x => x.SetActive(false));
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-public class BuildManager : MonoBehaviour, IGridPanelManager
+public class BuildManager : GridPanelManager
 {
 
      [SerializeField] private Material CanBuildMaterial;
@@ -13,23 +13,17 @@ public class BuildManager : MonoBehaviour, IGridPanelManager
      [SerializeField] private LayerMask StructureLayer;
      [FormerlySerializedAs("range")] [SerializeField] private float canBuildRange;
      [SerializeField] private float rotateSpeed;
-     
      private BuildDataSO[] buildDatas;
+     
      private InputAction _fire1Action;
      private InputAction _fire2Action;
      private InputAction _ScrollAction;
-     private bool isBuildMode = false;
+     private bool isBuildMode;
      private Camera _Camera;
      private void Awake()
      {
           buildDatas = Resources.LoadAll<BuildDataSO>("StructureData");
      }
-
-     private void Start()
-     {
-          
-     }
-
 
      public BuildDataSO GetBuildData(int idx)
      {
@@ -118,8 +112,13 @@ public class BuildManager : MonoBehaviour, IGridPanelManager
           }
      }
 
-     public int GetElementsCount()
+     public override int GetElementsCount()
      {
           return GetBuildDataCount();
+     }
+
+     public override ScriptableObject GetData(int idx)
+     {
+          return GetBuildData(idx);
      }
 }

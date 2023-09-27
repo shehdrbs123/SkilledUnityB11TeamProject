@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public EquipManager _equipManager;
     public InteractionManager _interactionManager;
     public Inventory inventory;
+    public CraftManager _craftManager;
     private void Awake()
     {
         if (_instance != null && _instance != this)

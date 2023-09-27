@@ -1,5 +1,8 @@
 ﻿
-public interface IGridPanelManager
+using UnityEngine;
+
+public abstract class GridPanelManager : MonoBehaviour
 {
-    public int GetElementsCount();
+    public abstract int GetElementsCount();
+    public abstract ScriptableObject GetData(int idx);
 }

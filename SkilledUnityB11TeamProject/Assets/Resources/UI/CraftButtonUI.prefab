@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 7704153208887022665}
   - component: {fileID: 2993500811480849009}
   - component: {fileID: 60960987576099651}
+  - component: {fileID: -122896730206941530}
   m_Layer: 5
   m_Name: CraftButtonUI
   m_TagString: Untagged
@@ -225,3 +226,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _offset: {x: 20, y: 40}
   _InfoPanelName: BuildInfoUI
+--- !u!114 &-122896730206941530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7525915606829519747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24e8afeb06e51644bf8df7ce2c072db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
