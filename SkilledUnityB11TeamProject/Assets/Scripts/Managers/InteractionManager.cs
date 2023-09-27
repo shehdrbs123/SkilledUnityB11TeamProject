@@ -26,6 +26,7 @@ public class InteractionManager : MonoBehaviour
 	void Start()
 	{
 		camera = Camera.main;
+		GameManager.Instance._interactionManager = this;
 	}
 
 	// Update is called once per frame
