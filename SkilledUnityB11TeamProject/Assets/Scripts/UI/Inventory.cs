@@ -12,7 +12,7 @@ public class ItemSlot
 	public ItemData item;
 	public int quantity;
 }
-public class Inventory : BaseUI
+public class Inventory : MonoBehaviour
 {
 	public ItemSlotUI[] uiSlot;
 	public ItemSlot[] slots;
@@ -42,7 +42,6 @@ public class Inventory : BaseUI
 
 	private void Awake()
 	{
-		base.Awake();
 		controller = GetComponent<PlayerMovement>();
 	}
 
@@ -68,11 +67,13 @@ public class Inventory : BaseUI
 	{
 		if (inventoryWindow.activeInHierarchy)
 		{
+			GameManager.Instance._uiManager.RemoveUICount(gameObject);
 			inventoryWindow.SetActive(false);
 			onCloseInventory?.Invoke();
 		}
 		else
 		{
+			GameManager.Instance._uiManager.AddUICount(gameObject);
 			inventoryWindow.SetActive(true);
 			onOpenInventory?.Invoke();
 		}
