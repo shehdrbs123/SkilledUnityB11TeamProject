@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BuildTargetButtonUI : MonoBehaviour
+public class BuildTargetButtonUI : GridButtonUI
 {
     [SerializeField] private Image _buildTargetImage;
     private Button button;
@@ -27,6 +27,17 @@ public class BuildTargetButtonUI : MonoBehaviour
         _buildManager = GameManager.Instance._buildManager;
     }
 
+    public override void Init(ScriptableObject data, Transform parent)
+    {
+        BuildTargetButtonUI target = GetComponent<BuildTargetButtonUI>();
+        Button button = GetComponent<Button>();
+
+        target.DataSo = data as BuildDataSO;
+        button.onClick.AddListener(target.CreateBuild);
+            
+        transform.SetParent(parent,false);
+    }
+    
     public void UpdateData()
     {
         SetImage(_data.StructureUISprite);
@@ -47,6 +58,6 @@ public class BuildTargetButtonUI : MonoBehaviour
         _buildTargetImage.sprite = sprite;
     }
 
-    
+
     
 }
