@@ -7,10 +7,7 @@ public class MonsterSpawnManager : MonoBehaviour
     private DayManager dayManager;
     private PrefabManager prefabManager;
 
-    [SerializeField] private List<MonsterDataSO> monsterDatas;
-    
-    public int spawnCount = 5;
-    public int spawnDelay = 3;
+    [SerializeField] private MonsterWaveSO wave;
 
     private Coroutine now = null;
 
@@ -24,7 +21,6 @@ public class MonsterSpawnManager : MonoBehaviour
     {
         if (dayManager.isNight && now == null)
         {
-            spawnCount += dayManager.day;
             now = StartCoroutine(CoSpawn());
         }
         else if (!dayManager.isNight && now != null)
@@ -36,12 +32,14 @@ public class MonsterSpawnManager : MonoBehaviour
 
     private IEnumerator CoSpawn()
     {
-        WaitForSeconds delay = new WaitForSeconds(spawnDelay);
+        Wave nowWave = wave.waves[dayManager.day - 1];
 
-        for (int i = 0; i < spawnCount; i++)
+        WaitForSeconds delay = new WaitForSeconds(nowWave.spawnDelay);
+
+        for (int i = 0; i < nowWave.monsters.Count; i++)
         {
-            GameObject mon = prefabManager.SpawnFromPool(PoolType.Monster);
-            mon.GetComponent<Monster>().data = monsterDatas[i % 3];
+            GameObject mon = prefabManager.SpawnFromPool(nowWave.type);
+            mon.GetComponent<Monster>().data = nowWave.monsters[i];
             mon.SetActive(true);
 
             yield return delay;

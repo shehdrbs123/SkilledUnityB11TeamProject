@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     public InteractionManager _interactionManager;
     public Inventory inventory;
     public CraftManager _craftManager;
-    public LifeManager _lifeManager;
+    public ConditionManager _conditionManager;
 
     private void Awake()
     {

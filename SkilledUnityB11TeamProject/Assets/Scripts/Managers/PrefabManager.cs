@@ -21,7 +21,7 @@ public struct Pool
 
 public enum PoolType
 {
-    Monster,               // 몬스터
+    M_Spider,              // 몬스터 - 거미
     SFXAudio,              // 효과음
     Battery,               // 배터리
 }

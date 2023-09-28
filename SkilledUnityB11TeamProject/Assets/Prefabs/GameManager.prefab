@@ -441,11 +441,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c71c9c83daaedf47ad9addf0ecb786d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  day: 0
+  day: 1
   time: 0
   isNight: 0
   fullDayLength: 600
-  startTime: 0.2
+  startTime: 0.25
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 4847192849733666866}
   sunColor:
@@ -491,10 +491,10 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.2
+      time: 0.25
       value: 0
       inSlope: 0.016998544
-      outSlope: 1.6666666
+      outSlope: 2
       tangentMode: 65
       weightedMode: 0
       inWeight: 0
@@ -509,9 +509,9 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.8
+      time: 0.75
       value: 0
-      inSlope: -1.6666666
+      inSlope: -2
       outSlope: 0.023699882
       tangentMode: 5
       weightedMode: 0
@@ -567,26 +567,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.2
-      inSlope: -0.3333333
-      outSlope: -0.3333333
+      inSlope: -0.4
+      outSlope: -0.4
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.3
+      time: 0.25
       value: 0.1
-      inSlope: -0.3333333
+      inSlope: -0.4
       outSlope: 0
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7
+      time: 0.75
       value: 0.1
       inSlope: -0
-      outSlope: 0.3333333
+      outSlope: 0.4
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
@@ -594,8 +594,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0.2
-      inSlope: 0.3333333
-      outSlope: 0.3333333
+      inSlope: 0.4
+      outSlope: 0.4
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -609,16 +609,16 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 2.5
-      outSlope: 2.5
+      value: 0.1
+      inSlope: 1.75
+      outSlope: 1.75
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.4
-      value: 1
+      value: 0.8
       inSlope: 1.25
       outSlope: 0
       tangentMode: 65
@@ -627,7 +627,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.6
-      value: 1
+      value: 0.8
       inSlope: -0
       outSlope: -1.2500001
       tangentMode: 5
@@ -636,9 +636,9 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -2.5000002
-      outSlope: -2.5000002
+      value: 0.1
+      inSlope: -1.7500001
+      outSlope: -1.7500001
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -810,11 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3865875eb36994caa5e430bf100af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterDatas:
-  - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-  - {fileID: 11400000, guid: 4230dbda9de2b0d4caabea0e4113014e, type: 2}
-  - {fileID: 11400000, guid: 82890b9f6a5b83a42b8550adf221ebb8, type: 2}
-  spawnCount: 5
+  wave: {fileID: 11400000, guid: 504cd99e9046f8c458b85cc03eab823e, type: 2}
   spawnDelay: 3
 --- !u!1 &5787759454351100960
 GameObject:
@@ -880,7 +876,7 @@ MonoBehaviour:
   _interactionManager: {fileID: 0}
   inventory: {fileID: 0}
   _craftManager: {fileID: 2573090573708900339}
-  _lifeManager: {fileID: 6542278518606405735}
+  _conditionManager: {fileID: 8880458777087184934}
 --- !u!1 &5838510771337718052
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,9 +980,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4737375067010545425}
-  - component: {fileID: 6542278518606405735}
+  - component: {fileID: 8880458777087184934}
   m_Layer: 0
-  m_Name: LifeManager
+  m_Name: ConditionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1008,7 +1004,7 @@ Transform:
   m_Father: {fileID: 3292718435623128802}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6542278518606405735
+--- !u!114 &8880458777087184934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1017,11 +1013,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 5993762920177894394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc053dc3ea8c564b8d3e51b8bd85314, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c256b7fee400b64ea4de380ae110ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 4
-  batteries: {fileID: 585920770136743270, guid: 1177687790b2bc7489425d9cc6c6c6ab, type: 3}
+  hunger:
+    type: 0
+    curValue: 0
+    maxValue: 100
+    startValue: 100
+    decayRate: 0.5
+    regenRate: 0
+    uiBar: {fileID: 0}
+  thirsty:
+    type: 1
+    curValue: 0
+    maxValue: 100
+    startValue: 100
+    decayRate: 0.5
+    regenRate: 0
+    uiBar: {fileID: 0}
+  mental:
+    type: 2
+    curValue: 0
+    maxValue: 100
+    startValue: 100
+    decayRate: 1
+    regenRate: 0
+    uiBar: {fileID: 0}
+  battery: 4
 --- !u!1 &6227899212420713286
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,16 +11,15 @@ public class TurretsAI : MonoBehaviour
     [SerializeField] private GameObject _rangeObject;
     [SerializeField] private ParticleSystem[] paricles;
 
-    
     private Animator _animator;
     private SphereCollider _rangeCols;
     private CircleDraw _rangeRenderer;
     
-
     private List<GameObject> _enemys;
     private float _currentAttackWait;
 
-    private int attackAniHash;
+    private readonly int attackAniHash = Animator.StringToHash("IsAttack");
+
     private void Awake()
     {
         _enemys = new List<GameObject>();
@@ -30,18 +29,21 @@ public class TurretsAI : MonoBehaviour
 
         _rangeCols.radius = _data.halfRadius;
         _rangeRenderer.radius = _data.halfRadius;
-        attackAniHash = Animator.StringToHash("IsAttack");
     }
 
     private void Update()
     {
-        if (_enemys.Count > 0)
-        {
-            OperateAttack();
-        }
-
         if (_currentAttackWait < _data.attackRate)
+        {
             _currentAttackWait += Time.deltaTime;
+        }
+        else
+        {
+            if (_enemys.Count > 0)
+            {
+                OperateAttack();
+            }
+        }    
     }
 
     private void FixedUpdate()
@@ -54,18 +56,14 @@ public class TurretsAI : MonoBehaviour
 
     protected virtual void OperateAttack()
     {
-        if (_currentAttackWait >= _data.attackRate)
-        {
-            bool isDie;
-            var mon = _enemys[0].GetComponent<Monster>();
-            mon.Hit(_data.Damage,out isDie);
-            _currentAttackWait = 0;
+        var mon = _enemys[0].GetComponent<Monster>();
+        mon.Hit(_data.Damage, out bool isDie);
+        _currentAttackWait = 0;
             
-            _animator.SetTrigger(attackAniHash);
-            Array.ForEach(paricles,(x)=>x.Play());
-            if (isDie)
-                _enemys.Remove(mon.gameObject);
-        }
+        _animator.SetTrigger(attackAniHash);
+        Array.ForEach(paricles,(x)=>x.Play());
+        if (isDie)
+            _enemys.Remove(mon.gameObject);
     }
 
     protected virtual void LookAtEnemy()
@@ -76,11 +74,18 @@ public class TurretsAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _enemys.Add(other.gameObject);
+        if (other.TryGetComponent(out Monster _))
+        {
+            _enemys.Add(other.gameObject);
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _enemys.Remove(other.gameObject);
+        if (other.TryGetComponent(out Monster _))
+        {
+            _enemys.Remove(other.gameObject);
+        }
     }
 }

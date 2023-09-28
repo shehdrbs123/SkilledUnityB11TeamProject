@@ -71,7 +71,7 @@ public class Monster : MonoBehaviour
         _agent.isStopped = true;
 
         _animator.SetTrigger(data.ANIM_HIT);
-        _meshRenderers.material.color = new Color(1.0f, 0.5f, 0.5f);
+        _meshRenderers.material.color = Color.red;
 
         yield return data.DELAY_HIT;
 
@@ -91,20 +91,18 @@ public class Monster : MonoBehaviour
 
         yield return data.DELAY_DIE;
 
-        StartCoroutine(CoDisapear());
-
-        yield return data.DELAY_DIE;
-
-        UnActive();
+        StartCoroutine(CoDisapear());        
     }
 
-    IEnumerator CoDisapear()
+    private IEnumerator CoDisapear()
     {
-        while (gameObject.activeInHierarchy)
+        while (gameObject.transform.position.y >= -5)
         {
             transform.Translate(Vector3.down * 0.05f);
             yield return null;
         }
+
+        UnActive();
     }
 
     private IEnumerator CoAttack()
@@ -117,7 +115,7 @@ public class Monster : MonoBehaviour
 
         yield return data.DELAY_ATTACK;
 
-        GameManager.Instance._lifeManager.GetDamaged();
+        GameManager.Instance._conditionManager.GetDamaged();
 
         UnActive();
     }

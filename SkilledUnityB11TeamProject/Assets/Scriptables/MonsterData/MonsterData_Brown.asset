@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3c5262eb363e5b44b5d752bfcd3e0f3, type: 3}
-  m_Name: Red_MonsterData
+  m_Name: MonsterData_Brown
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: bcaad48fae9d78948944fe183b6e39fe, type: 2}
-  hp: 10
-  speed: 10
+  material: {fileID: 2100000, guid: f636609b2bd6f7d4b8443c656c0e95e1, type: 2}
+  hp: 15
+  speed: 5
   dropResources: []
