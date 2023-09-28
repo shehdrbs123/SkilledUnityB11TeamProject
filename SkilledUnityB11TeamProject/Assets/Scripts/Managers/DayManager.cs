@@ -40,15 +40,18 @@ public class DayManager : MonoBehaviour
     private void Update()
     {
         time = (time + timeRate * Time.deltaTime) % 1.0f;
-        //isNight = (time <= 0.2f || 0.8f <= time);
 
-        if (isNight && !(time <= 0.2f || 0.8f <= time))
+        if (isNight && !(time <= 0.25f || 0.75f <= time))
         {
+            sun.gameObject.SetActive(true);
+            moon.gameObject.SetActive(false);
             isNight = false;
             day += 1;
         }
-        else if (!isNight && (time <= 0.2f || 0.8f <= time))
+        else if (!isNight && (time <= 0.25f || 0.75f <= time))
         {
+            sun.gameObject.SetActive(false);
+            moon.gameObject.SetActive(true);
             isNight = true;
         }
 
