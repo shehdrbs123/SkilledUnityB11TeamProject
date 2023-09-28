@@ -880,7 +880,7 @@ MonoBehaviour:
   _interactionManager: {fileID: 0}
   inventory: {fileID: 0}
   _craftManager: {fileID: 2573090573708900339}
-  _lifeManager: {fileID: 6542278518606405735}
+  _conditionManager: {fileID: 8880458777087184934}
 --- !u!1 &5838510771337718052
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,9 +984,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4737375067010545425}
-  - component: {fileID: 6542278518606405735}
+  - component: {fileID: 8880458777087184934}
   m_Layer: 0
-  m_Name: LifeManager
+  m_Name: ConditionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1008,7 +1008,7 @@ Transform:
   m_Father: {fileID: 3292718435623128802}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6542278518606405735
+--- !u!114 &8880458777087184934
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1017,11 +1017,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 5993762920177894394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc053dc3ea8c564b8d3e51b8bd85314, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c256b7fee400b64ea4de380ae110ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 4
-  batteries: {fileID: 585920770136743270, guid: 1177687790b2bc7489425d9cc6c6c6ab, type: 3}
+  hunger:
+    type: 0
+    curValue: 0
+    maxValue: 100
+    startValue: 100
+    decayRate: 0.5
+    regenRate: 0
+    uiBar: {fileID: 0}
+  thirsty:
+    type: 1
+    curValue: 0
+    maxValue: 100
+    startValue: 100
+    decayRate: 0.5
+    regenRate: 0
+    uiBar: {fileID: 0}
+  mental:
+    type: 2
+    curValue: 0
+    maxValue: 100
+    startValue: 100
+    decayRate: 1
+    regenRate: 0
+    uiBar: {fileID: 0}
+  battery: 4
 --- !u!1 &6227899212420713286
 GameObject:
   m_ObjectHideFlags: 0

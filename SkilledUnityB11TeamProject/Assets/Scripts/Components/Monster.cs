@@ -117,7 +117,7 @@ public class Monster : MonoBehaviour
 
         yield return data.DELAY_ATTACK;
 
-        GameManager.Instance._lifeManager.GetDamaged();
+        GameManager.Instance._conditionManager.GetDamaged();
 
         UnActive();
     }
