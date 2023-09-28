@@ -21,6 +21,17 @@ public class CrattButtonUI : GridButtonUI
 
     private CraftDataSO _data;
     
+    private void MakeItem()
+    {
+        GameObject player = GameManager.Instance.GetPlayer();
+        Inventory inven = player.GetComponent<Inventory>();
+        inven.AddItem(DataSo.ResultItem);
+    }
+    private void UpdateData()
+    {
+        _buildTargetImage.sprite = DataSo.Image;
+    }
+
     public override void Init(ScriptableObject data, Transform parent, UnityAction PanelOff)
     {
         DataSo= data as CraftDataSO;
@@ -32,14 +43,8 @@ public class CrattButtonUI : GridButtonUI
         transform.localScale = Vector3.one;
     }
 
-    private void MakeItem()
+    public override void UpdateButton()
     {
-        GameObject player = GameManager.Instance.GetPlayer();
-        Inventory inven = player.GetComponent<Inventory>();
-        inven.AddItem(DataSo.ResultItem);
-    }
-    private void UpdateData()
-    {
-        _buildTargetImage.sprite = DataSo.Image;
+        
     }
 }

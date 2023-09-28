@@ -8,9 +8,17 @@ public abstract class GridButtonUI : MonoBehaviour
    
     [SerializeField] protected Image _buildTargetImage;
     protected Button _button;
+    protected Inventory _inventory;
     public abstract void Init(ScriptableObject data,Transform parent,UnityAction PanelOff);
-    
-    private void ButtonEnable(bool enable)
+    public abstract void UpdateButton();
+
+    private void Start()
+    {
+        GameObject player = GameManager.Instance.GetPlayer();
+        _inventory = player.GetComponent<Inventory>();
+    }
+
+    protected void ButtonEnable(bool enable)
     {
         _button.interactable = enable;
     }

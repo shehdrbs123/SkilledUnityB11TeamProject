@@ -8,6 +8,6 @@ public class BuildDataSO : GridScriptableObject
 {
     public GameObject StructurePrefab;
 
-    private ItemData[] resoureces;
-    private int[] resourecsCount;
+    public ItemData[] resoureces;
+    public int[] resourecsCount;
 }

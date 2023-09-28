@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
@@ -83,6 +84,7 @@ public class BuildManager : GridPanelManager
                               Array.ForEach(buildMeshRenderer,(x) => x.sharedMaterial = defaultMateral);
                               lineRenderer.gameObject.SetActive(false);
                               buildObj.layer = LayerMask.NameToLayer("Structure");
+                              OnOperated?.Invoke();
                          }
 
                          if (_fire2Action.IsPressed())

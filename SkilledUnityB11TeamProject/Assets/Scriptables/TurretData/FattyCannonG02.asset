@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5acb947b6189d7498350811f6d2ab54, type: 3}
   m_Name: FattyCannonG02
   m_EditorClassIdentifier: 
-  range: 30
-  Damage: 5
+  halfRadius: 20
+  Damage: 1
   attackRate: 1
