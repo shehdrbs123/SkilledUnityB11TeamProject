@@ -441,10 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c71c9c83daaedf47ad9addf0ecb786d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  day: 600
+  day: 1
   time: 0
   isNight: 0
-  fullDayLength: 20
+  fullDayLength: 600
   startTime: 0.25
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 4847192849733666866}
