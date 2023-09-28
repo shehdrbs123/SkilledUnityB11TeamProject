@@ -11,8 +11,8 @@ public class TurretsAI : TurretAIBase
         var mon = _enemys[0].GetComponent<Monster>();
         mon.Hit(_data.Damage, out bool isDie);
         _currentAttackWait = 0;
-        _animator.SetTrigger(attackAniHash);
-        Array.ForEach(paricles,(x)=>x.Play());
+        _animator.SetTrigger(_attackAniHash);
+        Array.ForEach(_paricles,(x)=>x.Play());
         if (isDie)
             _enemys.Remove(mon.gameObject);
         }
