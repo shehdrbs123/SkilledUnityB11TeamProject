@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
 
     public void EnablePanel(GameObject o)
     {
-       
+        AddUICount(o);
     }
     
     public void AddUICount(GameObject o)

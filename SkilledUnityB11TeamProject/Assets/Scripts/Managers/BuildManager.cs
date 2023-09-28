@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
@@ -11,7 +12,7 @@ public class BuildManager : GridPanelManager
      [SerializeField] private Material CanNotBuildMaterial;
      [SerializeField] private LayerMask BuildLayer;
      [SerializeField] private LayerMask StructureLayer;
-     [FormerlySerializedAs("range")] [SerializeField] private float canBuildRange;
+     [FormerlySerializedAs("halfRadius")] [SerializeField] private float canBuildRange;
      [SerializeField] private float rotateSpeed;
      private BuildDataSO[] buildDatas;
      
@@ -83,6 +84,7 @@ public class BuildManager : GridPanelManager
                               Array.ForEach(buildMeshRenderer,(x) => x.sharedMaterial = defaultMateral);
                               lineRenderer.gameObject.SetActive(false);
                               buildObj.layer = LayerMask.NameToLayer("Structure");
+                              OnOperated?.Invoke();
                          }
 
                          if (_fire2Action.IsPressed())

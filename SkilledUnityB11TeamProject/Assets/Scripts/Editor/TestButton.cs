@@ -13,7 +13,7 @@ public class TestButton : Editor
         Monster generator = (Monster)target;
         if (GUILayout.Button("DAMAGE 1"))
         {
-            generator.Hit(1);
+            generator.Hit(1, out bool test);
         }
     }
 }

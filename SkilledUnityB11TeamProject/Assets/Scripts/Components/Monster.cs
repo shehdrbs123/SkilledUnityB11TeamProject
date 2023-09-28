@@ -7,7 +7,7 @@ public class Monster : MonoBehaviour
 {
     [Header("Stat")]
     public MonsterDataSO data;
-    [SerializeField] private int _nowHP;        // ÀÎ½ºÆåÅÍ¿¡¼­ È®ÀÎ¿ë Á÷·ÄÈ­. ÃßÈÄ Á¦°Å
+    [SerializeField] private int _nowHP;        // ì¸ìŠ¤í™í„°ì—ì„œ í™•ì¸ìš© ì§ë ¬í™”. ì¶”í›„ ì œê±°
     private bool isAlive = true;
     private bool isInvincible = false;
 
@@ -45,8 +45,9 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public void Hit(int damage)
+    public void Hit(int damage, out bool die)
     {
+        die = false;
         if (isInvincible || !isAlive)
             return;
 
@@ -55,6 +56,7 @@ public class Monster : MonoBehaviour
         if (_nowHP <= 0)
         {
             StartCoroutine(CoDie());
+            die = true;
         }
         else
         {

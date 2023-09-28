@@ -13,10 +13,10 @@ public class CircleDraw : MonoBehaviour
     {
         // Line Renderer 초기화
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.positionCount = vertexCount;
-
+        lineRenderer.positionCount = vertexCount+1;
+        
         // 원 위의 점들 계산 및 설정
-        for (int i = 0; i < vertexCount; i++)
+        for (int i = 0; i < vertexCount+1; i++)
         {
             float angle = i * (360f / vertexCount); // 원 전체 각도를 나눠서 꼭짓점의 각도 계산
             float x = transform.position.x + Mathf.Sin(Mathf.Deg2Rad * angle) * radius; // x 좌표 계산

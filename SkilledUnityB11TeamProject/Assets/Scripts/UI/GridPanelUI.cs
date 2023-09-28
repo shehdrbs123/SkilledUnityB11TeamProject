@@ -19,7 +19,7 @@ public class GridPanelUI : BaseUI
     
     private string buttonUIName;
     private GridPanelManager manager;
-
+    private List<GridButtonUI> buttons;
     public void Init()
     {
         if (manager == null)
@@ -31,8 +31,17 @@ public class GridPanelUI : BaseUI
                 if (_uiManager == null)
                     _uiManager = GameManager.Instance._uiManager;
                 GameObject obj = _uiManager.GetUIClone(buttonUIName);
-                obj.GetComponent<GridButtonUI>().Init(manager.GetData(i),_contentPanel,() => gameObject.SetActive(false));
+                obj.GetComponent<GridButtonUI>().Init(manager.GetData(i),_contentPanel,
+                    () => gameObject.SetActive(false));
             }
+        }
+    }
+
+    private void UpdateButtons()
+    {
+        foreach (GridButtonUI button in buttons)
+        {
+            button.UpdateButton();
         }
     }
 
@@ -43,10 +52,12 @@ public class GridPanelUI : BaseUI
             case GridPanelType.Craft:
                 manager = GameManager.Instance._craftManager;
                 buttonUIName = "CraftButtonUI";
+                manager.OnOperated += UpdateButtons;
                 break;
             case GridPanelType.Build:
                 manager = GameManager.Instance._buildManager;
                 buttonUIName = "BuildSttButtonUI";
+                manager.OnOperated += UpdateButtons;
                 break;
         }
         
