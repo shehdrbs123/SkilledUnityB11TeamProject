@@ -8,4 +8,9 @@ public class Equip : MonoBehaviour
     {
 
     }
+
+    public virtual void OnFire2Input()
+    {
+        
+    }
 }

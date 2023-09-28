@@ -277,13 +277,24 @@ public class Inventory : MonoBehaviour
 		UpdateUI();
 	}
 
-	public void RemoveItem(ItemData item)
+	public void RemoveItem(ItemData item, int quantity)
 	{
-
+		ItemSlot test = GetItemStack(item);
+		test.quantity -= quantity;
+		if (test.quantity <= 0)
+		{
+			test.quantity = 0;
+			test.item = null;
+		}
 	}
 
 	public bool HasItems(ItemData item, int quantity)
 	{
+		ItemSlot test = GetItemStack(item);
+		if (test != null && test.quantity >= quantity)
+		{
+			return true;
+		}
 		return false;
 	}
 }

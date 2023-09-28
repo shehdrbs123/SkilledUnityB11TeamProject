@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5042388967599949827}
-  - component: {fileID: 7888860543760698648}
   - component: {fileID: 5140330714866047894}
+  - component: {fileID: 3775422846836358617}
   m_Layer: 8
   m_Name: Equip_Hammer
   m_TagString: Untagged
@@ -32,26 +32,8 @@ Transform:
   m_Children:
   - {fileID: 4497722988048563773}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7888860543760698648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71125783271282757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f05af9c04b0c3c54e8a53c43a7ef9dd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useStamina: 0
-  attackRate: 0.8
-  attackDistance: 1
-  doesGatherResources: 0
-  doesDealDamage: 0
-  damage: 0
 --- !u!95 &5140330714866047894
 Animator:
   serializedVersion: 5
@@ -73,6 +55,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3775422846836358617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71125783271282757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f093c4a819fe1334985bda09f2b8b508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useStamina: 0
+  attackRate: 0.8
+  attackDistance: 1
+  doesGatherResources: 0
+  doesDealDamage: 0
+  damage: 0
 --- !u!1001 &4495742476003386441
 PrefabInstance:
   m_ObjectHideFlags: 0
