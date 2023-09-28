@@ -28,11 +28,22 @@ public class LifeManager : MonoBehaviour
         if (life > 0)
         {
             life -= 1;
-            test[life - 1].SetActive(false);
+            StartCoroutine(CoDisapear(test[life]));
         }
         else
         {
             Debug.Log("GAME OVER");
         }
+    }
+
+    private IEnumerator CoDisapear(GameObject obj)
+    {
+        while (obj.transform.position.y > -4.5f)
+        {
+            obj.transform.Translate(Vector3.down * 0.05f);
+            yield return null;
+        }
+
+        obj.SetActive(false);
     }
 }

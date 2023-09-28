@@ -40,11 +40,25 @@ public class DayManager : MonoBehaviour
     private void Update()
     {
         time = (time + timeRate * Time.deltaTime) % 1.0f;
-        isNight = (time <= 0.2f || 0.8f <= time);
+        //isNight = (time <= 0.2f || 0.8f <= time);
+
+        if (isNight && !(time <= 0.2f || 0.8f <= time))
+        {
+            isNight = false;
+            day += 1;
+        }
+        else if (!isNight && (time <= 0.2f || 0.8f <= time))
+        {
+            isNight = true;
+        }
+
         RenderSettings.skybox = isNight ? moonSkybox : sunSkybox;
 
-        UpdateLighting(sun, sunColor, sunIntensity);
-        UpdateLighting(moon, moonColor, moonIntensity);
+        //UpdateLighting(sun, sunColor, sunIntensity);
+        //UpdateLighting(moon, moonColor, moonIntensity);
+
+        if (isNight) UpdateLighting(moon, moonColor, moonIntensity);
+        else UpdateLighting(sun, sunColor, sunIntensity);
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
@@ -58,17 +72,17 @@ public class DayManager : MonoBehaviour
         lightSource.color = colorGradient.Evaluate(time);
         lightSource.intensity = intensity;
 
-        GameObject go = lightSource.gameObject;
-        if (lightSource.intensity == 0 && go.activeInHierarchy)
-        {
-            go.SetActive(false);
-        }
-        else if (lightSource.intensity > 0 && !go.activeInHierarchy)
-        {
-            go.SetActive(true);
+        //GameObject go = lightSource.gameObject;
+        //if (lightSource.intensity == 0 && go.activeInHierarchy)
+        //{
+        //    go.SetActive(false);
+        //}
+        //else if (lightSource.intensity > 0 && !go.activeInHierarchy)
+        //{
+        //    go.SetActive(true);
 
-            if (!isNight)
-                day += 1;
-        }
+        //    if (lightSource == sun)
+        //        day += 1;
+        //}
     }
 }

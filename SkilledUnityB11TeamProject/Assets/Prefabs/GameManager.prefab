@@ -441,10 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c71c9c83daaedf47ad9addf0ecb786d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  day: 0
+  day: 1
   time: 0
   isNight: 0
-  fullDayLength: 600
+  fullDayLength: 20
   startTime: 0.2
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 4847192849733666866}
@@ -609,16 +609,16 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 2.5
-      outSlope: 2.5
+      value: 0.1
+      inSlope: 1.75
+      outSlope: 1.75
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.4
-      value: 1
+      value: 0.8
       inSlope: 1.25
       outSlope: 0
       tangentMode: 65
@@ -627,7 +627,7 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.6
-      value: 1
+      value: 0.8
       inSlope: -0
       outSlope: -1.2500001
       tangentMode: 5
@@ -636,9 +636,9 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -2.5000002
-      outSlope: -2.5000002
+      value: 0.1
+      inSlope: -1.7500001
+      outSlope: -1.7500001
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
