@@ -9,12 +9,14 @@ public class CircleDraw : MonoBehaviour
     public float radius = 5f; // 원의 반지름
     public LineRenderer lineRenderer; // Line Renderer 컴포넌트 참조
 
-    private void Update()
+    private void Awake()
     {
-        // Line Renderer 초기화
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = vertexCount+1;
-        
+    }
+
+    private void Update()
+    {
         // 원 위의 점들 계산 및 설정
         for (int i = 0; i < vertexCount+1; i++)
         {
