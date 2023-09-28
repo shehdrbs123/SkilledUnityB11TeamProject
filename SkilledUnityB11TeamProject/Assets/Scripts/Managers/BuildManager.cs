@@ -82,8 +82,8 @@ public class BuildManager : GridPanelManager
                          {
                               isBuildMode = false;
                               Array.ForEach(buildMeshRenderer,(x) => x.sharedMaterial = defaultMateral);
-                              lineRenderer.gameObject.SetActive(false);
                               buildObj.layer = LayerMask.NameToLayer("Structure");
+                              lineRenderer.gameObject.SetActive(false);
                               OnOperated?.Invoke();
                          }
 

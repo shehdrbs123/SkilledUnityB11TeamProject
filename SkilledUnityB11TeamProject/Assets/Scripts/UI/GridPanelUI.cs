@@ -26,14 +26,20 @@ public class GridPanelUI : BaseUI
         {
             InitValues();
             int count = manager.GetElementsCount();
+            buttons = new List<GridButtonUI>(20);
             for (int i = 0; i < count; ++i)
             {
                 if (_uiManager == null)
                     _uiManager = GameManager.Instance._uiManager;
                 GameObject obj = _uiManager.GetUIClone(buttonUIName);
-                obj.GetComponent<GridButtonUI>().Init(manager.GetData(i),_contentPanel,
-                    () => gameObject.SetActive(false));
+                GridButtonUI gridButtonUI = obj.GetComponent<GridButtonUI>();
+                gridButtonUI.Init(manager.GetData(i),_contentPanel, () => gameObject.SetActive(false));
+                buttons.Add(gridButtonUI);
             }
+        }
+        else
+        {
+            UpdateButtons();
         }
     }
 

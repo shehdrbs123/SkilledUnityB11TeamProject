@@ -804,7 +804,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isIgnoreInput: 1
   PanelType: 1
-  buttonUIName: CraftButtonUI
   _contentPanel: {fileID: 986688039602013990}
 --- !u!1 &7455898861393078319
 GameObject:

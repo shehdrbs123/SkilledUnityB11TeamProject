@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5acb947b6189d7498350811f6d2ab54, type: 3}
-  m_Name: FattyCannonG02
+  m_Name: SimpleCannon
   m_EditorClassIdentifier: 
-  halfRadius: 20
-  Damage: 12
-  attackRate: 2
+  halfRadius: 10
+  Damage: 1
+  attackRate: 0.4

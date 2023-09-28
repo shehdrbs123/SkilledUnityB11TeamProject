@@ -21,7 +21,7 @@ public class BuildTargetButtonUI : GridButtonUI
 
     private BuildManager _buildManager;
     
-    private void Start()
+    protected void Start()
     {
         _buildManager = GameManager.Instance._buildManager;
     }
@@ -29,6 +29,17 @@ public class BuildTargetButtonUI : GridButtonUI
     public void CreateBuild()
     {
         _buildManager.SetBuildMode(dataSo);
+        _buildManager.OnOperated += ComsumeItem;
+    }
+
+    private void ComsumeItem()
+    {
+        for (int i = 0; i < dataSo.resoureces.Length; ++i)
+        {
+            _inventory.RemoveItem(dataSo.resoureces[i],dataSo.resourecsCount[i]);
+        }
+        
+        _buildManager.OnOperated -= ComsumeItem;
     }
 
     public void UpdateData()
@@ -52,6 +63,8 @@ public class BuildTargetButtonUI : GridButtonUI
 
     public override void UpdateButton()
     {
+        if (!_inventory)
+            _inventory = GameManager.Instance.GetPlayer().GetComponent<Inventory>();
         for (int i = 0; i < dataSo.resoureces.Length; ++i)
         {
             if(!_inventory.HasItems(dataSo.resoureces[i],dataSo.resourecsCount[i]))

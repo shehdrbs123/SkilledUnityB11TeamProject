@@ -11,12 +11,7 @@ public abstract class GridButtonUI : MonoBehaviour
     protected Inventory _inventory;
     public abstract void Init(ScriptableObject data,Transform parent,UnityAction PanelOff);
     public abstract void UpdateButton();
-
-    private void Start()
-    {
-        GameObject player = GameManager.Instance.GetPlayer();
-        _inventory = player.GetComponent<Inventory>();
-    }
+    
 
     protected void ButtonEnable(bool enable)
     {
