@@ -15,7 +15,6 @@ public class TurretsAI : TurretAIBase
         Array.ForEach(_paricles,(x)=>x.Play());
         if (isDie)
             _enemys.Remove(mon.gameObject);
-        }
     }
 
     protected override void LookAtEnemy()
