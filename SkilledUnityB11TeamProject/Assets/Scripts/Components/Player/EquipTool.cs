@@ -34,12 +34,9 @@ public class EquipTool : Equip
 	{
 		if (!attacking)
 		{
-			if (!attacking)	
-			{
-				attacking = true;
-				animator.SetTrigger("Attack");
-				Invoke("OnCanAttack", attackRate);
-			}
+			attacking = true;
+			animator.SetTrigger("Attack");
+			Invoke("OnCanAttack", attackRate);
 		}
 	}
 

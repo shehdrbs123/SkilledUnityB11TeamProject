@@ -23,6 +23,7 @@ public enum PoolType
 {
     Monster,               // 몬스터
     SFXAudio,              // 효과음
+    Battery,               // 배터리
 }
 
 public class PrefabManager : MonoBehaviour
@@ -78,8 +79,6 @@ public class PrefabManager : MonoBehaviour
 
         GameObject _object = poolDictionary[type].Dequeue();
         poolDictionary[type].Enqueue(_object);
-
-        _object.SetActive(true);
 
         return _object;
     }

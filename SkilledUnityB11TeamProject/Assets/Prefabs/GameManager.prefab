@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &406060168277993420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5928375829629103376}
+  m_Layer: 0
+  m_Name: BatteryHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5928375829629103376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406060168277993420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39, y: 0, z: -65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4737375067010545425}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &947871016238124637
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,6 +764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pickax: {fileID: 11400000, guid: e26d77f95393941458255bd71faf3e4e, type: 2}
+  Hammer: {fileID: 11400000, guid: 1996ec7b5d9c8c8418c703d154dc3afd, type: 2}
 --- !u!1 &5508718834227271635
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +810,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3865875eb36994caa5e430bf100af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterDatas:
+  - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
+  - {fileID: 11400000, guid: 4230dbda9de2b0d4caabea0e4113014e, type: 2}
+  - {fileID: 11400000, guid: 82890b9f6a5b83a42b8550adf221ebb8, type: 2}
+  spawnCount: 5
+  spawnDelay: 3
 --- !u!1 &5787759454351100960
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,6 +853,7 @@ Transform:
   - {fileID: 1160617853714207706}
   - {fileID: 2721586433190370979}
   - {fileID: 5977826083074903824}
+  - {fileID: 4737375067010545425}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -832,6 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiManager: {fileID: 7357748380745954745}
   _buildManager: {fileID: 1694961867246602527}
+  prefabManager: {fileID: 4023538137406617959}
   _dayManager: {fileID: 889955291167440014}
   _monsterSpawnManager: {fileID: 2718285288470614095}
   _soundManager: {fileID: 1181770288461170640}
@@ -840,6 +880,7 @@ MonoBehaviour:
   _interactionManager: {fileID: 0}
   inventory: {fileID: 0}
   _craftManager: {fileID: 2573090573708900339}
+  _lifeManager: {fileID: 6542278518606405735}
 --- !u!1 &5838510771337718052
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,6 +975,53 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &5993762920177894394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4737375067010545425}
+  - component: {fileID: 6542278518606405735}
+  m_Layer: 0
+  m_Name: LifeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4737375067010545425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993762920177894394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5928375829629103376}
+  m_Father: {fileID: 3292718435623128802}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6542278518606405735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5993762920177894394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc053dc3ea8c564b8d3e51b8bd85314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 4
+  batteries: {fileID: 585920770136743270, guid: 1177687790b2bc7489425d9cc6c6c6ab, type: 3}
 --- !u!1 &6227899212420713286
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,3 +1157,7 @@ MonoBehaviour:
     prefab: {fileID: 8059661545040053436, guid: 34f09f121708bee43babfc1c7c79f451, type: 3}
     count: 30
     holder: {fileID: 7672450421063860248}
+  - type: 2
+    prefab: {fileID: 585920770136743270, guid: 1177687790b2bc7489425d9cc6c6c6ab, type: 3}
+    count: 4
+    holder: {fileID: 5928375829629103376}

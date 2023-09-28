@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     public UIManager _uiManager;
     public BuildManager _buildManager;
+    public PrefabManager prefabManager;
     public DayManager _dayManager;
     public MonsterSpawnManager _monsterSpawnManager;
     public SoundManager _soundManager;
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
     public InteractionManager _interactionManager;
     public Inventory inventory;
     public CraftManager _craftManager;
+    public LifeManager _lifeManager;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)

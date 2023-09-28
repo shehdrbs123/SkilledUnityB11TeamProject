@@ -16,23 +16,20 @@ public class Inventory : MonoBehaviour
 {
 	public ItemSlotUI[] uiSlot;
 	public ItemSlot[] slots;
-
 	public GameObject inventoryWindow;
-	public Transform dropPosition;
 
 	[Header("Selected Item")]
 	private ItemSlot selectedItem;
 	private int selectedItemIndex;
 	public TextMeshProUGUI selectedItemName;
 	public TextMeshProUGUI selectedItemDescription;
-	//public TextMeshProUGUI selectedItemStatNames;
-	//public TextMeshProUGUI selectedItemStatValues;
 	public GameObject useButton;
 	public GameObject equipButton;
 	public GameObject unEquipButton;
 	public GameObject dropButton;
 
-	private ItemData pickaxe; 
+	private ItemData pickaxe;
+	private ItemData hammer;
 	private int curEquipIndex;
 	private PlayerMovement controller;
 	[Header("Events")]
@@ -49,6 +46,7 @@ public class Inventory : MonoBehaviour
 	{
 		GameManager.Instance.inventory = this;
 		pickaxe = GameManager.Instance._itemManager.Pickax;
+		hammer = GameManager.Instance._itemManager.Hammer;
 		inventoryWindow.SetActive(false);
 		slots = new ItemSlot[uiSlot.Length];
 
@@ -60,7 +58,8 @@ public class Inventory : MonoBehaviour
 
 		}
 		ClearSelectedItemWindow();
-		AddItem(pickaxe); 
+		AddItem(pickaxe);
+		AddItem(hammer);
 	}
 
 	public void Toggle()
@@ -196,6 +195,35 @@ public class Inventory : MonoBehaviour
 		RemoveSelectedItem();
 	}
 
+	public void OnPickaxEquipButton()
+	{
+		if (uiSlot[0].equipped)
+		{
+			UnEquip(0);
+		}
+
+		uiSlot[0].equipped = true;
+		uiSlot[1].equipped = false;
+		curEquipIndex = 0;
+		GameManager.Instance._equipManager.EquipNew(pickaxe);
+		UpdateUI();
+
+		SelectItem(0);
+	}
+	public void OnHammerEquipButton()
+	{
+		if (uiSlot[1].equipped)
+		{
+			UnEquip(1);
+		}
+		uiSlot[0].equipped = false;
+		uiSlot[1].equipped = true;
+		curEquipIndex = 1;
+		GameManager.Instance._equipManager.EquipNew(hammer);
+		UpdateUI();
+
+		SelectItem(1);
+	}
 	public void OnEquipButton()
 	{
 		if (uiSlot[curEquipIndex].equipped)
@@ -204,7 +232,7 @@ public class Inventory : MonoBehaviour
 		}
 
 		uiSlot[selectedItemIndex].equipped = true;
-		curEquipIndex = selectedItemIndex;
+		
 		GameManager.Instance._equipManager.EquipNew(selectedItem.item);
 		UpdateUI();
 
