@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourceDisplayTest : MonoBehaviour
+public class ResourceDisplayUI : MonoBehaviour
 {
 	public Animator animator;
 	public TextMeshProUGUI resourceTxt;
@@ -12,6 +12,6 @@ public class ResourceDisplayTest : MonoBehaviour
 	private void Awake()
 	{
 		animator = GetComponent<Animator>();	
-		GameManager.Instance.resourceDisplayTest = this;
+		GameManager.Instance.ResourceDisplayUI = this;
 	}
 }

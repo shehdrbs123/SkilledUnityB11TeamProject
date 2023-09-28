@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public Inventory inventory;
     public CraftManager _craftManager;
     public ConditionManager _conditionManager;
-    public ResourceDisplayTest resourceDisplayTest;
+    public ResourceDisplayUI ResourceDisplayUI;
 
     private void Awake()
     {
