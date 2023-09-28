@@ -98,7 +98,7 @@ public class Monster : MonoBehaviour
         UnActive();
     }
 
-    IEnumerator CoDisapear()
+    private IEnumerator CoDisapear()
     {
         while (gameObject.activeInHierarchy)
         {
