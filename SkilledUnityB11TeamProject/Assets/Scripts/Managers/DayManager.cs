@@ -57,9 +57,6 @@ public class DayManager : MonoBehaviour
 
         RenderSettings.skybox = isNight ? moonSkybox : sunSkybox;
 
-        //UpdateLighting(sun, sunColor, sunIntensity);
-        //UpdateLighting(moon, moonColor, moonIntensity);
-
         if (isNight) UpdateLighting(moon, moonColor, moonIntensity);
         else UpdateLighting(sun, sunColor, sunIntensity);
 
@@ -74,18 +71,5 @@ public class DayManager : MonoBehaviour
         lightSource.transform.eulerAngles = (time - (lightSource == sun ? 0.25f : 0.75f)) * 4.0f * noon;
         lightSource.color = colorGradient.Evaluate(time);
         lightSource.intensity = intensity;
-
-        //GameObject go = lightSource.gameObject;
-        //if (lightSource.intensity == 0 && go.activeInHierarchy)
-        //{
-        //    go.SetActive(false);
-        //}
-        //else if (lightSource.intensity > 0 && !go.activeInHierarchy)
-        //{
-        //    go.SetActive(true);
-
-        //    if (lightSource == sun)
-        //        day += 1;
-        //}
     }
 }

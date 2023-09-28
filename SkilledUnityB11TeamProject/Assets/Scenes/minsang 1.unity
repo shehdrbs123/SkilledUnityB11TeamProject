@@ -11740,6 +11740,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 889955291167440014, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: fullDayLength
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3292718435623128802, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -20344,27 +20348,28 @@ MonoBehaviour:
   hunger:
     type: 0
     curValue: 100
+    maxValue: 0
     startValue: 100
     decayRate: 1
     regenRate: 0
+    uiBar: {fileID: 0}
   thirsty:
     type: 1
     curValue: 100
+    maxValue: 0
     startValue: 100
     decayRate: 1
     regenRate: 0
+    uiBar: {fileID: 0}
   mental:
     type: 2
     curValue: 100
+    maxValue: 0
     startValue: 100
     decayRate: 1
     regenRate: 0
-  battery:
-    type: 3
-    curValue: 4
-    startValue: 4
-    decayRate: 1
-    regenRate: 0
+    uiBar: {fileID: 0}
+  battery: 0
 --- !u!4 &1915261405
 Transform:
   m_ObjectHideFlags: 0

@@ -810,11 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3865875eb36994caa5e430bf100af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterDatas:
-  - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-  - {fileID: 11400000, guid: 4230dbda9de2b0d4caabea0e4113014e, type: 2}
-  - {fileID: 11400000, guid: 82890b9f6a5b83a42b8550adf221ebb8, type: 2}
-  spawnCount: 5
+  wave: {fileID: 11400000, guid: 504cd99e9046f8c458b85cc03eab823e, type: 2}
   spawnDelay: 3
 --- !u!1 &5787759454351100960
 GameObject:
