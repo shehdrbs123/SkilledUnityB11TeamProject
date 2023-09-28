@@ -26,6 +26,14 @@ public class EquipManager : MonoBehaviour
 			curEquip.OnAttackInput();
 		}
 	}
+
+	public void OnFire2Input(InputAction.CallbackContext context)
+	{
+		if (context.phase == InputActionPhase.Started && curEquip != null && controller.isCanLook())
+		{
+			curEquip.OnFire2Input();
+		}
+	}
 	public void EquipNew(ItemData item)
 	{
 		UnEquip();

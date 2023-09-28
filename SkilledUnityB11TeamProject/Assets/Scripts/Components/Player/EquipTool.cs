@@ -19,7 +19,7 @@ public class EquipTool : Equip
 	private Animator animator;
 	private Camera camera;
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		camera = Camera.main;
 		animator = GetComponent<Animator>();

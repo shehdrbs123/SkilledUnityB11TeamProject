@@ -24,7 +24,7 @@ public class TurretAI : MonoBehaviour {
     public Vector3 randomRot;
     public Animator animator;
 
-    [Header("[Turret Type]")]
+    [Header("[TurretHowitzerAi Type]")]
     public TurretType turretType = TurretType.Single;
     
     public Transform muzzleMain;
