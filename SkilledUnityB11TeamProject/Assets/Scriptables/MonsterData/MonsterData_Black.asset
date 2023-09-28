@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 08144f7b9f4eef8428f74881a5e2de89, type: 2}
   hp: 15
-  speed: 5
+  speed: 7
   dropResources: []

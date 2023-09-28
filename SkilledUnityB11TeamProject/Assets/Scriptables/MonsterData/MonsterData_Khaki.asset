@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3c5262eb363e5b44b5d752bfcd3e0f3, type: 3}
-  m_Name: MonsterData_Green
+  m_Name: MonsterData_Khaki
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: eb8fac8d0552e3f499a0eca1d3932a07, type: 2}
+  material: {fileID: 2100000, guid: 116777e8180a460468aef0dbae38bcf7, type: 2}
   hp: 5
-  speed: 5
+  speed: 7
   dropResources: []
