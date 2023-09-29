@@ -9,12 +9,15 @@ public class TurretsAI : TurretAIBase
     protected override void OperateAttack()
     {
         var mon = _enemys[0].GetComponent<Monster>();
-        mon.Hit(_data.Damage, out bool isDie);
-        _currentAttackWait = 0;
-        _animator.SetTrigger(_attackAniHash);
-        Array.ForEach(_paricles,(x)=>x.Play());
-        if (isDie)
-            _enemys.Remove(mon.gameObject);
+        if (mon.isAlive)
+        {
+            mon.Hit(_data.Damage, out bool isDie);
+            _currentAttackWait = 0;
+            _animator.SetTrigger(_attackAniHash);
+            Array.ForEach(_paricles,(x)=>x.Play());
+            if (isDie)
+                _enemys.Remove(mon.gameObject);   
+        }
     }
 
     protected override void LookAtEnemy()

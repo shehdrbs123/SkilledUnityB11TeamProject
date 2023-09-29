@@ -15,7 +15,7 @@ public class TurretHowitzerAI : TurretAIBase
     
     [Header("bullet")]
     [SerializeField] private GameObject _bulletObject;
-    [SerializeField] private LineRenderer _bulletMoveLine;
+    //[SerializeField] private LineRenderer _bulletMoveLine;
     
     
     private float _bulletSpeed;
@@ -30,26 +30,26 @@ public class TurretHowitzerAI : TurretAIBase
         _bulletSpeed = Mathf.Sqrt(re * 9.8f) ;
         _totalTime = re / 9.8f;
         _positionCount = Mathf.CeilToInt(_totalTime / Time.fixedDeltaTime);
-        _bulletMoveLine.positionCount = _positionCount;
+        //_bulletMoveLine.positionCount = _positionCount;
     }
-#if UNITY_EDITOR
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
-        
-        for (int i = 0; i < _positionCount; ++i)
-        {
-            float angle = (360-_barrel.eulerAngles.x) * Mathf.Deg2Rad;
-            float deltaTime = i * Time.fixedDeltaTime;
-            float x = _bulletSpeed * Mathf.Cos(angle) * deltaTime;
-            float y = _bulletSpeed * Mathf.Sin(angle) * deltaTime - (0.5f * 9.8f * deltaTime * deltaTime);
-            
-            Vector3 distance = _head.forward * x;
-            
-            _bulletMoveLine.SetPosition(i,new Vector3(distance.x,y,distance.z)+_shotPos.transform.position);
-        }
-    }
-#endif
+// #if UNITY_EDITOR
+//     protected override void FixedUpdate()
+//     {
+//         base.FixedUpdate();
+//         
+//         for (int i = 0; i < _positionCount; ++i)
+//         {
+//             float angle = (360-_barrel.eulerAngles.x) * Mathf.Deg2Rad;
+//             float deltaTime = i * Time.fixedDeltaTime;
+//             float x = _bulletSpeed * Mathf.Cos(angle) * deltaTime;
+//             float y = _bulletSpeed * Mathf.Sin(angle) * deltaTime - (0.5f * 9.8f * deltaTime * deltaTime);
+//             
+//             Vector3 distance = _head.forward * x;
+//             
+//             _bulletMoveLine.SetPosition(i,new Vector3(distance.x,y,distance.z)+_shotPos.transform.position);
+//         }
+//     }
+// #endif
     protected override void OperateAttack()
     {
         if (isShotOk())

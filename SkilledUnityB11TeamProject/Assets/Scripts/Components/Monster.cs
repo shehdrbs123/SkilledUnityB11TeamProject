@@ -73,8 +73,8 @@ public class Monster : MonoBehaviour
         _meshRenderers.material.color = Color.red;
 
         yield return data.DELAY_HIT;
-
-        _agent.isStopped = false;
+        if(_agent)
+            _agent.isStopped = false;
         _meshRenderers.material.color = Color.white;
     }
 

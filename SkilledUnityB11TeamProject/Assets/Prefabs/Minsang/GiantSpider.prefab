@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 6751072921294138400}
   - component: {fileID: 595238192328462630}
   - component: {fileID: 3791961346391441899}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Polygonal Metalon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1322,6 +1322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
   _nowHP: 0
+  isAlive: 1
 --- !u!135 &4140389865800282437
 SphereCollider:
   m_ObjectHideFlags: 0

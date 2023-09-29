@@ -39,6 +39,7 @@ public abstract class TurretAIBase : MonoBehaviour
     protected virtual void OnDisable()
     {
         _rangeRenderer.gameObject.SetActive(true);
+        enabled = false;
     }
 
     protected virtual void FixedUpdate()
@@ -63,7 +64,8 @@ public abstract class TurretAIBase : MonoBehaviour
     {
         for (int i = 0; i < _enemys.Count; ++i)
         {
-            if (!_enemys[i].GetComponent<Monster>().isAlive)
+            Monster mon = _enemys[i].GetComponent<Monster>();
+            if (mon != null && !mon.isAlive)
             {
                 _enemys.Remove(_enemys[i]);
                 --i;

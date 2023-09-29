@@ -59,6 +59,7 @@ public class BuildManager : GridPanelManager
           MeshRenderer[] buildMeshRenderer = buildObj.GetComponentsInChildren<MeshRenderer>();//음영 바꾸기 위해서
           LineRenderer lineRenderer = buildObj.GetComponentInChildren<LineRenderer>();
           Material defaultMateral = buildMeshRenderer[0].material;
+          TurretAIBase buildObjAIBase = buildObj.GetComponent<TurretAIBase>();
 
           while (isBuildMode)
           {
@@ -80,12 +81,16 @@ public class BuildManager : GridPanelManager
                          
                          if (_fire1Action.IsPressed())
                          {
-                              isBuildMode = false;
                               Array.ForEach(buildMeshRenderer,(x) => x.sharedMaterial = defaultMateral);
+                              
                               buildObj.layer = LayerMask.NameToLayer("Structure");
-                              lineRenderer.gameObject.SetActive(false);
-                              OnOperated?.Invoke();
                               buildObj.SetActive(true);
+                              
+                              lineRenderer.gameObject.SetActive(false);
+
+                              buildObjAIBase.enabled = true;
+                              OnOperated?.Invoke();
+                              isBuildMode = false;
                          }
 
                          if (_fire2Action.IsPressed())
