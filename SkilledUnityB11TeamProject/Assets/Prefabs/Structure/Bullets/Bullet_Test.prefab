@@ -4790,7 +4790,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b36bca72328711e469f2614e3d52b7ed, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4935,6 +4934,7 @@ GameObject:
   - component: {fileID: 4027663215195584}
   - component: {fileID: 135535975557554630}
   - component: {fileID: 54987683344845492}
+  - component: {fileID: 7090893386756214315}
   m_Layer: 0
   m_Name: Bullet_Test
   m_TagString: Untagged
@@ -5007,3 +5007,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7090893386756214315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986743744459060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1dc3751f4c4c9eada9094d83f054ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  explosionRadius: 30
+  damage: 400

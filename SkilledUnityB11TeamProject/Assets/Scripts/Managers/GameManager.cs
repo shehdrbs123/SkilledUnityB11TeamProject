@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject GetPlayer()
     {
+        if (!player)
+            player = GameObject.FindWithTag("Player");
         return player;
     }
 }

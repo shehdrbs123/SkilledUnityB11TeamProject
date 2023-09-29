@@ -85,6 +85,7 @@ public class BuildManager : GridPanelManager
                               buildObj.layer = LayerMask.NameToLayer("Structure");
                               lineRenderer.gameObject.SetActive(false);
                               OnOperated?.Invoke();
+                              buildObj.SetActive(true);
                          }
 
                          if (_fire2Action.IsPressed())

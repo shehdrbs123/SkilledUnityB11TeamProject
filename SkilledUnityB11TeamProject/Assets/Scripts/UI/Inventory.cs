@@ -286,6 +286,8 @@ public class Inventory : MonoBehaviour
 			test.quantity = 0;
 			test.item = null;
 		}
+
+		UpdateUI();
 	}
 
 	public bool HasItems(ItemData item, int quantity)

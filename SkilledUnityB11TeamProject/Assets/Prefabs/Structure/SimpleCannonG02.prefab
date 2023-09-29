@@ -10138,7 +10138,7 @@ Transform:
   - {fileID: 242677074577223285}
   - {fileID: 910804411649759565}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2535790815749870022
 BoxCollider:
@@ -10176,7 +10176,7 @@ MonoBehaviour:
   _head: {fileID: 4143506625583043143}
   _data: {fileID: 11400000, guid: 6d58d300071d3b54ea062b08fb2baf35, type: 2}
   _rangeObject: {fileID: 3227651215445793013}
-  paricles:
+  _paricles:
   - {fileID: 8225628782572326287}
   - {fileID: 7141942463077888683}
 --- !u!54 &7347574275488124287
@@ -10201,8 +10201,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
