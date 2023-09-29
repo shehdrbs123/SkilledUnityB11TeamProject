@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 386961298847487043}
   - component: {fileID: 571230312699187886}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: DayText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 7704018806011654016}
   - component: {fileID: 4614802400716822442}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ThirstyImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,7 +1050,7 @@ RectTransform:
   m_Children:
   - {fileID: 2176591978127782073}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1500,7 +1500,7 @@ GameObject:
   - component: {fileID: 4122972162872003936}
   - component: {fileID: 1499018275503528689}
   m_Layer: 5
-  m_Name: Image
+  m_Name: MentalImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1576,7 +1576,7 @@ GameObject:
   - component: {fileID: 7985357398404152259}
   - component: {fileID: 109829986354087079}
   m_Layer: 5
-  m_Name: Image
+  m_Name: HungerImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
