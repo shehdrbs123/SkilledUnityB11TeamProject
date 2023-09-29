@@ -66,7 +66,7 @@ public class InteractionManager : MonoBehaviour
 	public void OnInteractInput(InputAction.CallbackContext callbackContext)
 	{
 		if (callbackContext.phase == InputActionPhase.Started && curInteractable != null)
-		{
+		{		
 			curInteractable.OnInteract();
 			curInteractGameObject = null;
 			curInteractable = null;
