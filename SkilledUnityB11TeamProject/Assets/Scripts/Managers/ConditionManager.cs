@@ -44,6 +44,7 @@ public class ConditionManager : MonoBehaviour
 
     [Header("Life")]
     public int battery;
+    public List<Image> uiBattery = new List<Image>();
 
     private readonly List<GameObject> batteries = new List<GameObject>();
 
@@ -85,6 +86,7 @@ public class ConditionManager : MonoBehaviour
         {
             battery -= 1;
             StartCoroutine(CoDisapear(batteries[battery]));
+            uiBattery[battery].gameObject.SetActive(false);
         }
         else
         {
