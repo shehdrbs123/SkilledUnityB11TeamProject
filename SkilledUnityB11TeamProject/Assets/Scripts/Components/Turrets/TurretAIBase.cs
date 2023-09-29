@@ -16,14 +16,14 @@ public abstract class TurretAIBase : MonoBehaviour
     protected int _attackAniHash;
     
     private SphereCollider _rangeCols;
-    private CircleDraw _rangeRenderer;
+    private RangeDraw _rangeRenderer;
 
     private void Awake()
     {
         _enemys = new List<GameObject>();
         _animator = GetComponent<Animator>();
         _rangeCols = _rangeObject.GetComponent<SphereCollider>();
-        _rangeRenderer = _rangeObject.GetComponent<CircleDraw>();
+        _rangeRenderer = _rangeObject.GetComponent<RangeDraw>();
 
         _rangeCols.radius = _data.halfRadius;
         _rangeRenderer.radius = _data.halfRadius;
@@ -41,7 +41,11 @@ public abstract class TurretAIBase : MonoBehaviour
         if (_enemys.Count > 0)
         {
             LookAtEnemy();
-            OperateAttack();
+            if (_currentAttackWait >= _data.attackRate)
+            {
+                _currentAttackWait = 0;
+                OperateAttack();
+            }
         }
     }
 

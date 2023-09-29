@@ -781,7 +781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &926263151175816124
 Transform:
   m_ObjectHideFlags: 0
@@ -811,7 +811,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: {fileID: 11400000, guid: 504cd99e9046f8c458b85cc03eab823e, type: 2}
-  spawnDelay: 3
 --- !u!1 &5787759454351100960
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +850,7 @@ Transform:
   - {fileID: 5977826083074903824}
   - {fileID: 4737375067010545425}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1182428806516601007
 MonoBehaviour:
@@ -877,6 +876,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   _craftManager: {fileID: 2573090573708900339}
   _conditionManager: {fileID: 8880458777087184934}
+  ResourceDisplayUI: {fileID: 0}
 --- !u!1 &5838510771337718052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1123,37 @@ MonoBehaviour:
   bgmVolume: 0.2
   bgmAudioSource: {fileID: 1398047305867322012}
   bgmClip: {fileID: 0}
+--- !u!1 &8690892312074436847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6212256940934274627}
+  m_Layer: 0
+  m_Name: ParticleHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6212256940934274627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8690892312074436847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5361115584847692360}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9095642307659075253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1182,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6212256940934274627}
   m_Father: {fileID: 3292718435623128802}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1180,3 +1212,7 @@ MonoBehaviour:
     prefab: {fileID: 585920770136743270, guid: 1177687790b2bc7489425d9cc6c6c6ab, type: 3}
     count: 4
     holder: {fileID: 5928375829629103376}
+  - type: 3
+    prefab: {fileID: 1868602337266200, guid: 6d074a749488789479e539251fdf184e, type: 3}
+    count: 4
+    holder: {fileID: 6212256940934274627}

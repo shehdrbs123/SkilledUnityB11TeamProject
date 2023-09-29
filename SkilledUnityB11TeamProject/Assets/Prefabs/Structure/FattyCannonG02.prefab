@@ -5163,7 +5163,7 @@ Transform:
   - {fileID: 4779222424309044}
   - {fileID: 5987018625831844196}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6965289858294600089
 BoxCollider:
@@ -5201,7 +5201,7 @@ MonoBehaviour:
   _head: {fileID: 4722236510932744}
   _data: {fileID: 11400000, guid: 2471f8178d371c94297e3861b4096038, type: 2}
   _rangeObject: {fileID: 8785535802958537111}
-  paricles:
+  _paricles:
   - {fileID: 198190432169522098}
   - {fileID: 407879149781027461}
 --- !u!54 &5677335046948928441
