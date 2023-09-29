@@ -8,7 +8,7 @@ public class EquipTool : Equip
 	public float attackRate;
 	private bool attacking;
 	public float attackDistance;
-
+	
 	[Header("Resource Gathering")]
 	public bool doesGatherResources;
 
@@ -19,7 +19,7 @@ public class EquipTool : Equip
 	private Animator animator;
 	private Camera camera;
 
-	private void Awake()
+	protected virtual void Awake()
 	{
 		camera = Camera.main;
 		animator = GetComponent<Animator>();
@@ -34,17 +34,15 @@ public class EquipTool : Equip
 	{
 		if (!attacking)
 		{
-			if (!attacking)	
-			{
-				attacking = true;
-				animator.SetTrigger("Attack");
-				Invoke("OnCanAttack", attackRate);
-			}
+			attacking = true;
+			animator.SetTrigger("Attack");
+			Invoke("OnCanAttack", attackRate);
 		}
 	}
 
 	public void OnHit()
 	{
+		
 		Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 		RaycastHit hit;
 
@@ -52,7 +50,10 @@ public class EquipTool : Equip
 		{
 			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource))
 			{
-				resource.Gather();
+				GameManager.Instance.ResourceDisplayUI.resourceTxt.text = resource.itemToGive.itemName;
+				GameManager.Instance.ResourceDisplayUI.resourceDisplayImg.SetActive(true);
+				GameManager.Instance.ResourceDisplayUI.animator.SetTrigger("OnCollect");
+				resource.Gather();			
 			}
 		}
 	}

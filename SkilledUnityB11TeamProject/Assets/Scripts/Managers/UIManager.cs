@@ -24,8 +24,6 @@ public class UIManager : MonoBehaviour
         {
             _uiPrefabs.Add(value.name,value);
         }
-        
-        
     }
 
     private void Start()
@@ -65,11 +63,23 @@ public class UIManager : MonoBehaviour
 
     public void EnablePanel(GameObject o)
     {
+        AddUICount(o);
+    }
+    
+    public void AddUICount(GameObject o)
+    {
+        if (_uiCounter == null)
+            _uiCounter = new HashSet<GameObject>();
         _uiCounter.Add(o);
         CheckInputAction();
     }
 
     public void DisablePanel(GameObject o)
+    {
+        RemoveUICount(o);
+    }
+    
+    public void RemoveUICount(GameObject o)
     {
         _uiCounter.Remove(o);
         CheckInputAction();
@@ -80,14 +90,16 @@ public class UIManager : MonoBehaviour
         if (_inputs == null)
         {
             _inputs = new List<InputAction>(10);
-            GameObject player = GameManager.Instance.GetPlayer();
-            if (player)
-            {
-                PlayerInput playerInput = player.GetComponent<PlayerInput>();
-                _inputs.Add(playerInput.actions.FindAction("Move"));
-                _inputs.Add(playerInput.actions.FindAction("Look"));
-                _inputs.Add(playerInput.actions.FindAction("Fire1"));
-            }
+        }
+        GameObject player = GameManager.Instance.GetPlayer();
+        if (player && _inputs.Count<=0)
+        {
+            PlayerInput playerInput = player.GetComponent<PlayerInput>();
+            _inputs.Add(playerInput.actions.FindAction("Move"));
+            _inputs.Add(playerInput.actions.FindAction("Look"));
+            _inputs.Add(playerInput.actions.FindAction("Fire1"));
+            _inputs.Add(playerInput.actions.FindAction("Fire2"));
+            _inputs.Add(playerInput.actions.FindAction("Interact"));
         }
 
         IgnoreInput(_uiCounter.Count>0);
@@ -124,4 +136,8 @@ public class UIManager : MonoBehaviour
         }
         
     }
+
+   
+
+    
 }

@@ -11,9 +11,9 @@ public enum ItemType
 public enum ConsumableType
 {
     Hunger,
-	Thirst
+	Thirsty
 }
-
+[System.Serializable]
 public class ItemDataConsumable
 {
 	public ConsumableType type;
@@ -33,10 +33,9 @@ public class ItemData : ScriptableObject
 	public bool canStack;
 	public int maxStackAmount;
 
-	//[Header("Consumable")]
-	//public ItemDataConsumable[] consumables; 소모형 아이템이 생성되면 시작
+	[Header("Consumable")]
+	public ItemDataConsumable[] consumables;
 
 	[Header("Equip")]
 	public GameObject equipPrefab;
-	
 }

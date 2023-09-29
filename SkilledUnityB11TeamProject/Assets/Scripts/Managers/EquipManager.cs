@@ -13,12 +13,25 @@ public class EquipManager : MonoBehaviour
 	{
 		controller = GetComponent<PlayerMovement>();
 	}
-	
+
+	private void Start()
+	{
+		GameManager.Instance._equipManager = this;
+	}
+
 	public void OnAttackInput(InputAction.CallbackContext context)
 	{
 		if(context.phase == InputActionPhase.Performed && curEquip != null && controller.isCanLook())
 		{
 			curEquip.OnAttackInput();
+		}
+	}
+
+	public void OnFire2Input(InputAction.CallbackContext context)
+	{
+		if (context.phase == InputActionPhase.Started && curEquip != null && controller.isCanLook())
+		{
+			curEquip.OnFire2Input();
 		}
 	}
 	public void EquipNew(ItemData item)

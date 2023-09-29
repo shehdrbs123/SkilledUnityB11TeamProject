@@ -10,18 +10,18 @@ public abstract class BaseUI : MonoBehaviour
     
     protected static UIManager _uiManager;
      
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         _uiManager = GameManager.Instance._uiManager;
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         if(_uiManager && isIgnoreInput)
             _uiManager.EnablePanel(gameObject);
     }
 
-    protected void OnDisable()
+    protected virtual void OnDisable()
     {
         if(_uiManager && isIgnoreInput)
             _uiManager.DisablePanel(gameObject);

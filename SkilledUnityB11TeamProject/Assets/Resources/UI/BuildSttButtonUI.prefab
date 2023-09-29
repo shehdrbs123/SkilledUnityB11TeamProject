@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7704153208887022665}
   - component: {fileID: 2993500811480849009}
   - component: {fileID: 60960987576099651}
-  - component: {fileID: 4994231739315370961}
+  - component: {fileID: 6145779837943629925}
   m_Layer: 5
   m_Name: BuildSttButtonUI
   m_TagString: Untagged
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _offset: {x: 20, y: 40}
   _InfoPanelName: BuildInfoUI
---- !u!114 &4994231739315370961
+--- !u!114 &6145779837943629925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

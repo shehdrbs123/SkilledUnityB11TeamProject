@@ -15,7 +15,8 @@ MonoBehaviour:
   itemName: Pickax
   description: is Pickax
   type: 1
-  icon: {fileID: 21300000, guid: 4f519647f441f6948a3a697a17a308b5, type: 3}
+  icon: {fileID: 21300000, guid: 4b68f3a975bb18a4e8bf0c2f526d04e5, type: 3}
   canStack: 0
   maxStackAmount: 0
+  consumables: []
   equipPrefab: {fileID: 7274297697452016582, guid: df1de6dec4b476447a7c9a44ea3f395d, type: 3}

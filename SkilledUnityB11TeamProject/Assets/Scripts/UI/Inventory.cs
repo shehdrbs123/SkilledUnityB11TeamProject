@@ -12,27 +12,24 @@ public class ItemSlot
 	public ItemData item;
 	public int quantity;
 }
-public class Inventory : BaseUI
+public class Inventory : MonoBehaviour
 {
 	public ItemSlotUI[] uiSlot;
 	public ItemSlot[] slots;
-
 	public GameObject inventoryWindow;
-	public Transform dropPosition;
 
 	[Header("Selected Item")]
 	private ItemSlot selectedItem;
 	private int selectedItemIndex;
 	public TextMeshProUGUI selectedItemName;
 	public TextMeshProUGUI selectedItemDescription;
-	//public TextMeshProUGUI selectedItemStatNames;
-	//public TextMeshProUGUI selectedItemStatValues;
 	public GameObject useButton;
 	public GameObject equipButton;
 	public GameObject unEquipButton;
 	public GameObject dropButton;
 
-	private ItemData pickaxe; 
+	private ItemData pickaxe;
+	private ItemData hammer;
 	private int curEquipIndex;
 	private PlayerMovement controller;
 	[Header("Events")]
@@ -47,7 +44,9 @@ public class Inventory : BaseUI
 
 	private void Start()
 	{
+		GameManager.Instance.inventory = this;
 		pickaxe = GameManager.Instance._itemManager.Pickax;
+		hammer = GameManager.Instance._itemManager.Hammer;
 		inventoryWindow.SetActive(false);
 		slots = new ItemSlot[uiSlot.Length];
 
@@ -59,18 +58,21 @@ public class Inventory : BaseUI
 
 		}
 		ClearSelectedItemWindow();
-		AddItem(pickaxe); 
+		AddItem(pickaxe);
+		AddItem(hammer);
 	}
 
 	public void Toggle()
 	{
 		if (inventoryWindow.activeInHierarchy)
 		{
+			GameManager.Instance._uiManager.RemoveUICount(gameObject);
 			inventoryWindow.SetActive(false);
 			onCloseInventory?.Invoke();
 		}
 		else
 		{
+			GameManager.Instance._uiManager.AddUICount(gameObject);
 			inventoryWindow.SetActive(true);
 			onOpenInventory?.Invoke();
 		}
@@ -155,15 +157,6 @@ public class Inventory : BaseUI
 		selectedItemName.text = selectedItem.item.itemName;
 		selectedItemDescription.text = selectedItem.item.description;
 
-		//selectedItemStatNames.text = string.Empty;
-		//selectedItemStatValues.text = string.Empty;
-
-		//for (int i = 0; i < selectedItem.item.consumables.Length; i++)
-		//{
-		//	selectedItemStatNames.text += selectedItem.item.consumables[i].type.ToString() + "\n";
-		//	selectedItemStatValues.text += selectedItem.item.consumables[i].value.ToString() + "\n";
-		//}
-
 		useButton.SetActive(selectedItem.item.type == ItemType.Consumable);
 		equipButton.SetActive(selectedItem.item.type == ItemType.Equipable && !uiSlot[index].equipped);
 		unEquipButton.SetActive(selectedItem.item.type == ItemType.Equipable && uiSlot[index].equipped);
@@ -176,33 +169,61 @@ public class Inventory : BaseUI
 		selectedItemName.text = string.Empty;
 		selectedItemDescription.text = string.Empty;
 
-		//selectedItemStatNames.text = string.Empty;
-		//selectedItemStatValues.text = string.Empty;  //���� ���� �������
-
 		equipButton.SetActive(false);
 		dropButton.SetActive(false);
 		useButton.SetActive(false);
 		unEquipButton.SetActive(false);
 	}
 
-	//public void OnUseButton()
-	//{
-	//	if (selectedItem.item.type == ItemType.Consumable)
-	//	{
-	//		for (int i = 0; i < selectedItem.item.consumables.Length; i++)
-	//		{
-	//			switch (selectedItem.item.consumables[i].type)
-	//			{
-	//				case ConsumableType.Health:
-	//					condition.Heal(selectedItem.item.consumables[i].value); break;
-	//				case ConsumableType.Hunger:
-	//					condition.Eat(selectedItem.item.consumables[i].value); break;
-	//			}
-	//		}
-	//	}
-	//	RemoveSelectedItem();
-	//}
+	public void OnUseButton()
+	{
+		if (selectedItem.item.type == ItemType.Consumable)
+		{
+			for (int i = 0; i < selectedItem.item.consumables.Length; i++)
+			{
+				switch (selectedItem.item.consumables[i].type)
+				{
+					case ConsumableType.Thirsty:
+						//condition.Heal(selectedItem.item.consumables[i].value); 
+						break;
+					case ConsumableType.Hunger:
+						//condition.Eat(selectedItem.item.consumables[i].value);
+						break;
+				}
+			}
+		}
+		RemoveSelectedItem();
+	}
 
+	public void OnPickaxEquipButton()
+	{
+		if (uiSlot[0].equipped)
+		{
+			UnEquip(0);
+		}
+
+		uiSlot[0].equipped = true;
+		uiSlot[1].equipped = false;
+		curEquipIndex = 0;
+		GameManager.Instance._equipManager.EquipNew(pickaxe);
+		UpdateUI();
+
+		SelectItem(0);
+	}
+	public void OnHammerEquipButton()
+	{
+		if (uiSlot[1].equipped)
+		{
+			UnEquip(1);
+		}
+		uiSlot[0].equipped = false;
+		uiSlot[1].equipped = true;
+		curEquipIndex = 1;
+		GameManager.Instance._equipManager.EquipNew(hammer);
+		UpdateUI();
+
+		SelectItem(1);
+	}
 	public void OnEquipButton()
 	{
 		if (uiSlot[curEquipIndex].equipped)
@@ -211,8 +232,7 @@ public class Inventory : BaseUI
 		}
 
 		uiSlot[selectedItemIndex].equipped = true;
-		curEquipIndex = selectedItemIndex;
-		//EquipManager.instance.EquipNew(selectedItem.item);
+		
 		GameManager.Instance._equipManager.EquipNew(selectedItem.item);
 		UpdateUI();
 
@@ -222,7 +242,6 @@ public class Inventory : BaseUI
 	void UnEquip(int index)
 	{
 		uiSlot[index].equipped = false;
-		//EquipManager.instance.UnEquip();
 		GameManager.Instance._equipManager.UnEquip();
 		UpdateUI();
 
@@ -258,13 +277,24 @@ public class Inventory : BaseUI
 		UpdateUI();
 	}
 
-	public void RemoveItem(ItemData item)
+	public void RemoveItem(ItemData item, int quantity)
 	{
-
+		ItemSlot test = GetItemStack(item);
+		test.quantity -= quantity;
+		if (test.quantity <= 0)
+		{
+			test.quantity = 0;
+			test.item = null;
+		}
 	}
 
 	public bool HasItems(ItemData item, int quantity)
 	{
+		ItemSlot test = GetItemStack(item);
+		if (test != null && test.quantity >= quantity)
+		{
+			return true;
+		}
 		return false;
 	}
 }

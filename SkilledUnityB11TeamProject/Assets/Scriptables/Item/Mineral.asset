@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Mineral
   description: is Mineral
   type: 0
-  icon: {fileID: 21300000, guid: a5f86ab0381b75b4eb0480d9c207557a, type: 3}
+  icon: {fileID: 21300000, guid: f59401c5c79564fd1ae3bfb0876455a7, type: 3}
   canStack: 1
   maxStackAmount: 50
   equipPrefab: {fileID: 0}
