@@ -24,6 +24,7 @@ public enum PoolType
     M_Spider,              // 몬스터 - 거미
     SFXAudio,              // 효과음
     Battery,               // 배터리
+    BangParticle,
 }
 
 public class PrefabManager : MonoBehaviour
