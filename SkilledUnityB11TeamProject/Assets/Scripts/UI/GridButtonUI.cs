@@ -11,7 +11,7 @@ public abstract class GridButtonUI : MonoBehaviour
     protected Inventory _inventory;
     public abstract void Init(ScriptableObject data,Transform parent,UnityAction PanelOff);
     public abstract void UpdateButton();
-    
+    public abstract GridScriptableObject GetResourceData();
 
     protected void ButtonEnable(bool enable)
     {

@@ -75,4 +75,9 @@ public class BuildTargetButtonUI : GridButtonUI
         }
         ButtonEnable(true);        
     }
+
+    public override GridScriptableObject GetResourceData()
+    {
+        return _data;
+    }
 }

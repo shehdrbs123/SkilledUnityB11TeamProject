@@ -23,7 +23,7 @@ public abstract class TurretAIBase : MonoBehaviour
         _enemys = new List<GameObject>();
         _animator = GetComponent<Animator>();
         _rangeCols = _rangeObject.GetComponent<SphereCollider>();
-        _rangeRenderer = _rangeObject.GetComponent<RangeDraw>();
+        _rangeRenderer = _rangeObject.GetComponentInChildren<RangeDraw>();
 
         _rangeCols.radius = _data.halfRadius;
         _rangeRenderer.radius = _data.halfRadius;
@@ -36,8 +36,14 @@ public abstract class TurretAIBase : MonoBehaviour
             _currentAttackWait += Time.deltaTime;
     }
 
+    protected virtual void OnDisable()
+    {
+        _rangeRenderer.gameObject.SetActive(true);
+    }
+
     protected virtual void FixedUpdate()
     {
+        CheckDie();
         if (_enemys.Count > 0)
         {
             LookAtEnemy();
@@ -53,6 +59,17 @@ public abstract class TurretAIBase : MonoBehaviour
 
     protected abstract void LookAtEnemy();
 
+    private void CheckDie()
+    {
+        for (int i = 0; i < _enemys.Count; ++i)
+        {
+            if (!_enemys[i].GetComponent<Monster>().isAlive)
+            {
+                _enemys.Remove(_enemys[i]);
+                --i;
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         _enemys.Add(other.gameObject);
