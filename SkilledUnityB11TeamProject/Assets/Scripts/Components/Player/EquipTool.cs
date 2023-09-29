@@ -48,11 +48,14 @@ public class EquipTool : Equip
 		
 		if (Physics.Raycast(ray, out hit, attackDistance))
 		{
-			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource))
-			{ 
-				GameManager.Instance.ResourceDisplayUI.resourceTxt.text = resource.itemToGive.itemName;
-				GameManager.Instance.ResourceDisplayUI.resourceDisplayImg.SetActive(true);
-				GameManager.Instance.ResourceDisplayUI.animator.SetTrigger("OnCollect");
+			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource) )
+			{
+				if(GameManager.Instance.ResourceDisplayUI != null)
+				{
+					GameManager.Instance.ResourceDisplayUI.resourceTxt.text = resource.itemToGive.itemName;
+					GameManager.Instance.ResourceDisplayUI.resourceDisplayImg.SetActive(true);
+					GameManager.Instance.ResourceDisplayUI.animator.SetTrigger("OnCollect");	
+				}
 				resource.Gather();			
 			}
 		}

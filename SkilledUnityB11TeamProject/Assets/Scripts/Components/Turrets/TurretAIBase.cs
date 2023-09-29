@@ -16,36 +16,42 @@ public abstract class TurretAIBase : MonoBehaviour
     protected int _attackAniHash;
     
     private SphereCollider _rangeCols;
-    private CircleDraw _rangeRenderer;
+    private RangeDraw _rangeRenderer;
 
     private void Awake()
     {
         _enemys = new List<GameObject>();
         _animator = GetComponent<Animator>();
         _rangeCols = _rangeObject.GetComponent<SphereCollider>();
-        _rangeRenderer = _rangeObject.GetComponent<CircleDraw>();
+        _rangeRenderer = _rangeObject.GetComponentInChildren<RangeDraw>();
 
         _rangeCols.radius = _data.halfRadius;
         _rangeRenderer.radius = _data.halfRadius;
         _attackAniHash = Animator.StringToHash("IsAttack");
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (_enemys.Count > 0)
-        {
-            OperateAttack();
-        }
-
         if (_currentAttackWait < _data.attackRate)
             _currentAttackWait += Time.deltaTime;
     }
 
-    private void FixedUpdate()
+    protected virtual void OnDisable()
     {
+        _rangeRenderer.gameObject.SetActive(true);
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        CheckDie();
         if (_enemys.Count > 0)
         {
             LookAtEnemy();
+            if (_currentAttackWait >= _data.attackRate)
+            {
+                _currentAttackWait = 0;
+                OperateAttack();
+            }
         }
     }
 
@@ -53,6 +59,17 @@ public abstract class TurretAIBase : MonoBehaviour
 
     protected abstract void LookAtEnemy();
 
+    private void CheckDie()
+    {
+        for (int i = 0; i < _enemys.Count; ++i)
+        {
+            if (!_enemys[i].GetComponent<Monster>().isAlive)
+            {
+                _enemys.Remove(_enemys[i]);
+                --i;
+            }
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         _enemys.Add(other.gameObject);

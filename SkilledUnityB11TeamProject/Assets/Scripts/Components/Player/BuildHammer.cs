@@ -14,12 +14,6 @@ public class BuildHammer : EquipTool
         _uiManager = GameManager.Instance._uiManager;
     }
 
-    public override void OnAttackInput()
-    {
-        base.OnAttackInput();
-        
-    }
-
     public override void OnFire2Input()
     {
         if (!_buildManager.isBuildMode)

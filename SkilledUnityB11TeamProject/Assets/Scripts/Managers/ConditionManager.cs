@@ -3,22 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ConditionType
-{
-    Hunger,
-    Thirsty,
-    Mental,
-}
 
 [System.Serializable]
 public class Condition
 {
-    public ConditionType type;
-    [HideInInspector] public float curValue;
+    public float curValue;
     public float maxValue;
     public float startValue;
     public float decayRate;
-    public float regenRate;
     public Image uiBar;
 
     public void Initalize()
@@ -29,17 +21,17 @@ public class Condition
     public void Change(float amount)
     {
         curValue = Mathf.Clamp(curValue + amount, 0f, 100f);
+        uiBar.fillAmount = curValue / maxValue;
     }
 
-    public float GetPercentage()
+    public bool IsZero()
     {
-        return curValue / maxValue;
+        return curValue <= 0.0f;
     }
 
-    public void Update()
+    public void Decay()
     {
         Change(-1 * decayRate * Time.deltaTime);
-        // uiBar.fillAmount = GetPercentage();
     }
 }
 
@@ -52,8 +44,9 @@ public class ConditionManager : MonoBehaviour
 
     [Header("Life")]
     public int battery;
+    public List<Image> uiBattery = new List<Image>();
 
-    private List<GameObject> batteries = new List<GameObject>();
+    private readonly List<GameObject> batteries = new List<GameObject>();
 
     private void Start()
     {
@@ -73,15 +66,15 @@ public class ConditionManager : MonoBehaviour
 
     private void Update()
     {
-        hunger.Update();
-        thirsty.Update();
+        hunger.Decay();
+        thirsty.Decay();
 
-        if (hunger.GetPercentage() <= 0.00f || thirsty.GetPercentage() <= 0.00f)
+        if (hunger.IsZero() || thirsty.IsZero())
         {
-            mental.Update();
+            mental.Decay();
         }
 
-        if (mental.GetPercentage() <= 0.00f)
+        if (mental.IsZero())
         {
             GameOver();
         }
@@ -93,6 +86,7 @@ public class ConditionManager : MonoBehaviour
         {
             battery -= 1;
             StartCoroutine(CoDisapear(batteries[battery]));
+            uiBattery[battery].gameObject.SetActive(false);
         }
         else
         {

@@ -8,7 +8,22 @@ public class Resource : MonoBehaviour
 	public int quantityPerHit = 1;
 	public int capacity;
 
-	public void Gather()
+	private ResourceSpawner spawner;
+
+    private void Awake()
+    {
+		if (transform.parent.TryGetComponent(out ResourceSpawner sp))
+		{
+			spawner = sp;
+		}
+	}
+
+    private void OnDisable()
+    {
+		spawner.Respawn();
+	}
+
+    public void Gather()
 	{
 		for (int i = 0; i < quantityPerHit; i++)
 		{
@@ -19,6 +34,6 @@ public class Resource : MonoBehaviour
 		}
 
 		if (capacity <= 0)
-			Destroy(gameObject);
+			gameObject.SetActive(false);
 	}
 }
