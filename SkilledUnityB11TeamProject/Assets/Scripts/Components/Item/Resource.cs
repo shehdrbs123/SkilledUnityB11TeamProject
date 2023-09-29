@@ -8,6 +8,7 @@ public class Resource : MonoBehaviour
 	public int quantityPerHit = 1;
 	public int capacity;
 
+	public ParticleSystem particle;
 	private ResourceSpawner spawner;
 
     private void Awake()

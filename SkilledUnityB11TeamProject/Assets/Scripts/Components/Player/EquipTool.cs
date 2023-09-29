@@ -52,6 +52,7 @@ public class EquipTool : Equip
 			{
 				if(GameManager.Instance.ResourceDisplayUI != null)
 				{
+					resource.particle.Play();
 					GameManager.Instance.ResourceDisplayUI.resourceTxt.text = resource.itemToGive.itemName;
 					GameManager.Instance.ResourceDisplayUI.resourceDisplayImg.SetActive(true);
 					GameManager.Instance.ResourceDisplayUI.animator.SetTrigger("OnCollect");	
