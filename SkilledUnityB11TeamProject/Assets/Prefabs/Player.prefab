@@ -245,7 +245,7 @@ MonoBehaviour:
   _cameras: {fileID: 3344628594488421984}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   camCurXRot: 0
 --- !u!136 &6230169843117336098
 CapsuleCollider:
