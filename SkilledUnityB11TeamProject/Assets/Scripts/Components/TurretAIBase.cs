@@ -30,22 +30,18 @@ public abstract class TurretAIBase : MonoBehaviour
         _attackAniHash = Animator.StringToHash("IsAttack");
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (_enemys.Count > 0)
-        {
-            OperateAttack();
-        }
-
         if (_currentAttackWait < _data.attackRate)
             _currentAttackWait += Time.deltaTime;
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (_enemys.Count > 0)
         {
             LookAtEnemy();
+            OperateAttack();
         }
     }
 
