@@ -5140,7 +5140,7 @@ GameObject:
   - component: {fileID: 1627812479005865330}
   - component: {fileID: 5677335046948928441}
   - component: {fileID: 1714222038500489330}
-  m_Layer: 11
+  m_Layer: 2
   m_Name: FattyCannonG02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5163,7 +5163,7 @@ Transform:
   - {fileID: 4779222424309044}
   - {fileID: 5987018625831844196}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6965289858294600089
 BoxCollider:
