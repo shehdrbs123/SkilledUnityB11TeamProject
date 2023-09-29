@@ -8,7 +8,9 @@ public class Monster : MonoBehaviour
     [Header("Stat")]
     public MonsterDataSO data;
     [SerializeField] private int _nowHP;        // 인스펙터에서 확인용 직렬화. 추후 제거
-    private bool isAlive = true;
+    public bool isAlive = true;
+    private bool isInvincible = false;
+
 
     private NavMeshAgent _agent;
     private Animator _animator;

@@ -7,7 +7,4 @@ using UnityEngine.Serialization;
 public class BuildDataSO : GridScriptableObject
 {
     public GameObject StructurePrefab;
-
-    public ItemData[] resoureces;
-    public int[] resourecsCount;
 }

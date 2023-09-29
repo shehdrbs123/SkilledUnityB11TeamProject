@@ -47,4 +47,10 @@ public class CrattButtonUI : GridButtonUI
     {
         
     }
+
+    public override GridScriptableObject GetResourceData()
+    {
+        return _data;
+    }
+    
 }

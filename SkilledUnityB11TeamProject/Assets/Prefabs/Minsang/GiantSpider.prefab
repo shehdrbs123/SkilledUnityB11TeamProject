@@ -1224,6 +1224,7 @@ GameObject:
   - component: {fileID: 5665172947889817358}
   - component: {fileID: 145413201149347522}
   - component: {fileID: 2406408682685775517}
+  - component: {fileID: 4140389865800282437}
   m_Layer: 12
   m_Name: GiantSpider
   m_TagString: Untagged
@@ -1321,6 +1322,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
   _nowHP: 0
+--- !u!135 &4140389865800282437
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083465741751176283}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &7125881513623513067
 GameObject:
   m_ObjectHideFlags: 0
