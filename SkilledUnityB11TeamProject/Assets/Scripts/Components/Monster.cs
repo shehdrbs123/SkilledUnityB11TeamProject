@@ -9,7 +9,6 @@ public class Monster : MonoBehaviour
     public MonsterDataSO data;
     [SerializeField] private int _nowHP;        // 인스펙터에서 확인용 직렬화. 추후 제거
     private bool isAlive = true;
-    private bool isInvincible = false;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -25,7 +24,6 @@ public class Monster : MonoBehaviour
     private void OnEnable()
     {
         isAlive = true;
-        isInvincible = false;
         _nowHP = data.hp;
         _meshRenderers.material = data.material;
         _agent.enabled = true;
@@ -48,7 +46,7 @@ public class Monster : MonoBehaviour
     public void Hit(int damage, out bool die)
     {
         die = false;
-        if (isInvincible || !isAlive)
+        if (!isAlive)
             return;
 
         _nowHP -= damage;
@@ -67,7 +65,6 @@ public class Monster : MonoBehaviour
 
     private IEnumerator CoHitAnimation()
     {
-        isInvincible = true;
         _agent.isStopped = true;
 
         _animator.SetTrigger(data.ANIM_HIT);
@@ -75,7 +72,6 @@ public class Monster : MonoBehaviour
 
         yield return data.DELAY_HIT;
 
-        isInvincible = false;
         _agent.isStopped = false;
         _meshRenderers.material.color = Color.white;
     }
@@ -83,7 +79,6 @@ public class Monster : MonoBehaviour
     public IEnumerator CoDie()
     {
         isAlive = false;
-        isInvincible = true;
         _agent.isStopped = true;
         _agent.enabled = false;
 
@@ -108,7 +103,6 @@ public class Monster : MonoBehaviour
     private IEnumerator CoAttack()
     {
         isAlive = false;
-        isInvincible = true;
         _agent.isStopped = true;
 
         _animator.SetTrigger(data.ANIM_ATTACK);
