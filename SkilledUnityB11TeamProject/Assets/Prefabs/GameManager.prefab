@@ -987,7 +987,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4737375067010545425
 Transform:
   m_ObjectHideFlags: 0
@@ -1017,31 +1017,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hunger:
-    type: 0
     curValue: 0
     maxValue: 100
     startValue: 100
     decayRate: 0.5
-    regenRate: 0
     uiBar: {fileID: 0}
   thirsty:
-    type: 1
     curValue: 0
     maxValue: 100
     startValue: 100
     decayRate: 0.5
-    regenRate: 0
     uiBar: {fileID: 0}
   mental:
-    type: 2
     curValue: 0
     maxValue: 100
     startValue: 100
     decayRate: 1
-    regenRate: 0
     uiBar: {fileID: 0}
   battery: 4
-  conditionCanvas: {fileID: 3997307766744055841, guid: 47190d4799b145642a778ce76076a9f9, type: 3}
 --- !u!1 &6227899212420713286
 GameObject:
   m_ObjectHideFlags: 0
