@@ -53,6 +53,8 @@ public class ConditionManager : MonoBehaviour
     [Header("Life")]
     public int battery;
 
+    [SerializeField] private GameObject conditionCanvas;
+
     private List<GameObject> batteries = new List<GameObject>();
 
     private void Start()
@@ -69,6 +71,8 @@ public class ConditionManager : MonoBehaviour
             obj.SetActive(true);
             batteries.Add(obj);
         }
+
+        Instantiate(conditionCanvas);
     }
 
     private void Update()

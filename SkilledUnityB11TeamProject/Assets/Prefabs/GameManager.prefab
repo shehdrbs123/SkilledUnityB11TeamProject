@@ -811,7 +811,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave: {fileID: 11400000, guid: 504cd99e9046f8c458b85cc03eab823e, type: 2}
-  spawnDelay: 3
 --- !u!1 &5787759454351100960
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +876,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   _craftManager: {fileID: 2573090573708900339}
   _conditionManager: {fileID: 8880458777087184934}
+  ResourceDisplayUI: {fileID: 0}
 --- !u!1 &5838510771337718052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1041,7 @@ MonoBehaviour:
     regenRate: 0
     uiBar: {fileID: 0}
   battery: 4
+  conditionCanvas: {fileID: 3997307766744055841, guid: 47190d4799b145642a778ce76076a9f9, type: 3}
 --- !u!1 &6227899212420713286
 GameObject:
   m_ObjectHideFlags: 0
