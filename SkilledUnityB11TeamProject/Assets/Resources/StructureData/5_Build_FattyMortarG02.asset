@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 660f0459178306243b4944bfcf008a0a, type: 3}
-  m_Name: Build_FattyMortarG02
+  m_Name: 5_Build_FattyMortarG02
   m_EditorClassIdentifier: 
   Image: {fileID: 21300000, guid: 378a58c9cf66abf49b23454185d0eaae, type: 3}
   StructurePrefab: {fileID: 1591110490357510, guid: d4af3966dba2cd746ab019083640eb8c, type: 3}

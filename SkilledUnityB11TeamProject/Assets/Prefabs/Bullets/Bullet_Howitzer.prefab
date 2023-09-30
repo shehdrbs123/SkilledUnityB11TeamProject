@@ -4936,7 +4936,7 @@ GameObject:
   - component: {fileID: 54987683344845492}
   - component: {fileID: 7090893386756214315}
   m_Layer: 0
-  m_Name: Bullet_Test
+  m_Name: Bullet_Howitzer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

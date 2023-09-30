@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 
 [CreateAssetMenu(fileName = "TurretData", menuName = "Scriptable/TurretData")]
+[Serializable]
 public class TurretDataSO : ScriptableObject
 {
-    [FormerlySerializedAs("range")] public float halfRadius;
+    public float halfRadius;
     public int Damage;
     public float attackRate;
     public AudioClip[] _moveSound;
