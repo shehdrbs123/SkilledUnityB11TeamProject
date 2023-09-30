@@ -6,7 +6,6 @@ public class EquipTool : Equip
 {
 	public float useStamina;
 	public float attackRate;
-	private bool attacking;
 	public float attackDistance;
 	
 	[Header("Resource Gathering")]
@@ -16,8 +15,13 @@ public class EquipTool : Equip
 	public bool doesDealDamage;
 	public int damage;
 
+	[SerializeField]private AudioClip[] swingSound;
+	[SerializeField]private AudioClip[] HitSound;
+	
 	private Animator animator;
 	private Camera _cam;
+	private bool attacking;
+	private bool isHit;
 
 	protected virtual void Awake()
 	{
@@ -42,10 +46,10 @@ public class EquipTool : Equip
 
 	public void OnHit()
 	{
-		
 		Ray ray = _cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-		
-		if (Physics.Raycast(ray, out RaycastHit hit, attackDistance))
+
+		isHit = Physics.Raycast(ray, out RaycastHit hit, attackDistance);
+		if (isHit)
 		{
 			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource) )
 			{
@@ -61,4 +65,17 @@ public class EquipTool : Equip
 		}
 	}
 
+	public void PlaySound()
+	{
+		if (isHit)
+		{
+			int rand = Random.Range(0, HitSound.Length);
+			SoundManager.PlayClip(HitSound[rand],transform.position);
+		}
+		else
+		{
+			int rand = Random.Range(0, swingSound.Length);
+			SoundManager.PlayClip(swingSound[rand],transform.position);
+		}
+	}
 }

@@ -18,21 +18,30 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float xRotMin;
     [SerializeField] private Transform _cameras;
     [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private AudioClip[] footStep;
     private InputController _controller;
     private Rigidbody _rigid;
+    private Animator _animator;
 
     public float camCurXRot;
     private Vector3 _curdirection;
     private Vector2 mouseDelta;
+    private int currentFootStepidx;
+    private int isMoveHash;
+    private int isJumpHash;
+    public int AnimatorDump;
     private void Awake()
     {
         _controller = GetComponent<InputController>();
         _rigid = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
         Camera cam = Camera.main;
         
         cam.transform.SetParent(_cameras,false);
         cam.transform.localPosition = Vector3.zero;
-       
+
+        isJumpHash = Animator.StringToHash("IsJump");
+        isMoveHash = Animator.StringToHash("IsWalk");
     }
 
     private void FixedUpdate()
@@ -62,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         transform.eulerAngles += new Vector3(0, mouseDelta.x * LookSensitivity, 0);
         //mouseDelta = Vector3.zero;
     }
-
+        
 
 
     public bool isCanLook()
@@ -84,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
         dir.y = _rigid.velocity.y;
 
         _rigid.velocity = dir;
+        _animator.SetBool(isMoveHash,_rigid.velocity.sqrMagnitude > 1.0f);
     }
 
     private void OnMoveInput(Vector2 direction)
@@ -120,5 +130,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void PlayFootStep()
+    {
+        SoundManager.PlayClip(footStep[currentFootStepidx],transform.position);
+        currentFootStepidx = (currentFootStepidx + 1) % footStep.Length;
     }
 }

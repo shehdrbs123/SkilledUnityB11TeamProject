@@ -10,5 +10,6 @@ public class TurretDataSO : ScriptableObject
     [FormerlySerializedAs("range")] public float halfRadius;
     public int Damage;
     public float attackRate;
-
+    public AudioClip[] _moveSound;
+    public AudioClip[] _shotSound;
 }

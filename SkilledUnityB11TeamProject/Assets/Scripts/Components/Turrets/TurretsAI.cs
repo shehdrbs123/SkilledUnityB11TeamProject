@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
+
 [RequireComponent(typeof(Rigidbody))]
 public class TurretsAI : TurretAIBase
 {
-    [SerializeField] private AudioClip _hitSound;
     protected override void OperateAttack()
     {
         var mon = _enemys[0].GetComponent<Monster>();
@@ -16,8 +17,8 @@ public class TurretsAI : TurretAIBase
             _currentAttackWait = 0;
             _animator.SetTrigger(_attackAniHash);
             Array.ForEach(_paricles,(x)=>x.Play());
-            SoundManager.PlayClip(_shotSound,transform.position);
-            SoundManager.PlayClip(_hitSound,mon.transform.position);
+            int SoundIdx = Random.Range(0, _data._shotSound.Length);
+            SoundManager.PlayClip( _data._shotSound[SoundIdx],transform.position);
             if (isDie)
                 _enemys.Remove(mon.gameObject);   
         }
