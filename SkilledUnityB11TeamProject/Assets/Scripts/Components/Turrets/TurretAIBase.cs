@@ -10,14 +10,14 @@ public abstract class TurretAIBase : MonoBehaviour
     [SerializeField] protected TurretDataSO _data;
     [SerializeField] private GameObject _rangeObject;
     [SerializeField] protected ParticleSystem[] _paricles;
-    [SerializeField]private float _rotateSpeed;
+    [SerializeField] protected float _rotateSpeed = 0;
     protected Animator _animator;
     protected List<GameObject> _enemys;
     protected float _currentAttackWait;
     protected int _attackAniHash;
     
     private SphereCollider _rangeCols;
-    private RangeDraw _rangeRenderer;
+    public RangeDraw RangeRenderer { get; private set; }
 
    
 
@@ -26,12 +26,12 @@ public abstract class TurretAIBase : MonoBehaviour
         _enemys = new List<GameObject>();
         _animator = GetComponentInChildren<Animator>();
         _rangeCols = _rangeObject.GetComponent<SphereCollider>();
-        _rangeRenderer = _rangeObject.GetComponentInChildren<RangeDraw>();
+        RangeRenderer = _rangeObject.GetComponentInChildren<RangeDraw>();
 
         _rangeCols.radius = _data.halfRadius;
-        _rangeRenderer.radius = _data.halfRadius;
+        RangeRenderer.radius = _data.halfRadius;
         _attackAniHash = Animator.StringToHash("IsAttack");
-        _rotateSpeed = Random.Range(0.5f, 1f);
+        if(_rotateSpeed == 0 ) _rotateSpeed = Random.Range(0.5f, 1f);
     }
 
     protected virtual void Update()
@@ -42,7 +42,7 @@ public abstract class TurretAIBase : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        _rangeRenderer.gameObject.SetActive(true);
+        RangeRenderer.gameObject.SetActive(true);
         enabled = false;
     }
 
@@ -54,8 +54,8 @@ public abstract class TurretAIBase : MonoBehaviour
             LookAtEnemy();
             if (_currentAttackWait >= _data.attackRate)
             {
-                _currentAttackWait = 0;
-                OperateAttack();
+                if (OperateAttack())
+                    _currentAttackWait = 0;
             }
         }
         else
@@ -69,7 +69,7 @@ public abstract class TurretAIBase : MonoBehaviour
         _head.transform.Rotate(0f,_rotateSpeed,0f);
     }
 
-    protected abstract void OperateAttack();
+    protected abstract bool OperateAttack();
 
     protected abstract void LookAtEnemy();
     

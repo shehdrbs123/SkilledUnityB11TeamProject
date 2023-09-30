@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -14,8 +15,9 @@ public class TurretThrowerAI : TurretAIBase
     [SerializeField] private float _ToleranceBarrelAngle;
     [SerializeField] private float _ToleranceHeadAngle;
     [SerializeField] private float _barrelRotateSpeed;
-    [SerializeField] private float _headRotateSpeed;
-
+    [SerializeField] private bool isLineDraw;
+    
+    
     [Header("발사 오브젝트")] [SerializeField] private PoolType bulletType;
     private PrefabManager _prefabManager;
     private float _bulletSpeed;
@@ -24,6 +26,7 @@ public class TurretThrowerAI : TurretAIBase
 
     private Vector3 _targetDistance;
     private Vector3 _sightAlign;
+    private LineRenderer _bulletMoveLine;
     private void Start()
     {
         float re = _data.halfRadius - _shotPos.position.y * 1.45f;
@@ -31,33 +34,41 @@ public class TurretThrowerAI : TurretAIBase
         _totalTime = re / 9.8f;
         _positionCount = Mathf.CeilToInt(_totalTime / Time.fixedDeltaTime);
         _prefabManager = GameManager.Instance.prefabManager;
+        _bulletMoveLine = GetComponent<LineRenderer>();
+        _bulletMoveLine.positionCount = _positionCount;
     }
-    // 이건 아까워서 남깁니다... 포물선 그려주는 부분.....(안써도 되긴하지만)
-// #if UNITY_EDITOR
-//     protected override void FixedUpdate()
-//     {
-//         base.FixedUpdate();
-//         
-//         for (int i = 0; i < _positionCount; ++i)
-//         {
-//             float angle = (360-_barrel.eulerAngles.x) * Mathf.Deg2Rad;
-//             float deltaTime = i * Time.fixedDeltaTime;
-//             float x = _bulletSpeed * Mathf.Cos(angle) * deltaTime;
-//             float y = _bulletSpeed * Mathf.Sin(angle) * deltaTime - (0.5f * 9.8f * deltaTime * deltaTime);
-//             
-//             Vector3 distance = _head.forward * x;
-//             
-//             _bulletMoveLine.SetPosition(i,new Vector3(distance.x,y,distance.z)+_shotPos.transform.position);
-//         }
-//     }
-// #endif
-    protected override void OperateAttack()
+    //이건 아까워서 남깁니다... 포물선 그려주는 부분.....(안써도 되긴하지만)
+#if UNITY_EDITOR
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        if (isLineDraw)
+        {
+            for (int i = 0; i < _positionCount; ++i)
+            {
+                float angle = (360-_barrel.eulerAngles.x) * Mathf.Deg2Rad;
+                float deltaTime = i * Time.fixedDeltaTime;
+                float x = _bulletSpeed * Mathf.Cos(angle) * deltaTime;
+                float y = _bulletSpeed * Mathf.Sin(angle) * deltaTime - (0.5f * 9.8f * deltaTime * deltaTime);
+            
+                Vector3 distance = _head.forward * x;
+            
+                _bulletMoveLine.SetPosition(i,new Vector3(distance.x,y,distance.z)+_shotPos.transform.position);
+            }
+        }
+        
+    }
+#endif
+    protected override bool OperateAttack()
     {
         if (isShotOk())
         {
             Shoot();
             _animator.SetTrigger(_attackAniHash);
+            return true;
         }
+
+        return false;
     }
 
     private void Shoot()
@@ -78,13 +89,12 @@ public class TurretThrowerAI : TurretAIBase
        _targetDistance = _enemys[0].transform.position - _head.position; 
        _targetDistance = new Vector3(_targetDistance.x, 0, _targetDistance.z);
        RotateBody();
-       if(_barrel)
-        SightAlign();
+       SightAlign();
     }
 
     private void RotateBody()
     {
-        _head.transform.rotation = Quaternion.RotateTowards(_head.rotation, Quaternion.LookRotation(_targetDistance), _headRotateSpeed);
+        _head.transform.rotation = Quaternion.RotateTowards(_head.rotation, Quaternion.LookRotation(_targetDistance), _rotateSpeed);
     }
 
     private void SightAlign()
@@ -105,8 +115,6 @@ public class TurretThrowerAI : TurretAIBase
         if (LookAngle > _ToleranceHeadAngle)
             return false;
         
-        if (!_barrel)
-            return true;
         
         float sightAngle = _sightAlign.x;
         float barrelAngle = _barrel.eulerAngles.x;

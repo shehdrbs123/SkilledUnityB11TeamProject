@@ -6,10 +6,10 @@ using Random = UnityEngine.Random;
 
 public class Bullets : MonoBehaviour
 {
-    [SerializeField] private BulletDataSO _bulletData;
+    [SerializeField] protected BulletDataSO _bulletData;
 
 
-    private PrefabManager _prefabManager;
+    protected PrefabManager _prefabManager;
     
     private void Start()
     {
@@ -20,10 +20,11 @@ public class Bullets : MonoBehaviour
     {
         PlayDestroyParticle();
         Explosion();
+        PlaySound();
         gameObject.SetActive(false);
     }
 
-    private void Explosion()
+    protected virtual void Explosion()
     {
         Collider[] recognizedMonster = Physics.OverlapSphere(transform.position, _bulletData.explosionRadius, _bulletData.targetLayerMask);
 
@@ -34,6 +35,10 @@ public class Bullets : MonoBehaviour
             Monster monster = recognizedMonster[i].gameObject.GetComponent<Monster>();
             monster.Hit((int)(damageRate * _bulletData.damage),out bool isDie);
         }
+    }
+
+    protected void PlaySound()
+    {
         int random = Random.Range(0,_bulletData.HitSound.Length);
         SoundManager.PlayClip(_bulletData.HitSound[random],transform.position);
     }
