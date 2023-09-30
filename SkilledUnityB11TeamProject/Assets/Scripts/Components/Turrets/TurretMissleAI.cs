@@ -27,9 +27,10 @@ public class TurretMissleAI : TurretAIBase
         _prefabManager = GameManager.Instance.prefabManager;
     }
 
-    protected override void OperateAttack()
+    protected override bool OperateAttack()
     {
         StartCoroutine(ShootMissle());
+        return true;
     }
 
     private IEnumerator ShootMissle()

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   halfRadius: 20
   Damage: 1
-  attackRate: 3
+  attackRate: 10
   _moveSound: []
   _shotSound:
   - {fileID: 8300000, guid: 24252664d1f41c140864d611ea092c18, type: 3}

@@ -60,7 +60,6 @@ public class BuildManager : GridPanelManager
           GameObject buildObj = Instantiate(data.StructurePrefab);
           Collider buildObjCollider = buildObj.GetComponent<Collider>();
           MeshRenderer[] buildMeshRenderer = buildObj.GetComponentsInChildren<MeshRenderer>();//음영 바꾸기 위해서
-          LineRenderer lineRenderer = buildObj.GetComponentInChildren<LineRenderer>();
           Material defaultMateral = buildMeshRenderer[0].material;
           TurretAIBase buildObjAIBase = buildObj.GetComponent<TurretAIBase>();
 
@@ -89,7 +88,7 @@ public class BuildManager : GridPanelManager
                               buildObj.layer = LayerMask.NameToLayer("Structure");
                               buildObj.SetActive(true);
                               
-                              lineRenderer.gameObject.SetActive(false);
+                              buildObjAIBase.RangeRenderer.gameObject.SetActive(false);
                               SoundManager.PlayClip(buildSound,buildObj.transform.position);
                               
                               buildObjAIBase.enabled = true;
