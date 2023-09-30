@@ -183,10 +183,12 @@ public class Inventory : MonoBehaviour
 			{
 				switch (selectedItem.item.consumables[i].type)
 				{
-					case ConsumableType.Thirsty:
+					case ConsumableType.Hunger:
+						GameManager.Instance._conditionManager.hunger.Change(selectedItem.item.consumables[i].value);
 						//condition.Heal(selectedItem.item.consumables[i].value); 
 						break;
-					case ConsumableType.Hunger:
+					case ConsumableType.Thirsty:
+						GameManager.Instance._conditionManager.thirsty.Change(selectedItem.item.consumables[i].value);
 						//condition.Eat(selectedItem.item.consumables[i].value);
 						break;
 				}
