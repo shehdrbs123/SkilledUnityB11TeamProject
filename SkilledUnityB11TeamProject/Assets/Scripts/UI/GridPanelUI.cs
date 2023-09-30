@@ -16,10 +16,20 @@ public class GridPanelUI : BaseUI
     public GridPanelType PanelType;
     
     [SerializeField] private Transform _contentPanel;
+    [SerializeField] private RectTransform _backPanel;
+
+    [SerializeField] private float EaseInTime;
     
     private string buttonUIName;
     private GridPanelManager manager;
     private List<GridButtonUI> buttons;
+    private Vector3 defaultPosition;
+    private Coroutine EaseInOutCoroutine;
+    protected void Awake()
+    {
+        defaultPosition = _backPanel.anchoredPosition;
+    }
+
     public void Init()
     {
         if (manager == null)
@@ -33,7 +43,7 @@ public class GridPanelUI : BaseUI
                     _uiManager = GameManager.Instance._uiManager;
                 GameObject obj = _uiManager.GetUIClone(buttonUIName);
                 GridButtonUI gridButtonUI = obj.GetComponent<GridButtonUI>();
-                gridButtonUI.Init(manager.GetData(i),_contentPanel, () => gameObject.SetActive(false));
+                gridButtonUI.Init(manager.GetData(i),_contentPanel,EaseOutPanel);
                 buttons.Add(gridButtonUI);
             }
         }
@@ -67,5 +77,20 @@ public class GridPanelUI : BaseUI
                 break;
         }
         
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if(EaseInOutCoroutine!= null)
+            StopCoroutine(EaseInOutCoroutine);
+        EaseInOutCoroutine = StartCoroutine(_uiManager.LerpAdjustRect(_backPanel, 1, 1, EaseInTime));
+    }
+    
+    public void EaseOutPanel()
+    {
+        if(EaseInOutCoroutine!= null)
+            StopCoroutine(EaseInOutCoroutine);
+        EaseInOutCoroutine = StartCoroutine(_uiManager.LerpAdjustRect(_backPanel, 0, 0, EaseInTime,()=> gameObject.SetActive(false)));
     }
 }
