@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DayManager : MonoBehaviour
 {
@@ -31,6 +32,9 @@ public class DayManager : MonoBehaviour
     public AnimationCurve lightingIntensityMultiplier;
     public AnimationCurve reflectionIntensityMultiplier;
 
+    [Header("UI")]
+    public TextMeshProUGUI textDay;
+
     private void Start()
     {
         timeRate = 1.0f / fullDayLength;
@@ -47,6 +51,7 @@ public class DayManager : MonoBehaviour
             moon.gameObject.SetActive(false);
             isNight = false;
             day += 1;
+            textDay.text = day.ToString();
         }
         else if (!isNight && (time <= 0.25f || 0.75f <= time))
         {
