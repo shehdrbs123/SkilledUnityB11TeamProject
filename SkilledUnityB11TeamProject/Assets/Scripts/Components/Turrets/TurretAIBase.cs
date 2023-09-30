@@ -10,6 +10,7 @@ public abstract class TurretAIBase : MonoBehaviour
     [SerializeField] protected TurretDataSO _data;
     [SerializeField] private GameObject _rangeObject;
     [SerializeField] protected ParticleSystem[] _paricles;
+    [SerializeField]private float _rotateSpeed;
     protected Animator _animator;
     protected List<GameObject> _enemys;
     protected float _currentAttackWait;
@@ -18,19 +19,19 @@ public abstract class TurretAIBase : MonoBehaviour
     private SphereCollider _rangeCols;
     private RangeDraw _rangeRenderer;
 
-    private float idleRotateSpeed;
+   
 
     protected virtual void Awake()
     {
         _enemys = new List<GameObject>();
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
         _rangeCols = _rangeObject.GetComponent<SphereCollider>();
         _rangeRenderer = _rangeObject.GetComponentInChildren<RangeDraw>();
 
         _rangeCols.radius = _data.halfRadius;
         _rangeRenderer.radius = _data.halfRadius;
         _attackAniHash = Animator.StringToHash("IsAttack");
-        idleRotateSpeed = Random.Range(0.5f, 1f);
+        _rotateSpeed = Random.Range(0.5f, 1f);
     }
 
     protected virtual void Update()
@@ -65,7 +66,7 @@ public abstract class TurretAIBase : MonoBehaviour
 
     protected virtual void RotateIdle()
     {
-        _head.transform.Rotate(0f,idleRotateSpeed,0f);
+        _head.transform.Rotate(0f,_rotateSpeed,0f);
     }
 
     protected abstract void OperateAttack();

@@ -6,14 +6,17 @@ using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
-public class TurretHowitzerAI : TurretAIBase
+public class TurretThrowerAI : TurretAIBase
 {
     [Header("조정 장치")]
     [SerializeField] private Transform _shotPos;
     [SerializeField] private Transform _barrel;
     [SerializeField] private float _ToleranceBarrelAngle;
-    [SerializeField] private float _ToleranceLookDirectionAngle;
+    [SerializeField] private float _ToleranceHeadAngle;
+    [SerializeField] private float _barrelRotateSpeed;
+    [SerializeField] private float _headRotateSpeed;
 
+    [Header("발사 오브젝트")] [SerializeField] private PoolType bulletType;
     private PrefabManager _prefabManager;
     private float _bulletSpeed;
     private float _totalTime;
@@ -59,8 +62,8 @@ public class TurretHowitzerAI : TurretAIBase
 
     private void Shoot()
     {
-        GameObject bullet = _prefabManager.SpawnFromPool(PoolType.HowitzerBullet);
-        bullet.transform.SetPositionAndRotation(-_shotPos.position,transform.rotation);
+        GameObject bullet = _prefabManager.SpawnFromPool(bulletType);
+        bullet.transform.SetPositionAndRotation(_shotPos.position,transform.rotation);
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody>().AddForce(_shotPos.forward*_bulletSpeed,ForceMode.VelocityChange);
         
@@ -75,12 +78,13 @@ public class TurretHowitzerAI : TurretAIBase
        _targetDistance = _enemys[0].transform.position - _head.position; 
        _targetDistance = new Vector3(_targetDistance.x, 0, _targetDistance.z);
        RotateBody();
-       SightAlign();
+       if(_barrel)
+        SightAlign();
     }
 
     private void RotateBody()
     {
-        _head.transform.rotation = Quaternion.RotateTowards(_head.rotation, Quaternion.LookRotation(_targetDistance), 0.5f);
+        _head.transform.rotation = Quaternion.RotateTowards(_head.rotation, Quaternion.LookRotation(_targetDistance), _headRotateSpeed);
     }
 
     private void SightAlign()
@@ -89,7 +93,7 @@ public class TurretHowitzerAI : TurretAIBase
         float cos = distanceLength / (_bulletSpeed * _totalTime);
         float angle = Mathf.Acos(cos)*Mathf.Rad2Deg;
         _sightAlign = new Vector3(-angle, _barrel.eulerAngles.y, _barrel.eulerAngles.z);
-        _barrel.transform.rotation = Quaternion.RotateTowards(_barrel.rotation, Quaternion.Euler(_sightAlign), 0.5f);
+        _barrel.transform.rotation = Quaternion.RotateTowards(_barrel.rotation, Quaternion.Euler(_sightAlign), _barrelRotateSpeed);
     }
 
     private bool isShotOk()
@@ -98,9 +102,12 @@ public class TurretHowitzerAI : TurretAIBase
         Vector3 forward = new Vector3(_head.forward.x, 0, _head.forward.z);
         float LookisCorrect = Vector3.Dot(forward, targetDirection);
         float LookAngle = Mathf.Acos(LookisCorrect) * Mathf.Rad2Deg;
-        if (LookAngle > _ToleranceLookDirectionAngle)
+        if (LookAngle > _ToleranceHeadAngle)
             return false;
-
+        
+        if (!_barrel)
+            return true;
+        
         float sightAngle = _sightAlign.x;
         float barrelAngle = _barrel.eulerAngles.x;
         if (360 + sightAngle - barrelAngle > _ToleranceBarrelAngle)

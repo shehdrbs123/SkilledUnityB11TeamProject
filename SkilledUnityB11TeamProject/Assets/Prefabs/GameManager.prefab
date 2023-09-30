@@ -1209,7 +1209,7 @@ MonoBehaviour:
   day: 1
   time: 0
   isNight: 0
-  fullDayLength: 600
+  fullDayLength: 60
   startTime: 0.25
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 4847192849733666866}
@@ -3014,13 +3014,17 @@ MonoBehaviour:
     holder: {fileID: 5928375829629103376}
   - type: 3
     prefab: {fileID: 1868602337266200, guid: 66076b9f3c93c3345aa2c03ad68a61bd, type: 3}
-    count: 4
+    count: 100
     holder: {fileID: 6212256940934274627}
   - type: 4
     prefab: {fileID: 1986743744459060, guid: 7754694804560c04f9e64434760d5b4d, type: 3}
-    count: 10
+    count: 100
     holder: {fileID: 6212256940934274627}
   - type: 5
     prefab: {fileID: 1773485284122676, guid: 3315c9fe87048c144b91aba541406ac8, type: 3}
-    count: 10
+    count: 100
+    holder: {fileID: 6212256940934274627}
+  - type: 6
+    prefab: {fileID: 1986743744459060, guid: 68a2675a0f9efbe41b9b5dfe0b764229, type: 3}
+    count: 100
     holder: {fileID: 6212256940934274627}

@@ -3,7 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Follower : MonoBehaviour
 {
-    private float degreeDelta=0.5f;
+    //[SerializeField] private float degreeDelta=0.5f;
+    [SerializeField] private float adjustDirectionForce = 7f;
     private Transform target;
     private Rigidbody _rigidBody;
 
@@ -20,10 +21,15 @@ public class Follower : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!target)
+        if (!target.gameObject.activeSelf)
             gameObject.SetActive(false);
         Vector3 distance = target.position - transform.position;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.LookRotation(distance),degreeDelta);
-        _rigidBody.AddForce(distance.normalized);
+        if (_rigidBody.velocity != Vector3.zero) 
+            transform.rotation =  Quaternion.LookRotation(_rigidBody.velocity);
+        
+        Vector3 targetDirection = distance.normalized;
+        float dot = Vector3.Dot(targetDirection, _rigidBody.velocity.normalized);
+        
+        _rigidBody.AddForce(targetDirection*adjustDirectionForce);
     }
 }

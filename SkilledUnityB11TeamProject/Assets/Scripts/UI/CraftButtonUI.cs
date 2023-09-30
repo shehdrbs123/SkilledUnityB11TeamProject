@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CrattButtonUI : GridButtonUI
+public class CraftButtonUI : GridButtonUI
 {
     public CraftDataSO DataSo
     {
