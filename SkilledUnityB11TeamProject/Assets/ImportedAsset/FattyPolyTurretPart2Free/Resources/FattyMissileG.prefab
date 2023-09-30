@@ -5060,6 +5060,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   turreyHead: {fileID: 4894621298927726}
   attackDist: 7.5
   attackDamage: 20

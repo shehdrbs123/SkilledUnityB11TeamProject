@@ -13,12 +13,8 @@ public class TurretHowitzerAI : TurretAIBase
     [SerializeField] private Transform _barrel;
     [SerializeField] private float _ToleranceBarrelAngle;
     [SerializeField] private float _ToleranceLookDirectionAngle;
-    
-    [Header("bullet")]
-    [SerializeField] private GameObject _bulletObject;
-    //[SerializeField] private LineRenderer _bulletMoveLine;
-    
-    
+
+    private PrefabManager _prefabManager;
     private float _bulletSpeed;
     private float _totalTime;
     private int _positionCount;
@@ -31,8 +27,9 @@ public class TurretHowitzerAI : TurretAIBase
         _bulletSpeed = Mathf.Sqrt(re * 9.8f) ;
         _totalTime = re / 9.8f;
         _positionCount = Mathf.CeilToInt(_totalTime / Time.fixedDeltaTime);
-        //_bulletMoveLine.positionCount = _positionCount;
+        _prefabManager = GameManager.Instance.prefabManager;
     }
+    // 이건 아까워서 남깁니다... 포물선 그려주는 부분.....(안써도 되긴하지만)
 // #if UNITY_EDITOR
 //     protected override void FixedUpdate()
 //     {
@@ -62,7 +59,9 @@ public class TurretHowitzerAI : TurretAIBase
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(_bulletObject, _shotPos.position, _shotPos.rotation);
+        GameObject bullet = _prefabManager.SpawnFromPool(PoolType.HowitzerBullet);
+        bullet.transform.SetPositionAndRotation(-_shotPos.position,transform.rotation);
+        bullet.SetActive(true);
         bullet.GetComponent<Rigidbody>().AddForce(_shotPos.forward*_bulletSpeed,ForceMode.VelocityChange);
         
         int SoundIdx = Random.Range(0, _data._shotSound.Length);
@@ -88,7 +87,7 @@ public class TurretHowitzerAI : TurretAIBase
     {
         float distanceLength = _targetDistance.magnitude;
         float cos = distanceLength / (_bulletSpeed * _totalTime);
-        float angle = Mathf.Acos(cos)*Mathf.Rad2Deg; 
+        float angle = Mathf.Acos(cos)*Mathf.Rad2Deg;
         _sightAlign = new Vector3(-angle, _barrel.eulerAngles.y, _barrel.eulerAngles.z);
         _barrel.transform.rotation = Quaternion.RotateTowards(_barrel.rotation, Quaternion.Euler(_sightAlign), 0.5f);
     }

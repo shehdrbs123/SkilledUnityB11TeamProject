@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]private AudioClip OpenUISound;
+    [SerializeField]private AudioClip CloseUISound;
     private Dictionary<string, GameObject> _uiPrefabs;
     private Dictionary<string, GameObject> _uiInstances;
     private HashSet<GameObject> _uiCounter;
@@ -71,6 +73,7 @@ public class UIManager : MonoBehaviour
         if (_uiCounter == null)
             _uiCounter = new HashSet<GameObject>();
         _uiCounter.Add(o);
+        SoundManager.PlayClip(OpenUISound,GameManager.Instance.GetPlayer().transform.position);
         CheckInputAction();
     }
 
@@ -82,6 +85,7 @@ public class UIManager : MonoBehaviour
     public void RemoveUICount(GameObject o)
     {
         _uiCounter.Remove(o);
+        SoundManager.PlayClip(CloseUISound,GameManager.Instance.GetPlayer().transform.position);
         CheckInputAction();
     }
 

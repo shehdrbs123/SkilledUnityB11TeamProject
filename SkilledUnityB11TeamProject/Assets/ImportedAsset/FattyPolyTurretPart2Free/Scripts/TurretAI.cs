@@ -12,6 +12,7 @@ public class TurretAI : MonoBehaviour {
     }
     
     public GameObject currentTarget;
+    [SerializeField] private LayerMask targetLayer;
     public Transform turreyHead;
 
     public float attackDist = 10.0f;
@@ -32,7 +33,8 @@ public class TurretAI : MonoBehaviour {
     public GameObject muzzleEff;
     public GameObject bullet;
     private bool shootLeft = true;
-
+    
+    
     private Transform lockOnPos;
 
     //public TurretShoot_Base shotScript;
@@ -87,19 +89,16 @@ public class TurretAI : MonoBehaviour {
 
     private void ChackForTarget()
     {
-        Collider[] colls = Physics.OverlapSphere(transform.position, attackDist);
+        Collider[] colls = Physics.OverlapSphere(transform.position, attackDist,targetLayer);
         float distAway = Mathf.Infinity;
 
         for (int i = 0; i < colls.Length; i++)
         {
-            if (colls[i].tag == "Player")
+            float dist = Vector3.Distance(transform.position, colls[i].transform.position);
+            if (dist < distAway)
             {
-                float dist = Vector3.Distance(transform.position, colls[i].transform.position);
-                if (dist < distAway)
-                {
-                    currentTarget = colls[i].gameObject;
-                    distAway = dist;
-                }
+                currentTarget = colls[i].gameObject;
+                distAway = dist;
             }
         }
     }

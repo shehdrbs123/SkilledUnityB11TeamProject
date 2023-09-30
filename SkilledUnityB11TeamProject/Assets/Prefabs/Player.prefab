@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4644284508036538926}
   - component: {fileID: 2087127548208353028}
   - component: {fileID: 5158008004480487518}
+  - component: {fileID: 3684283481203361479}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -248,9 +249,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   footStep:
-  - {fileID: 8300000, guid: ea9bfaa7427583843b18f61ae71155af, type: 3}
-  - {fileID: 8300000, guid: 2ad21e4c549e3514f8359c6c01599345, type: 3}
+  - {fileID: 8300000, guid: 5461cae585b64f64089805f0d313bc84, type: 3}
+  - {fileID: 8300000, guid: 2b3fc7e56f2686b48b9445e48c7db2c9, type: 3}
+  - {fileID: 8300000, guid: 87d51f07abec0584d805bbe3708a7c71, type: 3}
+  - {fileID: 8300000, guid: 9f96c8d3fef6ab440bdc9bd4ad3d08fe, type: 3}
   camCurXRot: 0
+  AnimatorDump: 0
 --- !u!136 &6230169843117336098
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -361,6 +365,14 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!81 &3684283481203361479
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535354602150600775}
+  m_Enabled: 1
 --- !u!1 &1127100446724483040
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +963,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6497518313772578076}
   - component: {fileID: 290960968918209494}
-  - component: {fileID: 3450659859437719209}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1005,7 +1016,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -1025,14 +1036,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3450659859437719209
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4464187917538066811}
-  m_Enabled: 1
 --- !u!1 &4977110874951638922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,7 +1404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ae8e2d441e0a8dc44a072e76ab57cbed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1fac5a323f4c1fd46ad5c2ad0b8e0f74, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

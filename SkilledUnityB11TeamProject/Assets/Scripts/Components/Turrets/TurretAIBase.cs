@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public abstract class TurretAIBase : MonoBehaviour
 {
@@ -17,7 +18,9 @@ public abstract class TurretAIBase : MonoBehaviour
     private SphereCollider _rangeCols;
     private RangeDraw _rangeRenderer;
 
-    private void Awake()
+    private float idleRotateSpeed;
+
+    protected virtual void Awake()
     {
         _enemys = new List<GameObject>();
         _animator = GetComponent<Animator>();
@@ -27,6 +30,7 @@ public abstract class TurretAIBase : MonoBehaviour
         _rangeCols.radius = _data.halfRadius;
         _rangeRenderer.radius = _data.halfRadius;
         _attackAniHash = Animator.StringToHash("IsAttack");
+        idleRotateSpeed = Random.Range(0.5f, 1f);
     }
 
     protected virtual void Update()
@@ -53,11 +57,22 @@ public abstract class TurretAIBase : MonoBehaviour
                 OperateAttack();
             }
         }
+        else
+        {
+            RotateIdle();
+        }
+    }
+
+    protected virtual void RotateIdle()
+    {
+        _head.transform.Rotate(0f,idleRotateSpeed,0f);
     }
 
     protected abstract void OperateAttack();
 
     protected abstract void LookAtEnemy();
+    
+    
 
     private void CheckDie()
     {
