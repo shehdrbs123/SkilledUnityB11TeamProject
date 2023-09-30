@@ -18,21 +18,33 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float xRotMin;
     [SerializeField] private Transform _cameras;
     [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private AudioClip[] footStep;
     private InputController _controller;
     private Rigidbody _rigid;
+    private Animator _animator;
 
     public float camCurXRot;
     private Vector3 _curdirection;
     private Vector2 mouseDelta;
+    private int currentFootStepidx;
+    private int isMoveHash;
+    private int isJumpHash;
+
+    private bool isJump;
+        
+    public int AnimatorDump;
     private void Awake()
     {
         _controller = GetComponent<InputController>();
         _rigid = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
         Camera cam = Camera.main;
         
         cam.transform.SetParent(_cameras,false);
         cam.transform.localPosition = Vector3.zero;
-       
+
+        isJumpHash = Animator.StringToHash("IsJump");
+        isMoveHash = Animator.StringToHash("IsWalk");
     }
 
     private void FixedUpdate()
@@ -41,6 +53,17 @@ public class PlayerMovement : MonoBehaviour
         {
             Move();
         }
+
+        if (isJump && isGrounded())
+        {
+            isJump = false;
+            _animator.SetBool(isJumpHash,false);
+        }
+    }
+
+    private void SetJump()
+    {
+        isJump = true;
     }
 
     private void LateUpdate()
@@ -62,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         transform.eulerAngles += new Vector3(0, mouseDelta.x * LookSensitivity, 0);
         //mouseDelta = Vector3.zero;
     }
-
+        
 
 
     public bool isCanLook()
@@ -84,6 +107,8 @@ public class PlayerMovement : MonoBehaviour
         dir.y = _rigid.velocity.y;
 
         _rigid.velocity = dir;
+        Vector3 planeSpeed = new Vector3(_rigid.velocity.x, 0, _rigid.velocity.z);
+        _animator.SetBool(isMoveHash,planeSpeed.sqrMagnitude > 1.0f);
     }
 
     private void OnMoveInput(Vector2 direction)
@@ -93,8 +118,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJumpInput()
     {
-        if(isGrounded())
+        if (isGrounded())
+        {
             _rigid.AddForce(Vector3.up * JumpForce,ForceMode.Impulse);
+            Invoke("SetJump",0.1f);
+            _animator.SetBool(isJumpHash,true);
+        }
     }
 
     private void OnLookInput(Vector2 mouseDelta)
@@ -120,5 +149,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void PlayFootStep()
+    {
+        SoundManager.PlayClip(footStep[currentFootStepidx],transform.position);
+        currentFootStepidx = (currentFootStepidx + 1) % footStep.Length;
     }
 }

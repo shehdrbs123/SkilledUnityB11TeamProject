@@ -12,8 +12,9 @@ public class BuildManager : GridPanelManager
      [SerializeField] private Material CanNotBuildMaterial;
      [SerializeField] private LayerMask BuildLayer;
      [SerializeField] private LayerMask StructureLayer;
-     [FormerlySerializedAs("halfRadius")] [SerializeField] private float canBuildRange;
+     [SerializeField] private float canBuildRange;
      [SerializeField] private float rotateSpeed;
+     [SerializeField]private AudioClip buildSound;
      private BuildDataSO[] buildDatas;
      
      private InputAction _fire1Action;
@@ -21,6 +22,8 @@ public class BuildManager : GridPanelManager
      private InputAction _ScrollAction;
      public bool isBuildMode { get; private set; }
      private Camera _Camera;
+
+     
      private void Awake()
      {
           buildDatas = Resources.LoadAll<BuildDataSO>("StructureData");
@@ -87,7 +90,8 @@ public class BuildManager : GridPanelManager
                               buildObj.SetActive(true);
                               
                               lineRenderer.gameObject.SetActive(false);
-
+                              SoundManager.PlayClip(buildSound,buildObj.transform.position);
+                              
                               buildObjAIBase.enabled = true;
                               OnOperated?.Invoke();
                               isBuildMode = false;

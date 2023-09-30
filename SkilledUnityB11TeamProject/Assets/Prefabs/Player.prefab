@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3810769838847732628}
   - component: {fileID: 4644284508036538926}
   - component: {fileID: 2087127548208353028}
+  - component: {fileID: 5158008004480487518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -246,6 +247,9 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  footStep:
+  - {fileID: 8300000, guid: ea9bfaa7427583843b18f61ae71155af, type: 3}
+  - {fileID: 8300000, guid: 2ad21e4c549e3514f8359c6c01599345, type: 3}
   camCurXRot: 0
 --- !u!136 &6230169843117336098
 CapsuleCollider:
@@ -336,6 +340,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   promptText: {fileID: 3682462369960587259}
+--- !u!95 &5158008004480487518
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535354602150600775}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65a2bc91fd533bc4ea47d9398c465d5c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1127100446724483040
 GameObject:
   m_ObjectHideFlags: 0
