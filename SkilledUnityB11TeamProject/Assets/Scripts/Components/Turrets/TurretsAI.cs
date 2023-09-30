@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(Rigidbody))]
 public class TurretsAI : TurretAIBase
 {
+    [SerializeField] private AudioClip _hitSound;
     protected override void OperateAttack()
     {
         var mon = _enemys[0].GetComponent<Monster>();
@@ -15,6 +16,8 @@ public class TurretsAI : TurretAIBase
             _currentAttackWait = 0;
             _animator.SetTrigger(_attackAniHash);
             Array.ForEach(_paricles,(x)=>x.Play());
+            SoundManager.PlayClip(_shotSound,transform.position);
+            SoundManager.PlayClip(_hitSound,mon.transform.position);
             if (isDie)
                 _enemys.Remove(mon.gameObject);   
         }
