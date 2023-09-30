@@ -78,8 +78,7 @@ public class TurretThrowerAI : TurretAIBase
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody>().AddForce(_shotPos.forward*_bulletSpeed,ForceMode.VelocityChange);
         
-        int SoundIdx = Random.Range(0, _data._shotSound.Length);
-        SoundManager.PlayClip( _data._shotSound[SoundIdx],transform.position);
+        SoundManager.PlayRandomClip( _data._shotSound,transform.position);
         
         Array.ForEach(_paricles,(x) => x.Play());
     }

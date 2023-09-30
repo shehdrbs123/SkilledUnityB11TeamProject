@@ -192,6 +192,7 @@ public class Inventory : MonoBehaviour
 						//condition.Eat(selectedItem.item.consumables[i].value);
 						break;
 				}
+				SoundManager.PlayRandomClip(selectedItem.item.UseAudio,transform.position);
 			}
 		}
 		RemoveSelectedItem();

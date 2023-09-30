@@ -62,4 +62,13 @@ public class SoundManager : MonoBehaviour
             Debug.Log($"{clipName}은 없는 사운드입니다 확인해 주세요");
         }
     }
+
+    public static void PlayRandomClip(AudioClip[] clips, Vector3 position)
+    {
+        if (clips.Length > 0)
+        {
+            int idx = Random.Range(0, clips.Length);
+            PlayClip(clips[idx],position);
+        }
+    }
 }

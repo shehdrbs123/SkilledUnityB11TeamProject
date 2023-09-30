@@ -17,8 +17,8 @@ public class TurretsAI : TurretAIBase
             _currentAttackWait = 0;
             _animator.SetTrigger(_attackAniHash);
             Array.ForEach(_paricles,(x)=>x.Play());
-            int SoundIdx = Random.Range(0, _data._shotSound.Length);
-            SoundManager.PlayClip( _data._shotSound[SoundIdx],transform.position);
+           
+            SoundManager.PlayRandomClip( _data._shotSound,transform.position);
             if (isDie)
                 _enemys.Remove(mon.gameObject);
             return true;

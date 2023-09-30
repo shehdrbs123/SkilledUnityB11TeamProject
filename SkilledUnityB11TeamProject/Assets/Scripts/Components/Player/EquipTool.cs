@@ -69,13 +69,11 @@ public class EquipTool : Equip
 	{
 		if (isHit)
 		{
-			int rand = Random.Range(0, HitSound.Length);
-			SoundManager.PlayClip(HitSound[rand],transform.position);
+			SoundManager.PlayRandomClip(HitSound,transform.position);
 		}
 		else
 		{
-			int rand = Random.Range(0, swingSound.Length);
-			SoundManager.PlayClip(swingSound[rand],transform.position);
+			SoundManager.PlayRandomClip(swingSound,transform.position);
 		}
 	}
 }

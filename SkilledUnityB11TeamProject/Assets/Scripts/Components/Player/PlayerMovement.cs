@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     public float camCurXRot;
     private Vector3 _curdirection;
     private Vector2 mouseDelta;
-    private int currentFootStepidx;
     private int isMoveHash;
     private int isJumpHash;
 
@@ -153,7 +152,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void PlayFootStep()
     {
-        SoundManager.PlayClip(footStep[currentFootStepidx],transform.position);
-        currentFootStepidx = (currentFootStepidx + 1) % footStep.Length;
+        SoundManager.PlayRandomClip(footStep,transform.position);
     }
 }

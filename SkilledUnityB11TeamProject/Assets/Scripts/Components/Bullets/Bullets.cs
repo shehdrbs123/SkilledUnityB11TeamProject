@@ -39,8 +39,7 @@ public class Bullets : MonoBehaviour
 
     protected void PlaySound()
     {
-        int random = Random.Range(0,_bulletData.HitSound.Length);
-        SoundManager.PlayClip(_bulletData.HitSound[random],transform.position);
+        SoundManager.PlayRandomClip(_bulletData.HitSound,transform.position);
     }
 
     private void PlayDestroyParticle()

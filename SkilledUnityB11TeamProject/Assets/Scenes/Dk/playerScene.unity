@@ -12030,26 +12030,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4023538137406617959, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
-      propertyPath: pools.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023538137406617959, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
-      propertyPath: pools.Array.data[7].type
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023538137406617959, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
-      propertyPath: pools.Array.data[7].count
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4023538137406617959, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
-      propertyPath: pools.Array.data[7].holder
-      value: 
-      objectReference: {fileID: 1774160859}
-    - target: {fileID: 4023538137406617959, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
-      propertyPath: pools.Array.data[7].prefab
-      value: 
-      objectReference: {fileID: 1103383695481960837, guid: 60f58e03fa978ec4e8ac3c905c1359a6, type: 3}
     - target: {fileID: 5787759454351100960, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -18517,11 +18497,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770095283}
   m_Mesh: {fileID: 4300000, guid: f3bf6b5a90134a44c9aa28b43b484d59, type: 3}
---- !u!4 &1774160859 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6212256940934274627, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
-  m_PrefabInstance: {fileID: 1223824648}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776714181
 GameObject:
   m_ObjectHideFlags: 0
