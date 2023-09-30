@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Rigidbody))]
 public class TurretsAI : TurretAIBase
 {
-    protected override void OperateAttack()
+    protected override bool OperateAttack()
     {
         var mon = _enemys[0].GetComponent<Monster>();
         if (mon.isAlive)
@@ -20,8 +20,11 @@ public class TurretsAI : TurretAIBase
             int SoundIdx = Random.Range(0, _data._shotSound.Length);
             SoundManager.PlayClip( _data._shotSound[SoundIdx],transform.position);
             if (isDie)
-                _enemys.Remove(mon.gameObject);   
+                _enemys.Remove(mon.gameObject);
+            return true;
         }
+
+        return false;
     }
 
     protected override void LookAtEnemy()

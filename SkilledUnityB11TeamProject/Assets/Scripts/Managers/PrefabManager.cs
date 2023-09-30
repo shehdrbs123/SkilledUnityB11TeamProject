@@ -27,6 +27,8 @@ public enum PoolType
     BangParticle,
     HowitzerBullet,
     MissleBullet,
+    FireBombBullet,
+    DamageRange,
 }
 
 public class PrefabManager : MonoBehaviour
