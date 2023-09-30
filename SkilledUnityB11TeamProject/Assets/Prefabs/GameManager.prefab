@@ -395,6 +395,7 @@ MonoBehaviour:
     m_Bits: 2048
   canBuildRange: 10
   rotateSpeed: 360
+  buildSound: {fileID: 8300000, guid: 37f98f4ba424ee949a6ca15af8625e6c, type: 3}
 --- !u!1 &5203955284755130934
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ public abstract class TurretAIBase : MonoBehaviour
     [SerializeField] protected TurretDataSO _data;
     [SerializeField] private GameObject _rangeObject;
     [SerializeField] protected ParticleSystem[] _paricles;
-
     protected Animator _animator;
     protected List<GameObject> _enemys;
     protected float _currentAttackWait;

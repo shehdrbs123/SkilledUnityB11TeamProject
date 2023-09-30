@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
 public class TurretHowitzerAI : TurretAIBase
@@ -63,6 +64,10 @@ public class TurretHowitzerAI : TurretAIBase
     {
         GameObject bullet = Instantiate(_bulletObject, _shotPos.position, _shotPos.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(_shotPos.forward*_bulletSpeed,ForceMode.VelocityChange);
+        
+        int SoundIdx = Random.Range(0, _data._shotSound.Length);
+        SoundManager.PlayClip( _data._shotSound[SoundIdx],transform.position);
+        
         Array.ForEach(_paricles,(x) => x.Play());
     }
 

@@ -5204,6 +5204,9 @@ MonoBehaviour:
   _paricles:
   - {fileID: 198190432169522098}
   - {fileID: 407879149781027461}
+  _shotSound: {fileID: 8300000, guid: 20433f9c61372da44a2a81fb995af3cd, type: 3}
+  _moveSound: {fileID: 0}
+  _hitSound: {fileID: 0}
 --- !u!54 &5677335046948928441
 Rigidbody:
   m_ObjectHideFlags: 0

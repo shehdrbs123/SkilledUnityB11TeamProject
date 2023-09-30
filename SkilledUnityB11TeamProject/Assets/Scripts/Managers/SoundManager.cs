@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour
 
     public static void PlayClip(AudioClip clip,Vector3 position)
     {
-        GameObject obj = GameManager.Instance._soundManager.prefabManager.SpawnFromPool(PoolType.SFXAudio);
+        GameObject obj = GameManager.Instance.prefabManager.SpawnFromPool(PoolType.SFXAudio);
         obj.SetActive(true);
         obj.transform.position = position;
         obj.GetComponent<SoundSource>().Play(clip, GameManager.Instance._soundManager.soundEffectVolume, GameManager.Instance._soundManager.soundEffectPitchVariance);

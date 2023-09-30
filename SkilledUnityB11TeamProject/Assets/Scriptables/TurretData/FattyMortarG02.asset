@@ -15,3 +15,9 @@ MonoBehaviour:
   halfRadius: 50
   Damage: 40
   attackRate: 5
+  _moveSound: []
+  _shotSound:
+  - {fileID: 8300000, guid: e05ddaf6fbc2abe4db29d4d2a927051f, type: 3}
+  - {fileID: 8300000, guid: 8ce0ab9dbec26f247a3612a9aae23427, type: 3}
+  - {fileID: 8300000, guid: 5eb47c2e5bfc95b4caf44b65964a0522, type: 3}
+  - {fileID: 8300000, guid: 7b900d8866fd9664daed7b95a03058e7, type: 3}
