@@ -17,11 +17,11 @@ public class EquipTool : Equip
 	public int damage;
 
 	private Animator animator;
-	private Camera camera;
+	private Camera _cam;
 
 	protected virtual void Awake()
 	{
-		camera = Camera.main;
+		_cam = Camera.main;
 		animator = GetComponent<Animator>();
 	}
 
@@ -36,17 +36,16 @@ public class EquipTool : Equip
 		{
 			attacking = true;
 			animator.SetTrigger("Attack");
-			Invoke("OnCanAttack", attackRate);
+			Invoke(nameof(OnCanAttack), attackRate);
 		}
 	}
 
 	public void OnHit()
 	{
 		
-		Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-		RaycastHit hit;
+		Ray ray = _cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 		
-		if (Physics.Raycast(ray, out hit, attackDistance))
+		if (Physics.Raycast(ray, out RaycastHit hit, attackDistance))
 		{
 			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource) )
 			{

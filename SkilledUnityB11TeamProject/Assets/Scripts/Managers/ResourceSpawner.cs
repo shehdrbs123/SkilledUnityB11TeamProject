@@ -19,7 +19,7 @@ public class ResourceSpawner : MonoBehaviour
 
     private IEnumerator CoRespawn()
     {
-        yield return new WaitForSeconds(Random.Range(respawnTime, respawnTime + 3f));
+        yield return new WaitForSeconds(respawnTime + Random.Range(0, 5f));
 
         transform.GetChild(0).gameObject.SetActive(true);
     }

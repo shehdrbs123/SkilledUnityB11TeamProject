@@ -11,6 +11,8 @@ public class Resource : MonoBehaviour
 	public ParticleSystem particle;
 	private ResourceSpawner spawner;
 
+	private int nowCapacity;
+
     private void Awake()
     {
 		if (transform.parent.TryGetComponent(out ResourceSpawner sp))
@@ -18,6 +20,11 @@ public class Resource : MonoBehaviour
 			spawner = sp;
 		}
 	}
+
+    private void OnEnable()
+    {
+		nowCapacity = capacity;
+    }
 
     private void OnDisable()
     {
@@ -28,13 +35,14 @@ public class Resource : MonoBehaviour
 	{
 		for (int i = 0; i < quantityPerHit; i++)
 		{
-			if (capacity <= 0) { break; }
-			capacity -= 1;
+			if (nowCapacity <= 0) { break; }
+			nowCapacity -= 1;
 			//Inventory.instance.AddItem(itemToGive);
 			GameManager.Instance.inventory.AddItem(itemToGive);
+			particle.Play();
 		}
 
-		if (capacity <= 0)
+		if (nowCapacity <= 0)
 			gameObject.SetActive(false);
 	}
 }
