@@ -32,11 +32,10 @@ public class Bullets : MonoBehaviour
             Vector3 distance = recognizedMonster[i].transform.position - transform.position;
             float damageRate = distance.magnitude / _bulletData.explosionRadius;
             Monster monster = recognizedMonster[i].gameObject.GetComponent<Monster>();
-            int random = Random.Range(0,_bulletData.HitSound.Length);
-            SoundManager.PlayClip(_bulletData.HitSound[random],transform.position);
-            
             monster.Hit((int)(damageRate * _bulletData.damage),out bool isDie);
         }
+        int random = Random.Range(0,_bulletData.HitSound.Length);
+        SoundManager.PlayClip(_bulletData.HitSound[random],transform.position);
     }
 
     private void PlayDestroyParticle()

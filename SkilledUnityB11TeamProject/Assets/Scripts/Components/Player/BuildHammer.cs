@@ -7,6 +7,7 @@ public class BuildHammer : EquipTool
 {
     private BuildManager _buildManager;
     private UIManager _uiManager;
+    
     protected override void Awake()
     {
         base.Awake();

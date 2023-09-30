@@ -88,7 +88,7 @@ public class TurretHowitzerAI : TurretAIBase
     {
         float distanceLength = _targetDistance.magnitude;
         float cos = distanceLength / (_bulletSpeed * _totalTime);
-        float angle = Mathf.Acos(cos)*Mathf.Rad2Deg; 
+        float angle = Mathf.Acos(cos)*Mathf.Rad2Deg;
         _sightAlign = new Vector3(-angle, _barrel.eulerAngles.y, _barrel.eulerAngles.z);
         _barrel.transform.rotation = Quaternion.RotateTowards(_barrel.rotation, Quaternion.Euler(_sightAlign), 0.5f);
     }
