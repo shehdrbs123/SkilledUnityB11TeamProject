@@ -212,6 +212,7 @@ public class Inventory : MonoBehaviour
 		UpdateUI();
 
 		SelectItem(0);
+		SoundManager.PlayRandomClip(pickaxe.UseAudio,transform.position);
 	}
 	public void OnHammerEquipButton()
 	{
@@ -225,6 +226,7 @@ public class Inventory : MonoBehaviour
 		GameManager.Instance._equipManager.EquipNew(hammer);
 		UpdateUI();
 
+		SoundManager.PlayRandomClip(hammer.UseAudio,transform.position);
 		SelectItem(1);
 	}
 	public void OnEquipButton()
@@ -238,7 +240,7 @@ public class Inventory : MonoBehaviour
 		
 		GameManager.Instance._equipManager.EquipNew(selectedItem.item);
 		UpdateUI();
-
+		SoundManager.PlayRandomClip(selectedItem.item.UseAudio,transform.position);
 		SelectItem(selectedItemIndex);
 	}
 
