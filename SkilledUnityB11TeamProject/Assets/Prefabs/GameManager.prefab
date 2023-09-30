@@ -689,6 +689,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  textDay: {fileID: 8447098846281003554}
 --- !u!1 &5468980598257672652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,5 +1478,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8447098846281003554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 571230312699187886, guid: 24f14fd62a3e9f9489083ec70551d902, type: 3}
+  m_PrefabInstance: {fileID: 8275211843995050124}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
