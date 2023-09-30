@@ -805,6 +805,8 @@ MonoBehaviour:
   isIgnoreInput: 1
   PanelType: 0
   _contentPanel: {fileID: 986688039602013990}
+  _backPanel: {fileID: 3460118192808857263}
+  EaseInTime: 0.03
 --- !u!1 &7455898861393078319
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,10 +993,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7353263435663429031}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 4198941796176553575}
+        m_TargetAssemblyTypeName: GridPanelUI, Assembly-CSharp
+        m_MethodName: EaseOutPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

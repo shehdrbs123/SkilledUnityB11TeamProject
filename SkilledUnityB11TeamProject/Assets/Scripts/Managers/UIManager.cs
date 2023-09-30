@@ -138,10 +138,27 @@ public class UIManager : MonoBehaviour
             foreach (var input in _inputs)
                 input.Enable();
         }
+    }
+    
+    public IEnumerator LerpAdjustRect(RectTransform rect, float scaleX,float scaleY, float changingTime,Action callback=null)
+    {
+        float currentTime = 0;
+        Vector3 targetScale = new Vector3(scaleX, scaleY,0f);
+        float deltaScale = Time.deltaTime / changingTime;
         
+        while (Mathf.Abs(rect.localScale.x - targetScale.x)> 0.01f)
+        {
+            rect.localScale = Vector2.Lerp(rect.localScale, targetScale, deltaScale);
+            yield return null;
+        }
+        rect.localScale = targetScale;
+        callback?.Invoke();
     }
 
-   
+    public IEnumerator LerpPosition(RectTransform rect, float x, float y , float changingTime)
+    {
+        yield break;
+    }
 
     
 }

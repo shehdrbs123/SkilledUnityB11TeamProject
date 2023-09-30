@@ -194,8 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinimapRect: {fileID: 8532934607431364191}
-  size: 500
-  changingTime: 0.5
+  largeScale: 2
+  changingTime: 0.1
 --- !u!1 &1919496405633252583
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +373,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1105
+    m_Bits: 7889
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 956a19bce2b49f342a0a98ca7fc8299c, type: 2}
   m_TargetDisplay: 1

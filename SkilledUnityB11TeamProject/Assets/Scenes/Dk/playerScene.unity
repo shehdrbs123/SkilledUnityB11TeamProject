@@ -23254,14 +23254,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1754387198916777989, guid: 448249d310626d34294805d7fa53de0a, type: 3}
-      propertyPath: size
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 1754387198916777989, guid: 448249d310626d34294805d7fa53de0a, type: 3}
-      propertyPath: changingTime
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 1919496405633252583, guid: 448249d310626d34294805d7fa53de0a, type: 3}
       propertyPath: m_Name
       value: Minimap
