@@ -9,8 +9,6 @@ public class Monster : MonoBehaviour
     public MonsterDataSO data;
     [SerializeField] private int _nowHP;        // 인스펙터에서 확인용 직렬화. 추후 제거
     public bool isAlive = true;
-    private bool isInvincible = false;
-
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -55,6 +53,7 @@ public class Monster : MonoBehaviour
 
         if (_nowHP <= 0)
         {
+            StopAllCoroutines();
             StartCoroutine(CoDie());
             die = true;
         }
@@ -73,8 +72,8 @@ public class Monster : MonoBehaviour
         _meshRenderers.material.color = Color.red;
 
         yield return data.DELAY_HIT;
-        if(_agent)
-            _agent.isStopped = false;
+
+        _agent.isStopped = false;
         _meshRenderers.material.color = Color.white;
     }
 
@@ -85,6 +84,12 @@ public class Monster : MonoBehaviour
         _agent.enabled = false;
 
         _animator.SetTrigger(data.ANIM_DIE);
+
+        foreach (ItemData item in data.dropResources)
+        {
+            GameManager.Instance.ResourceDisplayUI.ShowGetResource(item);
+            GameManager.Instance.inventory.AddItem(item);
+        }
 
         yield return data.DELAY_DIE;
 

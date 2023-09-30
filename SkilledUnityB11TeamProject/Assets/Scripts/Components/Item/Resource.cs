@@ -26,23 +26,26 @@ public class Resource : MonoBehaviour
 		nowCapacity = capacity;
     }
 
-    private void OnDisable()
-    {
-		spawner.Respawn();
-	}
-
     public void Gather()
 	{
 		for (int i = 0; i < quantityPerHit; i++)
 		{
-			if (nowCapacity <= 0) { break; }
+			if (nowCapacity <= 0)
+			{
+				break;
+			}
+
 			nowCapacity -= 1;
-			//Inventory.instance.AddItem(itemToGive);
+
 			GameManager.Instance.inventory.AddItem(itemToGive);
 			particle.Play();
 		}
 
 		if (nowCapacity <= 0)
+        {
 			gameObject.SetActive(false);
+			spawner.Respawn();
+		}
+			
 	}
 }

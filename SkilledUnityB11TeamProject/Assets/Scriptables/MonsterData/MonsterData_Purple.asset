@@ -15,4 +15,5 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 343efc4e4daa6884fb114514185426c9, type: 2}
   hp: 5
   speed: 10
-  dropResources: []
+  dropResources:
+  - {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}

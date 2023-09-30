@@ -23,15 +23,12 @@ public class EquipTool : Equip
 	private bool attacking;
 	private bool isHit;
 
+	private readonly int AnimAttack = Animator.StringToHash("Attack");
+
 	protected virtual void Awake()
 	{
 		_cam = Camera.main;
 		animator = GetComponent<Animator>();
-	}
-
-	void OnCanAttack()
-	{
-		attacking = false;
 	}
 
 	public override void OnAttackInput()
@@ -39,9 +36,14 @@ public class EquipTool : Equip
 		if (!attacking)
 		{
 			attacking = true;
-			animator.SetTrigger("Attack");
-			Invoke(nameof(OnCanAttack), attackRate);
+			animator.SetTrigger(AnimAttack);
+			Invoke(nameof(AttackDelay), attackRate);
 		}
+	}
+
+	private void AttackDelay()
+	{
+		attacking = false;
 	}
 
 	public void OnHit()
@@ -51,14 +53,12 @@ public class EquipTool : Equip
 		isHit = Physics.Raycast(ray, out RaycastHit hit, attackDistance);
 		if (isHit)
 		{
-			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource) )
+			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource))
 			{
 				if(GameManager.Instance.ResourceDisplayUI != null)
 				{
 					resource.particle.Play();
-					GameManager.Instance.ResourceDisplayUI.resourceTxt.text = resource.itemToGive.itemName;
-					GameManager.Instance.ResourceDisplayUI.resourceDisplayImg.SetActive(true);
-					GameManager.Instance.ResourceDisplayUI.animator.SetTrigger("OnCollect");	
+					GameManager.Instance.ResourceDisplayUI.ShowGetResource(resource.itemToGive);
 				}
 				resource.Gather();			
 			}
