@@ -1213,7 +1213,7 @@ MonoBehaviour:
     count: 4
     holder: {fileID: 5928375829629103376}
   - type: 3
-    prefab: {fileID: 1868602337266200, guid: 6d074a749488789479e539251fdf184e, type: 3}
+    prefab: {fileID: 1868602337266200, guid: 66076b9f3c93c3345aa2c03ad68a61bd, type: 3}
     count: 4
     holder: {fileID: 6212256940934274627}
 --- !u!1001 &8275211843995050124
