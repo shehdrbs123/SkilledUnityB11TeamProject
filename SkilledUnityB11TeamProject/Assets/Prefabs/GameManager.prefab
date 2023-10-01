@@ -1210,7 +1210,6 @@ MonoBehaviour:
   time: 0
   isNight: 0
   fullDayLength: 300
-  startTime: 0.3
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 4847192849733666866}
   sunColor:
@@ -3002,7 +3001,7 @@ MonoBehaviour:
   pools:
   - type: 0
     prefab: {fileID: 7083465741751176283, guid: cfada0dfc781613429e8c6b9dad200b0, type: 3}
-    count: 30
+    count: 100
     holder: {fileID: 8186851548089524128}
   - type: 1
     prefab: {fileID: 8059661545040053436, guid: 34f09f121708bee43babfc1c7c79f451, type: 3}

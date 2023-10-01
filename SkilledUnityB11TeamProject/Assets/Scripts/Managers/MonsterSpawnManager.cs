@@ -38,11 +38,14 @@ public class MonsterSpawnManager : MonoBehaviour
 
         for (int i = 0; i < nowWave.monsters.Count; i++)
         {
-            GameObject mon = prefabManager.SpawnFromPool(nowWave.type);
-            mon.GetComponent<Monster>().data = nowWave.monsters[i];
-            mon.SetActive(true);
+            for (int j = 0; j < nowWave.monsterCount[i]; j++)
+            {
+                GameObject mon = prefabManager.SpawnFromPool(nowWave.type);
+                mon.GetComponent<Monster>().data = nowWave.monsters[i];
+                mon.SetActive(true);
 
-            yield return delay;
+                yield return delay;
+            }
         }
     }
 }

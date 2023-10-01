@@ -16,33 +16,41 @@ MonoBehaviour:
   - type: 0
     monsters:
     - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
-    - {fileID: 11400000, guid: c24640c2c7e9b694ba0d654f54ba2022, type: 2}
-    - {fileID: 11400000, guid: c24640c2c7e9b694ba0d654f54ba2022, type: 2}
-    - {fileID: 11400000, guid: c24640c2c7e9b694ba0d654f54ba2022, type: 2}
-    - {fileID: 11400000, guid: c24640c2c7e9b694ba0d654f54ba2022, type: 2}
     - {fileID: 11400000, guid: c24640c2c7e9b694ba0d654f54ba2022, type: 2}
     - {fileID: 11400000, guid: 1f66a81d3c60d4444a6f0e24c47d83da, type: 2}
+    monsterCount: 140000000500000005000000
+    spawnDelay: 0.75
+  - type: 0
+    monsters:
+    - {fileID: 11400000, guid: c2eaf3c7559ed9141a66bde5bcc9bdbc, type: 2}
+    - {fileID: 11400000, guid: c24640c2c7e9b694ba0d654f54ba2022, type: 2}
     - {fileID: 11400000, guid: 1f66a81d3c60d4444a6f0e24c47d83da, type: 2}
-    - {fileID: 11400000, guid: 1f66a81d3c60d4444a6f0e24c47d83da, type: 2}
-    - {fileID: 11400000, guid: 1f66a81d3c60d4444a6f0e24c47d83da, type: 2}
-    - {fileID: 11400000, guid: 1f66a81d3c60d4444a6f0e24c47d83da, type: 2}
+    - {fileID: 11400000, guid: 0ac1385b2baa2f24593d79a1d1015573, type: 2}
+    monsterCount: 140000000a0000000a0000000a000000
+    spawnDelay: 0.5
+  - type: 0
+    monsters:
+    - {fileID: 11400000, guid: 0ac1385b2baa2f24593d79a1d1015573, type: 2}
+    - {fileID: 11400000, guid: 4230dbda9de2b0d4caabea0e4113014e, type: 2}
+    - {fileID: 11400000, guid: 82890b9f6a5b83a42b8550adf221ebb8, type: 2}
+    - {fileID: 11400000, guid: deb8a0faf139ed74f90e5b41bee02102, type: 2}
+    monsterCount: 0f0000000a0000000a00000005000000
+    spawnDelay: 0.5
+  - type: 0
+    monsters:
+    - {fileID: 11400000, guid: 0ac1385b2baa2f24593d79a1d1015573, type: 2}
+    - {fileID: 11400000, guid: 4230dbda9de2b0d4caabea0e4113014e, type: 2}
+    - {fileID: 11400000, guid: 82890b9f6a5b83a42b8550adf221ebb8, type: 2}
+    - {fileID: 11400000, guid: deb8a0faf139ed74f90e5b41bee02102, type: 2}
+    - {fileID: 11400000, guid: 6f5513526f471784da24a2cf893cc9b3, type: 2}
+    monsterCount: 1400000014000000140000000500000005000000
+    spawnDelay: 0.5
+  - type: 0
+    monsters:
+    - {fileID: 11400000, guid: 0ac1385b2baa2f24593d79a1d1015573, type: 2}
+    - {fileID: 11400000, guid: 4230dbda9de2b0d4caabea0e4113014e, type: 2}
+    - {fileID: 11400000, guid: 82890b9f6a5b83a42b8550adf221ebb8, type: 2}
+    - {fileID: 11400000, guid: deb8a0faf139ed74f90e5b41bee02102, type: 2}
+    - {fileID: 11400000, guid: 6f5513526f471784da24a2cf893cc9b3, type: 2}
+    monsterCount: 140000001e0000001e0000000a0000000a000000
     spawnDelay: 0.5
