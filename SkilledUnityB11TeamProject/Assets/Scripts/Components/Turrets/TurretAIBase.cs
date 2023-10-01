@@ -103,6 +103,7 @@ public abstract class TurretAIBase : MonoBehaviour
         StringBuilder sb = new StringBuilder(100);
         string result;
         sb.Append("Name : ").Append(_data.name).Append("\n");
+        sb.Append("Range : ").Append(_data.halfRadius).Append("\n");
         sb.Append("AttSpeed : ").Append(_data.attackRate).Append("\n");
         sb.Append("Damage : ").Append(_data.Damage).Append("\n");
         result = sb.ToString();
