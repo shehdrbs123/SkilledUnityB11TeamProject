@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FattyMortarG02
   m_EditorClassIdentifier: 
   halfRadius: 50
-  Damage: 40
+  Damage: 400
   attackRate: 15
   _moveSound: []
   _shotSound:

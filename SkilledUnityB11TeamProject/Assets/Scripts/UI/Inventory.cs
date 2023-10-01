@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
 
 public class ItemSlot
 {
@@ -37,9 +35,11 @@ public class Inventory : MonoBehaviour
 	public UnityEvent onCloseInventory;
 	// Start is called before the first frame update
 
+	private Dictionary<ItemData, int> ItemTotalCount;
 	private void Awake()
 	{
 		controller = GetComponent<PlayerMovement>();
+		ItemTotalCount = new Dictionary<ItemData, int>();
 	}
 
 	private void Start()
@@ -99,6 +99,7 @@ public class Inventory : MonoBehaviour
 			if (slotToStakTo != null)
 			{
 				slotToStakTo.quantity++;
+				ItemTotalCount[item] += 1;
 				UpdateUI();
 				return;
 			}
@@ -110,6 +111,10 @@ public class Inventory : MonoBehaviour
 		{
 			emptySlot.item = item;
 			emptySlot.quantity = 1;
+			if (ItemTotalCount.ContainsKey(item))
+				ItemTotalCount[item] += 1;
+			else
+				ItemTotalCount[item] = 1;
 			UpdateUI();
 			return;
 		}
@@ -281,27 +286,67 @@ public class Inventory : MonoBehaviour
 		}
 		UpdateUI();
 	}
+	
 
-	public void RemoveItem(ItemData item, int quantity)
+	public void ComsumeItem(ItemData item, int quantity)
 	{
-		ItemSlot test = GetItemStack(item);
-		test.quantity -= quantity;
-		if (test.quantity <= 0)
+		int currentConsumeQuantity = 0;
+		List<ItemSlot> removeSlots = new List<ItemSlot>();
+		List<ItemSlot> slots = GetAllItemStack(item);
+		foreach (var slot in slots)
 		{
-			test.quantity = 0;
-			test.item = null;
+			if (currentConsumeQuantity >= quantity)
+				break;
+			removeSlots.Add(slot);
+			currentConsumeQuantity += slot.quantity;
+		}
+			
+
+		foreach (var slot in removeSlots)
+		{
+			int remain = slot.quantity - quantity;
+			if (remain <= 0)
+			{
+				ItemTotalCount[item] -= slot.quantity;
+				slot.quantity = 0;
+				slot.item = null;
+				quantity = -remain;
+			}
+			else
+			{
+				ItemTotalCount[item] -= quantity;
+				slot.quantity -= quantity;
+			}
 		}
 
+		slots = null;
+		removeSlots = null;
+		
 		UpdateUI();
+		return;
 	}
 
 	public bool HasItems(ItemData item, int quantity)
 	{
-		ItemSlot test = GetItemStack(item);
-		if (test != null && test.quantity >= quantity)
+		if (ItemTotalCount.TryGetValue(item, out int count))
 		{
-			return true;
+			if (quantity > count)
+				return false;
+			else
+				return true;
 		}
 		return false;
+	}
+
+	private List<ItemSlot> GetAllItemStack(ItemData item)
+	{
+		List<ItemSlot> stacks = new List<ItemSlot>();
+		for (int i = slots.Length-1; i >=0; --i)
+		{
+			if (slots[i].item == item)
+				stacks.Add(slots[i]);
+		}
+
+		return stacks;
 	}
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FattyMissle
   m_EditorClassIdentifier: 
   halfRadius: 30
-  Damage: 10
+  Damage: 15
   attackRate: 4
   _moveSound: []
   _shotSound:

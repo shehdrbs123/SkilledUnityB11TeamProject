@@ -35,7 +35,7 @@ public class MonsterSpawnManager : MonoBehaviour
         Wave nowWave = wave.waves[dayManager.day - 1];
 
         WaitForSeconds delay = new WaitForSeconds(nowWave.spawnDelay);
-
+        
         for (int i = 0; i < nowWave.monsters.Count; i++)
         {
             for (int j = 0; j < nowWave.monsterCount[i]; j++)

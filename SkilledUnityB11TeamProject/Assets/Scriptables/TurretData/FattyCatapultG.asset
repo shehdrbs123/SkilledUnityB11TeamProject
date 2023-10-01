@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5acb947b6189d7498350811f6d2ab54, type: 3}
   m_Name: FattyCatapultG
   m_EditorClassIdentifier: 
-  halfRadius: 20
-  Damage: 1
+  halfRadius: 15
+  Damage: 10
   attackRate: 10
   _moveSound: []
   _shotSound:

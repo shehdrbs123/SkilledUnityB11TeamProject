@@ -36,7 +36,7 @@ public class BuildTargetButtonUI : GridButtonUI
     {
         for (int i = 0; i < dataSo.resoureces.Length; ++i)
         {
-            _inventory.RemoveItem(dataSo.resoureces[i],dataSo.resourecsCount[i]);
+            _inventory.ComsumeItem(dataSo.resoureces[i],dataSo.resourecsCount[i]);
         }
         
         _buildManager.OnOperated -= ComsumeItem;

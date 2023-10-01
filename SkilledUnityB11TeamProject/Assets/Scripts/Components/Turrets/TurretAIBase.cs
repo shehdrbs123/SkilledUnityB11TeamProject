@@ -18,7 +18,6 @@ public abstract class TurretAIBase : MonoBehaviour
     protected int _attackAniHash;
     
     private SphereCollider _rangeCols;
-    private static StringBuilder sb;
     public RangeDraw RangeRenderer { get; private set; }
 
    
@@ -34,7 +33,6 @@ public abstract class TurretAIBase : MonoBehaviour
         RangeRenderer.radius = _data.halfRadius;
         _attackAniHash = Animator.StringToHash("IsAttack");
         if(_rotateSpeed == 0 ) _rotateSpeed = Random.Range(0.5f, 1f);
-        sb = new StringBuilder(100);
     }
 
     protected virtual void Update()
@@ -102,13 +100,13 @@ public abstract class TurretAIBase : MonoBehaviour
 
     public string GetTurretInfo()
     {
+        StringBuilder sb = new StringBuilder(100);
         string result;
-        sb.Append("이름 : ").Append(_data.name).Append("\n");
-        sb.Append(" : ").Append(_data.name).Append("\n");
-        sb.Append("이름 : ").Append(_data.name).Append("\n");
-        sb.Append("이름 : ").Append(_data.name).Append("\n");
+        sb.Append("Name : ").Append(_data.name).Append("\n");
+        sb.Append("AttSpeed : ").Append(_data.attackRate).Append("\n");
+        sb.Append("Damage : ").Append(_data.Damage).Append("\n");
         result = sb.ToString();
-        sb.Clear();
+        sb = null;
         return result;
     }
 }
