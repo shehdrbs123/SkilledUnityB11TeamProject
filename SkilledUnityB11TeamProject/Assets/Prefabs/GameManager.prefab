@@ -1209,8 +1209,8 @@ MonoBehaviour:
   day: 1
   time: 0
   isNight: 0
-  fullDayLength: 60
-  startTime: 0.25
+  fullDayLength: 300
+  startTime: 0.3
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 4847192849733666866}
   sunColor:
@@ -1256,10 +1256,10 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.25
+      time: 0.3
       value: 0
       inSlope: 0.016998544
-      outSlope: 2
+      outSlope: 2.5000002
       tangentMode: 65
       weightedMode: 0
       inWeight: 0
@@ -1274,9 +1274,9 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.75
+      time: 0.7
       value: 0
-      inSlope: -2
+      inSlope: -2.5000002
       outSlope: 0.023699882
       tangentMode: 5
       weightedMode: 0
@@ -1332,26 +1332,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.2
-      inSlope: -0.4
-      outSlope: -0.4
+      inSlope: -0.3333333
+      outSlope: -0.3333333
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.25
+      time: 0.3
       value: 0.1
-      inSlope: -0.4
+      inSlope: -0.3333333
       outSlope: 0
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.75
+      time: 0.7
       value: 0.1
       inSlope: -0
-      outSlope: 0.4
+      outSlope: 0.3333333
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
@@ -1359,8 +1359,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0.2
-      inSlope: 0.4
-      outSlope: 0.4
+      inSlope: 0.3333333
+      outSlope: 0.3333333
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
