@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Text;
+using UnityEngine;
 
-public class GridScriptableObject : ScriptableObject
+public abstract class GridScriptableObject : ScriptableObject
 {
     public Sprite Image;
     public ItemData[] resoureces;
     public int[] resourecsCount;
+
+    protected StringBuilder sb = new StringBuilder();
+    public abstract string GetDataInfo();
 }

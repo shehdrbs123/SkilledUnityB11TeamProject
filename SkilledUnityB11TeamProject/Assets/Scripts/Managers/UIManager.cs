@@ -154,11 +154,4 @@ public class UIManager : MonoBehaviour
         rect.localScale = targetScale;
         callback?.Invoke();
     }
-
-    public IEnumerator LerpPosition(RectTransform rect, float x, float y , float changingTime)
-    {
-        yield break;
-    }
-
-    
 }

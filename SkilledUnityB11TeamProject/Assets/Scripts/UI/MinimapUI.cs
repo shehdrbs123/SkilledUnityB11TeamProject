@@ -24,8 +24,6 @@ public class Minimap : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
         StartCoroutine(_uiManager.LerpAdjustRect(MinimapRect,largeScale,largeScale,changingTime));
     }
 
-    
-
     public void OnPointerExit(PointerEventData eventData)
     {
         StopAllCoroutines();

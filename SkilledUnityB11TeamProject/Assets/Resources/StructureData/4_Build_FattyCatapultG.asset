@@ -16,5 +16,6 @@ MonoBehaviour:
   resoureces:
   - {fileID: 11400000, guid: b93b9554fa18ee04eb419f3b72723f0c, type: 2}
   - {fileID: 11400000, guid: 99a2f6e9fd851ae488e17a02c0ae01e8, type: 2}
-  resourecsCount: 0000000000000000
+  - {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}
+  resourecsCount: 0a0000000500000014000000
   StructurePrefab: {fileID: 1460030631903856, guid: 4a2b9259d1a07a542adf7984f29a27e8, type: 3}
