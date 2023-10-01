@@ -12,7 +12,6 @@ public class DayManager : MonoBehaviour
 
     [Header("Setting")]
     public float fullDayLength;
-    public float startTime;
     private float timeRate;
     public Vector3 noon;
 
@@ -35,17 +34,20 @@ public class DayManager : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textDay;
 
+    private float dayStart = 0.3f;
+    private float nightStart = 0.7f;
+
     private void Start()
     {
         timeRate = 1.0f / fullDayLength;
-        time = startTime;
+        time = dayStart;
     }
 
     private void Update()
     {
         time = (time + timeRate * Time.deltaTime) % 1.0f;
 
-        if (isNight && !(time <= 0.25f || 0.75f <= time))
+        if (isNight && !(time <= dayStart || nightStart <= time))
         {
             sun.gameObject.SetActive(true);
             moon.gameObject.SetActive(false);
@@ -53,7 +55,7 @@ public class DayManager : MonoBehaviour
             day += 1;
             textDay.text = day.ToString();
         }
-        else if (!isNight && (time <= 0.25f || 0.75f <= time))
+        else if (!isNight && (time <= dayStart || nightStart <= time))
         {
             sun.gameObject.SetActive(false);
             moon.gameObject.SetActive(true);

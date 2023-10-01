@@ -1209,8 +1209,7 @@ MonoBehaviour:
   day: 1
   time: 0
   isNight: 0
-  fullDayLength: 60
-  startTime: 0.25
+  fullDayLength: 300
   noon: {x: 90, y: 0, z: 0}
   sun: {fileID: 4847192849733666866}
   sunColor:
@@ -1256,10 +1255,10 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.25
+      time: 0.3
       value: 0
       inSlope: 0.016998544
-      outSlope: 2
+      outSlope: 2.5000002
       tangentMode: 65
       weightedMode: 0
       inWeight: 0
@@ -1274,9 +1273,9 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.75
+      time: 0.7
       value: 0
-      inSlope: -2
+      inSlope: -2.5000002
       outSlope: 0.023699882
       tangentMode: 5
       weightedMode: 0
@@ -1332,26 +1331,26 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0.2
-      inSlope: -0.4
-      outSlope: -0.4
+      inSlope: -0.3333333
+      outSlope: -0.3333333
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.25
+      time: 0.3
       value: 0.1
-      inSlope: -0.4
+      inSlope: -0.3333333
       outSlope: 0
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.75
+      time: 0.7
       value: 0.1
       inSlope: -0
-      outSlope: 0.4
+      outSlope: 0.3333333
       tangentMode: 69
       weightedMode: 0
       inWeight: 0.33333334
@@ -1359,8 +1358,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0.2
-      inSlope: 0.4
-      outSlope: 0.4
+      inSlope: 0.3333333
+      outSlope: 0.3333333
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -3002,7 +3001,7 @@ MonoBehaviour:
   pools:
   - type: 0
     prefab: {fileID: 7083465741751176283, guid: cfada0dfc781613429e8c6b9dad200b0, type: 3}
-    count: 30
+    count: 100
     holder: {fileID: 8186851548089524128}
   - type: 1
     prefab: {fileID: 8059661545040053436, guid: 34f09f121708bee43babfc1c7c79f451, type: 3}

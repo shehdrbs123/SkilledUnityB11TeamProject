@@ -66,14 +66,14 @@ public class Monster : MonoBehaviour
 
     private IEnumerator CoHitAnimation()
     {
-        _agent.isStopped = true;
+        //_agent.isStopped = true;
 
-        _animator.SetTrigger(data.ANIM_HIT);
+        //_animator.SetTrigger(data.ANIM_HIT);
         _meshRenderers.material.color = Color.red;
 
         yield return data.DELAY_HIT;
 
-        _agent.isStopped = false;
+        //_agent.isStopped = false;
         _meshRenderers.material.color = Color.white;
     }
 
@@ -85,10 +85,10 @@ public class Monster : MonoBehaviour
 
         _animator.SetTrigger(data.ANIM_DIE);
 
-        foreach (ItemData item in data.dropResources)
+        for (int i = 0; i < data.dropCount; i++)
         {
-            GameManager.Instance.ResourceDisplayUI.ShowGetResource(item);
-            GameManager.Instance.inventory.AddItem(item);
+            GameManager.Instance.ResourceDisplayUI.ShowGetResource(data.dropItem);
+            GameManager.Instance.inventory.AddItem(data.dropItem);
         }
 
         yield return data.DELAY_DIE;
