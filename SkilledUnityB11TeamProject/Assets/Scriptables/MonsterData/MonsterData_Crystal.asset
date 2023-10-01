@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MonsterData_Crystal
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: a14c8e5b4a4880f47b5a1e1dd53c5d50, type: 2}
-  hp: 25
+  hp: 50
   speed: 15
-  dropResources:
-  - {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}
+  dropItem: {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}
+  dropCount: 30

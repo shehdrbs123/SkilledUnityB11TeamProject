@@ -85,10 +85,10 @@ public class Monster : MonoBehaviour
 
         _animator.SetTrigger(data.ANIM_DIE);
 
-        foreach (ItemData item in data.dropResources)
+        for (int i = 0; i < data.dropCount; i++)
         {
-            GameManager.Instance.ResourceDisplayUI.ShowGetResource(item);
-            GameManager.Instance.inventory.AddItem(item);
+            GameManager.Instance.ResourceDisplayUI.ShowGetResource(data.dropItem);
+            GameManager.Instance.inventory.AddItem(data.dropItem);
         }
 
         yield return data.DELAY_DIE;
