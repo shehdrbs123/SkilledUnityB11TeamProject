@@ -29,12 +29,12 @@ public class BuildManager : GridPanelManager
           buildDatas = Resources.LoadAll<BuildDataSO>("StructureData");
      }
 
-     public BuildDataSO GetBuildData(int idx)
+     public BuildDataSO GetBuildData(GridPanelType type, int idx)
      {
           return buildDatas[idx];
      }
 
-     public int GetBuildDataCount()
+     public int GetBuildDataCount(GridPanelType type)
      {
           return buildDatas.Length;
      }
@@ -124,13 +124,13 @@ public class BuildManager : GridPanelManager
           }
      }
 
-     public override int GetElementsCount()
+     public override int GetElementsCount(GridPanelType type)
      {
-          return GetBuildDataCount();
+          return GetBuildDataCount(type);
      }
 
-     public override ScriptableObject GetData(int idx)
+     public override ScriptableObject GetData(GridPanelType type,int idx)
      {
-          return GetBuildData(idx);
+          return GetBuildData(type,idx);
      }
 }

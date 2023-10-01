@@ -7,4 +7,8 @@ using UnityEngine.Serialization;
 public class BuildDataSO : GridScriptableObject
 {
     public GameObject StructurePrefab;
+    public override string GetDataInfo()
+    {
+        return StructurePrefab.GetComponent<TurretAIBase>().GetTurretInfo();
+    }
 }

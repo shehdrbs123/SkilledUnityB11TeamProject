@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 615482028044242402}
   - component: {fileID: 4198941796176553575}
   m_Layer: 5
-  m_Name: CraftPanelUI
+  m_Name: FoodCraftPanelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -803,7 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isIgnoreInput: 1
-  PanelType: 1
+  PanelType: 2
   _contentPanel: {fileID: 986688039602013990}
   _backPanel: {fileID: 3460118192808857263}
   EaseInTime: 0.04

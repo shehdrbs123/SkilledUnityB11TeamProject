@@ -7,4 +7,8 @@ using UnityEngine.Serialization;
 public class CraftDataSO : GridScriptableObject
 {
     public ItemData ResultItem;
+    public override string GetDataInfo()
+    {
+        return sb.ToString();
+    }
 }
