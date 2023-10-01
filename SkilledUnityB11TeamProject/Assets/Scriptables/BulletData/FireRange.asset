@@ -19,4 +19,4 @@ MonoBehaviour:
   damage: 1
   HitSound: []
   damageRate: 1
-  duration: 8
+  duration: 10

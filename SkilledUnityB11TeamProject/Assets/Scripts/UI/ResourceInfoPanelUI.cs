@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ResourceInfoPanelUI : MonoBehaviour
 {
+    [SerializeField] private TMP_Text text;
     [SerializeField] private Transform contents;
-
+    
     private ResourceInfoUI[] resourceInfoUis;
 
     private void Awake()
@@ -16,6 +18,7 @@ public class ResourceInfoPanelUI : MonoBehaviour
 
     public void Init(GridScriptableObject data)
     {
+        text.text = data.GetDataInfo();
         for(int i=0;i<data.resoureces.Length;++i)
         {
             resourceInfoUis[i].gameObject.SetActive(true);
