@@ -66,14 +66,14 @@ public class Monster : MonoBehaviour
 
     private IEnumerator CoHitAnimation()
     {
-        _agent.isStopped = true;
+        //_agent.isStopped = true;
 
-        _animator.SetTrigger(data.ANIM_HIT);
+        //_animator.SetTrigger(data.ANIM_HIT);
         _meshRenderers.material.color = Color.red;
 
         yield return data.DELAY_HIT;
 
-        _agent.isStopped = false;
+        //_agent.isStopped = false;
         _meshRenderers.material.color = Color.white;
     }
 
