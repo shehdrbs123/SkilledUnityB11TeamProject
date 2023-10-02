@@ -109,19 +109,6 @@ public class UIManager : MonoBehaviour
         IgnoreInput(_uiCounter.Count>0);
     }
 
-    private void AddAction(string name, ref PlayerInput playerInput)
-    {
-        InputAction action = playerInput.actions.FindAction(name);
-        if(action!=null)
-            _inputs.Add(action);
-    #if UNITY_EDITOR
-        else
-        {
-            Debug.Log($"{name}의 입력은 없습니다, 바인딩 이름을 확인해 주세요");
-        }
-    #endif
-    }
-
     private void IgnoreInput(bool ignore)
     {
         if (ignore)

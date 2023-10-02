@@ -97,6 +97,8 @@ public class TurretThrowerAI : TurretAIBase
         float distanceLength = _targetDistance.magnitude;
         float cos = distanceLength / (_bulletSpeed * _totalTime);
         float angle = Mathf.Acos(cos)*Mathf.Rad2Deg;
+        if (angle == float.NaN)
+            angle = 0;
         _sightAlign = new Vector3(-angle, _barrel.eulerAngles.y, _barrel.eulerAngles.z);
         _barrel.transform.rotation = Quaternion.RotateTowards(_barrel.rotation, Quaternion.Euler(_sightAlign), _barrelRotateSpeed);
     }
@@ -109,7 +111,6 @@ public class TurretThrowerAI : TurretAIBase
         float LookAngle = Mathf.Acos(LookisCorrect) * Mathf.Rad2Deg;
         if (LookAngle > _ToleranceHeadAngle)
             return false;
-        
         
         float sightAngle = _sightAlign.x;
         float barrelAngle = _barrel.eulerAngles.x;

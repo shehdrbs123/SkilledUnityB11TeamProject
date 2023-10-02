@@ -19,5 +19,18 @@ public class TestScriptEditor : Editor
         {
             testScript.ItemAdd();
         }
+
+        if (GUILayout.Button("밤으로 변경"))
+        {
+            GameManager.Instance._dayManager.time = 0.7f;
+        }
+
+        for (int i = 0; i < 5; ++i)
+        {
+            if (GUILayout.Button((i+1) +"일차 변경"))
+            {
+                GameManager.Instance._dayManager.day = i;
+            }
+        }
     }
 }
