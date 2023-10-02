@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 99a2f6e9fd851ae488e17a02c0ae01e8, type: 2}
   - {fileID: 11400000, guid: 2d40a21bc5f84f14f9005d45efacc8d1, type: 2}
   - {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}
-  resourecsCount: 140000000a0000000300000014000000
+  resourecsCount: 10000000080000000300000005000000
   ResultItem: {fileID: 11400000, guid: ae016711a0b32bb4a91054d8ef1ce1e1, type: 2}
