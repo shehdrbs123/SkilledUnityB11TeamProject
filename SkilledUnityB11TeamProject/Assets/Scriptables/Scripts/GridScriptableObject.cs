@@ -9,4 +9,5 @@ public abstract class GridScriptableObject : ScriptableObject
 
     protected StringBuilder sb = new StringBuilder(100);
     public abstract string GetDataInfo();
+    public abstract string GetName();
 }

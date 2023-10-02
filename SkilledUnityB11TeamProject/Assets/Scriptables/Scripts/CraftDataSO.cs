@@ -11,7 +11,6 @@ public class CraftDataSO : GridScriptableObject
     public override string GetDataInfo()
     {
         string resultString;
-        sb.Append("이름 : ").Append(ResultItem.itemName).Append('\n');
         sb.Append("설명 : ").Append(ResultItem.description).Append('\n');
         sb.Append("효과 : ");
 
@@ -24,6 +23,11 @@ public class CraftDataSO : GridScriptableObject
         resultString = sb.ToString();
         sb.Clear();
         return resultString;
+    }
+
+    public override string GetName()
+    {
+        return ResultItem.itemName;
     }
 
     private string GetComsumableType(ConsumableType type)

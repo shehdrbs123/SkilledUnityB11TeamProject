@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _offset: {x: 20, y: 40}
-  _InfoPanelName: BuildInfoUI
+  _InfoPanelName: RecipeInfoPanel
   _infoPanelTransform: {fileID: 0}
 --- !u!114 &-5871664173252299485
 MonoBehaviour:

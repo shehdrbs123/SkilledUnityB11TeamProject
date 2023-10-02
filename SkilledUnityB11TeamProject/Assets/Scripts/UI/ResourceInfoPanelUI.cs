@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ResourceInfoPanelUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text text;
+    [SerializeField] private TMP_Text nameText;
+    [SerializeField] private TMP_Text InfoText;
     [SerializeField] private Transform contents;
     
     private ResourceInfoUI[] resourceInfoUis;
@@ -18,7 +20,8 @@ public class ResourceInfoPanelUI : MonoBehaviour
 
     public void Init(GridScriptableObject data)
     {
-        text.text = data.GetDataInfo();
+        nameText.text = data.GetName();
+        InfoText.text = data.GetDataInfo();
         for(int i=0;i<data.resoureces.Length;++i)
         {
             resourceInfoUis[i].gameObject.SetActive(true);

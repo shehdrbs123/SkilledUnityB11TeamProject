@@ -11,4 +11,9 @@ public class BuildDataSO : GridScriptableObject
     {
         return StructurePrefab.GetComponent<TurretAIBase>().GetTurretInfo();
     }
+
+    public override string GetName()
+    {
+        return StructurePrefab.GetComponent<TurretAIBase>().GetTurretName();
+    }
 }

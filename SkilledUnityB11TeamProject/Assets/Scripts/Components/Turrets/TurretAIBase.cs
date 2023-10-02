@@ -102,12 +102,16 @@ public abstract class TurretAIBase : MonoBehaviour
     {
         StringBuilder sb = new StringBuilder(100);
         string result;
-        sb.Append("이름 : ").Append(_data.TurretName).Append("\n");
         sb.Append("범위 : ").Append(_data.halfRadius).Append("\n");
         sb.Append("공격속도 : ").Append(_data.attackRate).Append("\n");
         sb.Append("공격력 : ").Append(_data.Damage).Append("\n");
         result = sb.ToString();
         sb = null;
         return result;
+    }
+
+    public string GetTurretName()
+    {
+        return _data.TurretName;
     }
 }

@@ -17,7 +17,15 @@ public class CraftTable : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return CraftType.ToString();
+        switch (CraftType)
+        {
+            case GridPanelType.FoodCraft :
+                return "음식 제작기";
+            case GridPanelType.WaterCraft :
+                return "음료 제작기";
+        }
+
+        return string.Empty;
     }
 
     public void OnInteract()

@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 907419148757614131}
   - component: {fileID: 8627436479060086586}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,8 +108,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Info
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 07ecc9814f6e6d5419b21425252b46ff, type: 2}
+  m_sharedMaterial: {fileID: 4647502116011685311, guid: 07ecc9814f6e6d5419b21425252b46ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 7827491347188367848}
   - component: {fileID: 9212074234451268635}
   m_Layer: 5
-  m_Name: BuildInfoUI
+  m_Name: RecipeInfoPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,7 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962a937f45c6b1d49ae4d1d6263c1b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 7868730853651571662}
+  nameText: {fileID: 8627436479060086586}
+  InfoText: {fileID: 7868730853651571662}
   contents: {fileID: 6742500694704983022}
 --- !u!1 &7800550248387125033
 GameObject:
@@ -305,7 +306,7 @@ GameObject:
   - component: {fileID: 6574027831578633570}
   - component: {fileID: 7868730853651571662}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Info
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -523,8 +524,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4482776783280778242}
   - {fileID: 257134174160696469}
+  - {fileID: 4482776783280778242}
   m_Father: {fileID: 8186463196053079736}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
