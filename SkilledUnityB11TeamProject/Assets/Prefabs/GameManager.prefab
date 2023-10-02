@@ -1297,6 +1297,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   sunSkybox: {fileID: 2100000, guid: e7e695d557cfa5b459c1c83419db147a, type: 2}
+  dayBGM: {fileID: 8300000, guid: 3fc0fc27ebf04834baa4edb20a405aef, type: 3}
   moon: {fileID: 2114211741186377179}
   moonColor:
     serializedVersion: 2
@@ -1371,6 +1372,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   moonSkybox: {fileID: 2100000, guid: 8b63a0a7770365645baab3a8acc5cca2, type: 2}
+  nightBGM: {fileID: 8300000, guid: 6a07dc99e42ef3642b1081beddb5f417, type: 3}
   lightingIntensityMultiplier:
     serializedVersion: 2
     m_Curve:

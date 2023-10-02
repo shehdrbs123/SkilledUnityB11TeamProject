@@ -29,8 +29,14 @@ public class TestScriptEditor : Editor
         {
             if (GUILayout.Button((i+1) +"일차 변경"))
             {
-                GameManager.Instance._dayManager.day = i;
+                GameManager.Instance._dayManager.day = i+1;
+                GameManager.Instance._dayManager.textDay.text = (i+1).ToString();
             }
+        }
+        if (GUILayout.Button("마지막 날로 변경"))
+        {
+            GameManager.Instance._dayManager.day = 6;
+            GameManager.Instance._dayManager.textDay.text = "????";
         }
     }
 }
