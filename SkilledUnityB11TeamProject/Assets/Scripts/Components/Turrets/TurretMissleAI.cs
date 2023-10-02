@@ -44,7 +44,7 @@ public class TurretMissleAI : TurretAIBase
             GameObject bullet = _prefabManager.SpawnFromPool(PoolType.MissleBullet);
             bullet.SetActive(true);
             bullet.transform.SetPositionAndRotation(_shotPos[_shotIdx].position,_shotPos[_shotIdx].rotation);
-            bullet.GetComponent<Follower>().Init(_enemys[target].transform,_bulletSpeed);
+            bullet.GetComponent<Follower>().Init(_enemys,_bulletSpeed);
 
             _paricles[_shotIdx].Play();
             //_animator.SetTrigger(_attackAniHash);
