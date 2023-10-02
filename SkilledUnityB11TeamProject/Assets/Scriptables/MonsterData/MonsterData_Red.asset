@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MonsterData_Red
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: bcaad48fae9d78948944fe183b6e39fe, type: 2}
-  hp: 10
+  hp: 20
   speed: 15
   dropItem: {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}
   dropCount: 5
