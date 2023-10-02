@@ -19,7 +19,7 @@ public class ItemObject : MonoBehaviour, IInteractable
 
 	public void PlayInteractionSound()
 	{
-		SoundManager.PlayClip(interactAudio,transform.position);
+		SoundManager.PlayClip(interactAudio,GameManager.Instance.GetPlayer().transform.position);
 	}
 }
 
