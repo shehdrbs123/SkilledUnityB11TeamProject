@@ -15,7 +15,9 @@ MonoBehaviour:
   itemName: OilRock
   description: is OilRock
   type: 0
-  icon: {fileID: 21300000, guid: 7e082cc2cf2a4433d85e388c6bf94234, type: 3}
+  icon: {fileID: 21300000, guid: 83182a191da8b93479b3f883221a1a94, type: 3}
   canStack: 1
   maxStackAmount: 50
+  consumables: []
   equipPrefab: {fileID: 0}
+  UseAudio: []
