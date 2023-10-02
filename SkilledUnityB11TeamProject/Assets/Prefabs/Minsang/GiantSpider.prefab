@@ -543,7 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6751072921294138400}
   - component: {fileID: 595238192328462630}
-  - component: {fileID: 3791961346391441899}
+  - component: {fileID: 2229668620061618027}
   m_Layer: 0
   m_Name: Polygonal Metalon
   m_TagString: Untagged
@@ -646,8 +646,8 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.5955523, y: 0.47306192, z: 0.000007748604}
     m_Extent: {x: 2.277113, y: 1.2932206, z: 2.1682854}
   m_DirtyAABB: 0
---- !u!64 &3791961346391441899
-MeshCollider:
+--- !u!65 &2229668620061618027
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -664,10 +664,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 66ca9bf0145725543a1e8a693589f362, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2.78, z: 2}
+  m_Center: {x: 0, y: 0, z: 0.9}
 --- !u!1 &2832023592692526724
 GameObject:
   m_ObjectHideFlags: 0

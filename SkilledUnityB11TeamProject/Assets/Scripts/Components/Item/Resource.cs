@@ -18,6 +18,7 @@ public class Resource : MonoBehaviour
 		if (transform.parent.TryGetComponent(out ResourceSpawner sp))
 		{
 			spawner = sp;
+			capacity = spawner.InitCapacity();
 		}
 	}
 
@@ -43,9 +44,16 @@ public class Resource : MonoBehaviour
 
 		if (nowCapacity <= 0)
         {
-			gameObject.SetActive(false);
-			spawner.Respawn();
-		}
-			
-	}
+            if (spawner != null)
+            {
+                gameObject.SetActive(false);
+                spawner.Respawn(this.gameObject);
+            }
+			else
+            {
+				Destroy(this.gameObject);
+            }
+        }
+
+    }
 }
