@@ -37,6 +37,12 @@ public class Condition
 
 public class ConditionManager : MonoBehaviour
 {
+    [SerializeField] private Image uiCondition;
+
+    private Coroutine coWarning = null;
+    private WaitForSeconds delay = new WaitForSeconds(0.5f);
+    private bool isRed = false;
+
     [Header("Game Stat")]
     public Condition hunger;
     public Condition thirsty;
@@ -79,6 +85,9 @@ public class ConditionManager : MonoBehaviour
         if (hunger.IsZero() || thirsty.IsZero())
         {
             mental.Decay();
+
+            if (coWarning == null)
+                coWarning = StartCoroutine(Warning());
         }
 
         if (mental.IsZero())
@@ -115,6 +124,20 @@ public class ConditionManager : MonoBehaviour
         }
 
         battery.SetActive(false);
+    }
+
+    private IEnumerator Warning()
+    {
+        while (hunger.IsZero() || thirsty.IsZero())
+        {
+            uiCondition.color = isRed ? Color.white : Color.red;
+            yield return delay;
+            isRed = !isRed;
+        }
+
+        uiCondition.color = Color.white;
+        isRed = false;
+        coWarning = null;
     }
 
     private void GameOver()
