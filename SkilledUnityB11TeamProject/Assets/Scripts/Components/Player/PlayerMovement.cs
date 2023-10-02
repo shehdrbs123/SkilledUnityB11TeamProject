@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         if (_curdirection != Vector3.zero || _rigid.velocity != Vector3.zero)
         {
             Move();
