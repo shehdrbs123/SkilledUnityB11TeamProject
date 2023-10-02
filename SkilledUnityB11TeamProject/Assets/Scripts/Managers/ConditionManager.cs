@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Condition
@@ -48,6 +48,13 @@ public class ConditionManager : MonoBehaviour
 
     private readonly List<GameObject> batteries = new List<GameObject>();
 
+    private DayManager dayManager;
+
+    private void Awake()
+    {
+        dayManager = GameManager.Instance._dayManager;
+    }
+
     private void Start()
     {
         hunger.Initalize();
@@ -77,6 +84,11 @@ public class ConditionManager : MonoBehaviour
         if (mental.IsZero())
         {
             GameOver();
+        }
+
+        if (dayManager.day >= 7)
+        {
+            GameClear();
         }
     }
 
@@ -108,6 +120,13 @@ public class ConditionManager : MonoBehaviour
     private void GameOver()
     {
         //Time.timeScale = 0;
-        
+        Debug.Log("GAME OVER");
+        // 게임 오버 씬
+    }
+
+    private void GameClear()
+    {
+        Debug.Log("GAME CLEAR");
+        // 게임 클리어 씬
     }
 }

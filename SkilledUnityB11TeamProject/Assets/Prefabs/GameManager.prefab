@@ -3034,3 +3034,7 @@ MonoBehaviour:
     prefab: {fileID: 1103383695481960837, guid: 60f58e03fa978ec4e8ac3c905c1359a6, type: 3}
     count: 100
     holder: {fileID: 6212256940934274627}
+  - type: 8
+    prefab: {fileID: 2044197934677755132, guid: 81aecac086319f943988e3f7c329073b, type: 3}
+    count: 4
+    holder: {fileID: 8186851548089524128}
