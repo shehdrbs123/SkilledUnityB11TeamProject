@@ -16,7 +16,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   explosionRadius: 20
-  damage: 200
+  damage: 50
   HitSound:
   - {fileID: 8300000, guid: 792c7696178c5bf44b35c8ce6f200805, type: 3}
   - {fileID: 8300000, guid: 7b900d8866fd9664daed7b95a03058e7, type: 3}
