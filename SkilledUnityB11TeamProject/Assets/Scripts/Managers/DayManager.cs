@@ -20,12 +20,14 @@ public class DayManager : MonoBehaviour
     public Gradient sunColor;
     public AnimationCurve sunIntensity;
     public Material sunSkybox;
+    public AudioClip dayBGM;
 
     [Header("Moon")]
     public Light moon;
     public Gradient moonColor;
     public AnimationCurve moonIntensity;
     public Material moonSkybox;
+    public AudioClip nightBGM;
 
     [Header("Other Lighting")]
     public AnimationCurve lightingIntensityMultiplier;
@@ -52,8 +54,9 @@ public class DayManager : MonoBehaviour
             sun.gameObject.SetActive(true);
             moon.gameObject.SetActive(false);
             isNight = false;
+            SoundManager.ChangeBackGroundMusic(dayBGM);
+
             day += 1;
-            // 7일째 되는 날 Condition 매니져로 종료 신호 전송
             if (day <= 5) textDay.text = day.ToString();
             else textDay.text = "????";
         }
@@ -62,6 +65,7 @@ public class DayManager : MonoBehaviour
             sun.gameObject.SetActive(false);
             moon.gameObject.SetActive(true);
             isNight = true;
+            SoundManager.ChangeBackGroundMusic(nightBGM);
         }
 
         RenderSettings.skybox = isNight ? moonSkybox : sunSkybox;

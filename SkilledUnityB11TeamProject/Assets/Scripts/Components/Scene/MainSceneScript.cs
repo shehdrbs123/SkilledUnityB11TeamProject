@@ -14,4 +14,9 @@ public class MainSceneScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OnButtonMain()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
 }

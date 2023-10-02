@@ -2072,23 +2072,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c256b7fee400b64ea4de380ae110ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiCondition: {fileID: 5102867817184091095}
   hunger:
     curValue: 0
     maxValue: 100
     startValue: 100
-    decayRate: 0.5
+    decayRate: 0.25
     uiBar: {fileID: 8309498234619585579}
   thirsty:
     curValue: 0
     maxValue: 100
     startValue: 100
-    decayRate: 0.5
+    decayRate: 0.25
     uiBar: {fileID: 3664917451993691942}
   mental:
     curValue: 0
     maxValue: 100
     startValue: 100
-    decayRate: 1
+    decayRate: 0.5
     uiBar: {fileID: 7357439755540953725}
   battery: 4
   uiBattery:
