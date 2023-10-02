@@ -12,6 +12,7 @@ public abstract class TurretAIBase : MonoBehaviour
     [SerializeField] private GameObject _rangeObject;
     [SerializeField] protected ParticleSystem[] _paricles;
     [SerializeField] protected float _rotateSpeed = 0;
+    
     protected Animator _animator;
     protected List<GameObject> _enemys;
     protected float _currentAttackWait;
@@ -28,6 +29,10 @@ public abstract class TurretAIBase : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         _rangeCols = _rangeObject.GetComponent<SphereCollider>();
         RangeRenderer = _rangeObject.GetComponentInChildren<RangeDraw>();
+        Canvas RangeMarker = _rangeObject.GetComponentInChildren<Canvas>();
+
+        float scaleSize = _data.halfRadius * 2 / 100;
+        RangeMarker.transform.localScale = Vector3.one * scaleSize;
 
         _rangeCols.radius = _data.halfRadius;
         RangeRenderer.radius = _data.halfRadius;
