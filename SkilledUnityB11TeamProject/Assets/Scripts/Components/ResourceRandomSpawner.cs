@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceRandomSpawner : MonoBehaviour
+public class ResourceRandomSpawner : ResourceSpawner
 {
     [SerializeField] private GameObject resourcePrefab;
     [SerializeField] private float radius;
@@ -25,7 +25,7 @@ public class ResourceRandomSpawner : MonoBehaviour
         return pos;
     }
 
-    public void Respawn(GameObject obj)
+    public override void Respawn(GameObject obj)
     {
         StartCoroutine(CoRespawn(obj));
     }

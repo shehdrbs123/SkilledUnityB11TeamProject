@@ -9,13 +9,13 @@ public class Resource : MonoBehaviour
 	public int capacity;
 
 	public ParticleSystem particle;
-	private ResourceRandomSpawner spawner;
+	private ResourceSpawner spawner;
 
 	private int nowCapacity;
 
     private void Awake()
     {
-		if (transform.parent.TryGetComponent(out ResourceRandomSpawner sp))
+		if (transform.parent.TryGetComponent(out ResourceSpawner sp))
 		{
 			spawner = sp;
 		}
