@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d2a3ce60c3b55a45a73e8c22eb9ff60, type: 3}
-  m_Name: WaterCraft
+  m_Name: CleanwaterCraft
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: e7d29a79bc7fae248887c8a08a160303, type: 3}
+  Image: {fileID: 21300000, guid: f27b8794232ef48a399fdfa75bcc1569, type: 3}
   resoureces:
   - {fileID: 11400000, guid: 2d40a21bc5f84f14f9005d45efacc8d1, type: 2}
   - {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}

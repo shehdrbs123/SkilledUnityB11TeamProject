@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "\uB354\uB7EC\uC6B4 \uBB3C\uC744 \uC815\uC218\uD55C \uAE68\uB057\uD55C
     \uBB3C\uC785\uB2C8\uB2E4."
   type: 2
-  icon: {fileID: 21300000, guid: e7d29a79bc7fae248887c8a08a160303, type: 3}
+  icon: {fileID: 21300000, guid: f27b8794232ef48a399fdfa75bcc1569, type: 3}
   canStack: 1
   maxStackAmount: 10
   consumables:
