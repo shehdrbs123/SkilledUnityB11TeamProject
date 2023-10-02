@@ -9,13 +9,13 @@ public class Resource : MonoBehaviour
 	public int capacity;
 
 	public ParticleSystem particle;
-	private ResourceSpawner spawner;
+	private ResourceRandomSpawner spawner;
 
 	private int nowCapacity;
 
     private void Awake()
     {
-		if (transform.parent.TryGetComponent(out ResourceSpawner sp))
+		if (transform.parent.TryGetComponent(out ResourceRandomSpawner sp))
 		{
 			spawner = sp;
 		}
@@ -44,7 +44,11 @@ public class Resource : MonoBehaviour
 		if (nowCapacity <= 0)
         {
 			gameObject.SetActive(false);
-			spawner.Respawn();
+
+			if (spawner != null)
+            {
+				spawner.Respawn(this.gameObject);
+			}
 		}
 			
 	}
