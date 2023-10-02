@@ -154,4 +154,14 @@ public class PlayerMovement : MonoBehaviour
     {
         SoundManager.PlayRandomClip(footStep,transform.position);
     }
+
+    public AudioClip[] GetFootStepSounds()
+    {
+        return footStep;
+    }
+
+    public void ChangeFootstepSound(AudioClip[] change)
+    {
+        footStep = change;
+    }
 }
