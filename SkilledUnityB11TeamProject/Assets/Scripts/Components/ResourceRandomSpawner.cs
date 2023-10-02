@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class ResourceRandomSpawner : ResourceSpawner
 {
-    [SerializeField] private GameObject resourcePrefab;
+    [Header("Random Spawner")]
     [SerializeField] private float radius;
-    [SerializeField] private int count;
-    [SerializeField] private float respawnDelay;
+    [SerializeField] private int resourceCount;
+    [SerializeField] private int randomCapacity;
 
     private void Start()
     {
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < resourceCount; i++)
         {
-            GameObject _obj = Instantiate(resourcePrefab, RandomPosition(), Quaternion.identity, transform);
+            Instantiate(resourcePrefab, RandomPosition(), Quaternion.identity, transform);
         }
+    }
+
+    public override int InitCapacity()
+    {
+        return capacity + Random.Range(0, randomCapacity);
     }
 
     private Vector3 RandomPosition()
@@ -35,6 +40,6 @@ public class ResourceRandomSpawner : ResourceSpawner
         yield return new WaitForSeconds(respawnDelay + Random.Range(0, 5f));
 
         obj.transform.position = RandomPosition();
-        obj.gameObject.SetActive(true);
+        obj.SetActive(true);
     }
 }

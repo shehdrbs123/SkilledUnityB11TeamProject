@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2585114062429640364}
   - component: {fileID: 2338438613324282064}
   m_Layer: 0
-  m_Name: Mineral_Spawner
+  m_Name: Mineral_FixSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourcePrefab: {fileID: 2034447178554731101, guid: d579b42a1c7abc84cad95a27207d264f, type: 3}
-  respawnTime: 10
+  respawnDelay: 10
+  capacity: 1
