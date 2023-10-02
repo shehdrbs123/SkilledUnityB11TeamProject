@@ -54,3 +54,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6f5513526f471784da24a2cf893cc9b3, type: 2}
     monsterCount: 140000001e0000001e0000000a0000000a000000
     spawnDelay: 0.5
+  - type: 8
+    monsters:
+    - {fileID: 11400000, guid: 81b7be55572a9d747be5a77708bb8665, type: 2}
+    monsterCount: 04000000
+    spawnDelay: 1

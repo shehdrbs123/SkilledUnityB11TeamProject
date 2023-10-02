@@ -3,9 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum MonsterType
+{
+    GiantSpider,
+    Wendigo
+}
+
 public class Monster : MonoBehaviour
 {
     [Header("Stat")]
+    public MonsterType type;
     public MonsterDataSO data;
     [SerializeField] private int _nowHP;        // 인스펙터에서 확인용 직렬화. 추후 제거
     public bool isAlive = true;
@@ -25,7 +32,7 @@ public class Monster : MonoBehaviour
     {
         isAlive = true;
         _nowHP = data.hp;
-        _meshRenderers.material = data.material;
+        if (type == MonsterType.GiantSpider) _meshRenderers.material = data.material;
         _agent.enabled = true;
         _agent.speed = data.speed;
         _agent.isStopped = false;
