@@ -10,7 +10,7 @@ public abstract class GridButtonUI : MonoBehaviour
     protected Button _button;
     protected Inventory _inventory;
     public abstract void Init(ScriptableObject data,Transform parent,UnityAction PanelOff);
-    public abstract void UpdateButton();
+    
     public abstract GridScriptableObject GetResourceData();
 
     protected void ButtonEnable(bool enable)
@@ -21,5 +21,20 @@ public abstract class GridButtonUI : MonoBehaviour
     protected void SetImage(Sprite sprite)
     {
         _buildTargetImage.sprite = sprite;
+    }
+
+    public void UpdateButton()
+    {
+        if (!_inventory)
+            _inventory = GameManager.Instance.GetPlayer().GetComponent<Inventory>();
+        for (int i = 0; i < GetResourceData().resoureces.Length; ++i)
+        {
+            if(!_inventory.HasItems(GetResourceData().resoureces[i],GetResourceData().resourecsCount[i]))
+            {
+                ButtonEnable(false);
+                return;
+            }
+        }
+        ButtonEnable(true);      
     }
 }

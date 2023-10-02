@@ -53,7 +53,7 @@ public class DayManager : MonoBehaviour
             moon.gameObject.SetActive(false);
             isNight = false;
             day += 1;
-
+            // 7일째 되는 날 Condition 매니져로 종료 신호 전송
             if (day <= 5) textDay.text = day.ToString();
             else textDay.text = "????";
         }

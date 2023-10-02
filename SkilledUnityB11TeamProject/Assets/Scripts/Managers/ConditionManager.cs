@@ -119,13 +119,14 @@ public class ConditionManager : MonoBehaviour
 
     private void GameOver()
     {
+        //Time.timeScale = 0;
         Debug.Log("GAME OVER");
-        // °ÔÀÓ ¿À¹ö ¾À
+        // ê²Œì„ ì˜¤ë²„ ì”¬
     }
 
     private void GameClear()
     {
         Debug.Log("GAME CLEAR");
-        // °ÔÀÓ Å¬¸®¾î ¾À
+        // ê²Œì„ í´ë¦¬ì–´ ì”¬
     }
 }

@@ -2924,7 +2924,7 @@ MonoBehaviour:
   soundEffectPitchVariance: 0.5
   bgmVolume: 0.2
   bgmAudioSource: {fileID: 1398047305867322012}
-  bgmClip: {fileID: 0}
+  bgmClip: {fileID: 8300000, guid: 3fc0fc27ebf04834baa4edb20a405aef, type: 3}
 --- !u!1 &8690892312074436847
 GameObject:
   m_ObjectHideFlags: 0
