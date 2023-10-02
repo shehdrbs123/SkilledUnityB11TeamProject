@@ -22,4 +22,7 @@ MonoBehaviour:
   - type: 0
     value: 35
   equipPrefab: {fileID: 0}
-  UseAudio: []
+  UseAudio:
+  - {fileID: 8300000, guid: 1c43770491b400545b7e1f832278896a, type: 3}
+  - {fileID: 8300000, guid: 63e58a6b1740ce448b6eff8987af365f, type: 3}
+  - {fileID: 8300000, guid: 0664c72384f1ab646bb9514caa150ce6, type: 3}
