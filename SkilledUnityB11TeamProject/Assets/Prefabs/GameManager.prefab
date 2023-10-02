@@ -3125,5 +3125,5 @@ MonoBehaviour:
     holder: {fileID: 8186851548089524128}
   - type: 9
     prefab: {fileID: 7857967290938231733, guid: 502a46511cb1c704781ccca61af0468b, type: 3}
-    count: 10
+    count: 20
     holder: {fileID: 6550511443043058681}
