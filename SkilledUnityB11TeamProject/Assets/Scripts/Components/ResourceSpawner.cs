@@ -6,6 +6,7 @@ public abstract class ResourceSpawner : MonoBehaviour
 {
     [SerializeField] protected GameObject resourcePrefab;
     [SerializeField] protected float respawnDelay;
+    [SerializeField] protected float respawnRandomDelay;
     [SerializeField] protected int capacity;
 
     public abstract int InitCapacity();
