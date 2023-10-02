@@ -53,7 +53,9 @@ public class DayManager : MonoBehaviour
             moon.gameObject.SetActive(false);
             isNight = false;
             day += 1;
-            textDay.text = day.ToString();
+
+            if (day <= 5) textDay.text = day.ToString();
+            else textDay.text = "????";
         }
         else if (!isNight && (time <= dayStart || nightStart <= time))
         {
