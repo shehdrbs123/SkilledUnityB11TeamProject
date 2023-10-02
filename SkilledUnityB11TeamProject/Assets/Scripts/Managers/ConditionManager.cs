@@ -142,14 +142,11 @@ public class ConditionManager : MonoBehaviour
 
     private void GameOver()
     {
-        //Time.timeScale = 0;
-        Debug.Log("GAME OVER");
-        // 게임 오버 씬
+        SceneManager.LoadScene("GameClearScene");
     }
 
     private void GameClear()
     {
-        Debug.Log("GAME CLEAR");
-        // 게임 클리어 씬
+        SceneManager.LoadScene("GameClearScene");
     }
 }
