@@ -914,7 +914,10 @@ MonoBehaviour:
   CanNotBuildMaterial: {fileID: 2100000, guid: d81064c84f0c77040a6149bb482f4e02, type: 2}
   BuildLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 33792
+  BuildIgnoreLayer:
+    serializedVersion: 2
+    m_Bits: 32768
   StructureLayer:
     serializedVersion: 2
     m_Bits: 2048
