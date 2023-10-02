@@ -9,6 +9,7 @@ public interface IInteractable
 {
 	string GetInteractPrompt();
 	void OnInteract();
+	void PlayInteractionSound();
 }
 public class InteractionManager : MonoBehaviour
 {

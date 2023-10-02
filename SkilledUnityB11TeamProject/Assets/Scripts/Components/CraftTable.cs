@@ -28,6 +28,10 @@ public class CraftTable : MonoBehaviour, IInteractable
         panel.SetActive(true);
     }
 
+    public void PlayInteractionSound()
+    {
+    }
+
     private string GetPanelName()
     {
         switch (CraftType)
