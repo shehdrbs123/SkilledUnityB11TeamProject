@@ -9,7 +9,13 @@ public abstract class GridButtonUI : MonoBehaviour
     [SerializeField] protected Image _buildTargetImage;
     protected Button _button;
     protected Inventory _inventory;
-    public abstract void Init(ScriptableObject data,Transform parent,UnityAction PanelOff);
+    protected UnityAction _updateAllButtons;
+
+    public virtual void Init(ScriptableObject data, Transform parentContent, UnityAction PanelOff,
+        UnityAction UpdateButtons)
+    {
+        _updateAllButtons = UpdateButtons;
+    }
     
     public abstract GridScriptableObject GetResourceData();
 

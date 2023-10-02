@@ -38,13 +38,13 @@ public class GridPanelUI : BaseUI
                     _uiManager = GameManager.Instance._uiManager;
                 GameObject obj = _uiManager.GetUIClone(buttonUIName);
                 GridButtonUI gridButtonUI = obj.GetComponent<GridButtonUI>();
-                gridButtonUI.Init(manager.GetData(PanelType,i),_contentPanel,EaseOutPanel);
+                gridButtonUI.Init(manager.GetData(PanelType,i),_contentPanel,EaseOutPanel,UpdateButtons);
                 buttons.Add(gridButtonUI);
             }
         }
         else
         {
-            UpdateButtons();
+            UpdateButtons();    
         }
     }
 
@@ -85,7 +85,7 @@ public class GridPanelUI : BaseUI
             StopCoroutine(EaseInOutCoroutine);
         EaseInOutCoroutine = StartCoroutine(_uiManager.LerpAdjustRect(_backPanel, 1, 1, EaseInTime));
     }
-    
+
     public void EaseOutPanel()
     {
         if(EaseInOutCoroutine!= null)

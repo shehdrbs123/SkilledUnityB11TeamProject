@@ -32,22 +32,25 @@ public class CraftButtonUI : GridButtonUI
             inven.ComsumeItem(DataSo.resoureces[i],DataSo.resourecsCount[i]);
         }
         inven.AddItem(DataSo.ResultItem);
+        _updateAllButtons?.Invoke();
     }
     private void UpdateData()
     {
         _buildTargetImage.sprite = DataSo.Image;
     }
 
-    public override void Init(ScriptableObject data, Transform parent, UnityAction PanelOff)
+    public override void Init(ScriptableObject data, Transform parentContent, UnityAction PanelOff, UnityAction UpdateButtons)
     {
+        base.Init(data,parentContent, PanelOff, UpdateButtons);
         DataSo= data as CraftDataSO;
         _button = GetComponent<Button>();
         
         _button.onClick.AddListener(PlaySound);
         _button.onClick.AddListener(MakeItem);
-        transform.SetParent(parent,false);
+        transform.SetParent(parentContent,false);
         transform.localScale = Vector3.one;
-        
+
+        _updateAllButtons = UpdateButtons;
         UpdateButton();
     }
 

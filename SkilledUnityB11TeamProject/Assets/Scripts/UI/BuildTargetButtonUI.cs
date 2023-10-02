@@ -47,17 +47,17 @@ public class BuildTargetButtonUI : GridButtonUI
         SetImage(dataSo.Image);
     }
 
-    public override void Init(ScriptableObject data, Transform parent, UnityAction PanelOff)
+    public override void Init(ScriptableObject data, Transform parentContent, UnityAction PanelOff,UnityAction UpdateButtons)
     {
+        base.Init(data, parentContent, PanelOff, UpdateButtons);
         _button = GetComponent<Button>();
 
         dataSo = data as BuildDataSO;
         _button.onClick.AddListener(CreateBuild);
         _button.onClick.AddListener(PanelOff);
             
-        transform.SetParent(parent,false);
+        transform.SetParent(parentContent,false);
         transform.localScale = Vector3.one;
-        
         UpdateButton();
     }
 
