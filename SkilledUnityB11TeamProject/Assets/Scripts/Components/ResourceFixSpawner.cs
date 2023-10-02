@@ -21,7 +21,7 @@ public class ResourceFixSpawner : ResourceSpawner
 
     private IEnumerator CoRespawn(GameObject obj)
     {
-        yield return new WaitForSeconds(respawnDelay + Random.Range(0, 5f));
+        yield return new WaitForSeconds(respawnDelay + Random.Range(0, respawnRandomDelay));
 
         obj.SetActive(true);
     }
