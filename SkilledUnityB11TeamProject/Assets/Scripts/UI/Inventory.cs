@@ -101,7 +101,7 @@ public class Inventory : MonoBehaviour
 				slotToStakTo.quantity++;
 				ItemTotalCount[item] += 1;
 				UpdateUI();
-				GameManager.Instance.ResourceDisplayUI.ShowGetResource(item);
+				GameManager.Instance.resourceDisplayUI.ShowGetResource(item);
 				return;
 			}
 		}
@@ -117,7 +117,7 @@ public class Inventory : MonoBehaviour
 			else
 				ItemTotalCount[item] = 1;
 			UpdateUI();
-			GameManager.Instance.ResourceDisplayUI.ShowGetResource(item);
+			GameManager.Instance.resourceDisplayUI.ShowGetResource(item);
 			return;
 		}
 

@@ -55,7 +55,7 @@ public class EquipTool : Equip
 		{
 			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource))
 			{
-				if(GameManager.Instance.ResourceDisplayUI != null)
+				if(GameManager.Instance.resourceDisplayUI != null)
 				{
 					resource.particle.Play();
 				}

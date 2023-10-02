@@ -6,29 +6,17 @@ using UnityEngine.UI;
 
 public class ResourceDisplayUI : MonoBehaviour
 {
-	public Animator animator;
-	public TextMeshProUGUI resourceTxt;
-	public GameObject resourceDisplayImg;
+	PrefabManager prefabManager;
 
-	private readonly int animOnCollect = Animator.StringToHash("OnCollect");
+    private void Start()
+    {
+        prefabManager = GameManager.Instance.prefabManager;
+    }
 
-	private void Awake()
+    public void ShowGetResource(ItemData item)
 	{
-		animator = GetComponent<Animator>();	
-		GameManager.Instance.ResourceDisplayUI = this;
-	}
-
-	//public void ShowGetResource(ItemData item, string anim)
- //   {
-	//	resourceTxt.text = item.itemName;
-	//	resourceDisplayImg.SetActive(true);
-	//	animator.Play(anim, -1, 0f);
-	//}
-
-	public void ShowGetResource(ItemData item)
-	{
-		resourceTxt.text = item.itemName;
-		resourceDisplayImg.SetActive(true);
-		animator.SetTrigger(animOnCollect);
+        GameObject obj = prefabManager.SpawnFromPool(PoolType.GetUI);
+        obj.SetActive(true);
+        obj.GetComponent<GetPopupUI>().Initial(item);
 	}
 }
