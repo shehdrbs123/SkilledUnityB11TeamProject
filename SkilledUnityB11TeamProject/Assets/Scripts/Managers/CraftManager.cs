@@ -7,7 +7,6 @@ public class CraftManager : GridPanelManager
 {
     private Dictionary<GridPanelType, CraftDataSO[]> dicRecipes;
     
-    
     private void Awake()
     {
         dicRecipes = new Dictionary<GridPanelType, CraftDataSO[]>();

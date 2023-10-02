@@ -7,6 +7,6 @@ public abstract class GridScriptableObject : ScriptableObject
     public ItemData[] resoureces;
     public int[] resourecsCount;
 
-    protected StringBuilder sb = new StringBuilder();
+    protected StringBuilder sb = new StringBuilder(100);
     public abstract string GetDataInfo();
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,10 @@ public class CraftButtonUI : GridButtonUI
     {
         GameObject player = GameManager.Instance.GetPlayer();
         Inventory inven = player.GetComponent<Inventory>();
+        for (int i = 0; i < DataSo.resoureces.Length; ++i)
+        {
+            inven.ComsumeItem(DataSo.resoureces[i],DataSo.resourecsCount[i]);
+        }
         inven.AddItem(DataSo.ResultItem);
     }
     private void UpdateData()
@@ -41,11 +46,8 @@ public class CraftButtonUI : GridButtonUI
         _button.onClick.AddListener(MakeItem);
         transform.SetParent(parent,false);
         transform.localScale = Vector3.one;
-    }
-
-    public override void UpdateButton()
-    {
         
+        UpdateButton();
     }
 
     public override GridScriptableObject GetResourceData()

@@ -61,20 +61,7 @@ public class BuildTargetButtonUI : GridButtonUI
         UpdateButton();
     }
 
-    public override void UpdateButton()
-    {
-        if (!_inventory)
-            _inventory = GameManager.Instance.GetPlayer().GetComponent<Inventory>();
-        for (int i = 0; i < dataSo.resoureces.Length; ++i)
-        {
-            if(!_inventory.HasItems(dataSo.resoureces[i],dataSo.resourecsCount[i]))
-            {
-                ButtonEnable(false);
-                return;
-            }
-        }
-        ButtonEnable(true);        
-    }
+    
 
     public override GridScriptableObject GetResourceData()
     {
