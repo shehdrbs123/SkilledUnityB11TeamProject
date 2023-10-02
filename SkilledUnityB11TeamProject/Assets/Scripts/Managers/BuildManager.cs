@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
+
 
 public class BuildManager : GridPanelManager
 {
@@ -69,6 +68,7 @@ public class BuildManager : GridPanelManager
                RaycastHit hit;
                if (Physics.Raycast(lay,out hit, canBuildRange, BuildLayer))
                {
+                    
                     buildObj.SetActive(true);
                     buildObj.transform.position = hit.point;
                     Collider[] otherStrCollider = Physics.OverlapBox(buildObjCollider.bounds.center, buildObjCollider.bounds.extents, Quaternion.identity,

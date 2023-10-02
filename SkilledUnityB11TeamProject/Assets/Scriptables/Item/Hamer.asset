@@ -21,7 +21,4 @@ MonoBehaviour:
   consumables: []
   equipPrefab: {fileID: 71125783271282757, guid: 08f255c5654a79a40880a19270d3eea6, type: 3}
   UseAudio:
-  - {fileID: 8300000, guid: cdaaf73197bb7a74bb085cd94afccfba, type: 3}
-  - {fileID: 8300000, guid: 22eab4df0bfb76b439118c30d20e43b9, type: 3}
-  - {fileID: 8300000, guid: a9fe83366307d414ea5aec26a348f3ea, type: 3}
-  - {fileID: 8300000, guid: d4bebb49f2606a84ab636a6ffc5d3379, type: 3}
+  - {fileID: 8300000, guid: 59acc4a8fb9a22a4ba9611db3b3daad1, type: 3}
