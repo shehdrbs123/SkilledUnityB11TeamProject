@@ -34,8 +34,8 @@ public class CraftDataSO : GridScriptableObject
                 return "배고픔";
             case ConsumableType.Thirsty :
                 return "목마름";
-            case ConsumableType.Meatal :
-                return "정신력";
+            case ConsumableType.Mental :
+                return "멘탈";
         }
 
         return string.Empty;

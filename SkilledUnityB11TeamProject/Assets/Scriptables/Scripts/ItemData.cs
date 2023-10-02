@@ -12,7 +12,7 @@ public enum ConsumableType
 {
     Hunger,
 	Thirsty,
-	Meatal
+	Mental
 }
 [System.Serializable]
 public class ItemDataConsumable
