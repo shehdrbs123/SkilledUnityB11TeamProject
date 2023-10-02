@@ -42,6 +42,12 @@ public class Monster : MonoBehaviour
         _agent.SetDestination(data.TARGET_POSITION);
     }
 
+    private void OnDisable()
+    {
+        gameObject.transform.position = data.SPAWN_POSITION;
+        gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
+    }
+
     private void Update()
     {
         if (isAlive && _agent.remainingDistance <= 0)
