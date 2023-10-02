@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -140,5 +141,27 @@ public class UIManager : MonoBehaviour
         }
         rect.localScale = targetScale;
         callback?.Invoke();
+    }
+
+    public static void PopupText(string text)
+    {
+        UIManager uiManager = GameManager.Instance._uiManager;
+        GameObject popupTextPanel = uiManager.GetUI("MindTextUI");
+        CanvasGroup popupTextCanG = popupTextPanel.GetComponent<CanvasGroup>(); 
+        TMP_Text popupText = popupTextPanel.transform.GetChild(0).GetComponent<TMP_Text>();
+        popupTextCanG.alpha = 1;
+        popupText.text = text;
+        uiManager.StartCoroutine(uiManager.LerpAdjustAlpha(popupTextCanG, 0));
+    }
+
+    public IEnumerator LerpAdjustAlpha(CanvasGroup group, float toAlpha)
+    {
+        while (Mathf.Abs(group.alpha - toAlpha) > 0.01f)
+        {
+            group.alpha = Mathf.Lerp(group.alpha, toAlpha, 0.01f);
+            yield return null;
+        }
+
+        group.alpha = toAlpha;
     }
 }

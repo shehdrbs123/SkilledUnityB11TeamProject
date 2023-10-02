@@ -97,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         _controller.OnMoved += OnMoveInput;
         _controller.OnJump += OnJumpInput;
         _controller.OnLookRotation += OnLookInput;
+        UIManager.PopupText("아아아아아아");
     }
 
     private void Move()
