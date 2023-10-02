@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FattyMortarG02
   m_EditorClassIdentifier: 
   halfRadius: 50
-  Damage: 400
-  attackRate: 15
+  Damage: 50
+  attackRate: 20
   _moveSound: []
   _shotSound:
   - {fileID: 8300000, guid: e05ddaf6fbc2abe4db29d4d2a927051f, type: 3}
