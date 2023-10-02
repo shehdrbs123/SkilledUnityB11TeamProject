@@ -94,7 +94,6 @@ public class Monster : MonoBehaviour
 
         for (int i = 0; i < data.dropCount; i++)
         {
-            GameManager.Instance.ResourceDisplayUI.ShowGetResource(data.dropItem);
             GameManager.Instance.inventory.AddItem(data.dropItem);
         }
 

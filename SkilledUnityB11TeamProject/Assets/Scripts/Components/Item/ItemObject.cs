@@ -13,7 +13,6 @@ public class ItemObject : MonoBehaviour, IInteractable
 
 	public void OnInteract()
 	{
-		GameManager.Instance.ResourceDisplayUI.ShowGetResource(item);
 		GameManager.Instance.inventory.AddItem(item);
 	}
 }

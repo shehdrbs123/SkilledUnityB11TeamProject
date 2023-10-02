@@ -39,7 +39,6 @@ public class Resource : MonoBehaviour
 			}
 
 			capacity -= 1;
-
 			GameManager.Instance.inventory.AddItem(itemToGive);
 			particle.Play();
 		}

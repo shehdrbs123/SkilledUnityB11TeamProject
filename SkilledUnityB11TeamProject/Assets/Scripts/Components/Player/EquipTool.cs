@@ -58,7 +58,6 @@ public class EquipTool : Equip
 				if(GameManager.Instance.ResourceDisplayUI != null)
 				{
 					resource.particle.Play();
-					GameManager.Instance.ResourceDisplayUI.ShowGetResource(resource.itemToGive);
 				}
 				resource.Gather();			
 			}

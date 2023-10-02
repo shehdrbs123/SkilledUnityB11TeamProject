@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5acb947b6189d7498350811f6d2ab54, type: 3}
   m_Name: SimpleCannon
   m_EditorClassIdentifier: 
+  TurretName: "\uD3EC\uD0D1"
   halfRadius: 10
   Damage: 1
   attackRate: 0.4

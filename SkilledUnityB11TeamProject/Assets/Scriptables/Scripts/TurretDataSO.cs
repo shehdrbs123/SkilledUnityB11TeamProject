@@ -6,6 +6,7 @@ using UnityEngine;
 [Serializable]
 public class TurretDataSO : ScriptableObject
 {
+    public string TurretName;
     public float halfRadius;
     public int Damage;
     public float attackRate;

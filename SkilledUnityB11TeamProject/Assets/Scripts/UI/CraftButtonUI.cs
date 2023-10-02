@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class CraftButtonUI : GridButtonUI
 {
+    [SerializeField] private AudioClip uiSound;
     public CraftDataSO DataSo
     {
         get
@@ -42,7 +43,7 @@ public class CraftButtonUI : GridButtonUI
         DataSo= data as CraftDataSO;
         _button = GetComponent<Button>();
         
-        _button.onClick.AddListener(PanelOff);
+        _button.onClick.AddListener(PlaySound);
         _button.onClick.AddListener(MakeItem);
         transform.SetParent(parent,false);
         transform.localScale = Vector3.one;
@@ -53,6 +54,11 @@ public class CraftButtonUI : GridButtonUI
     public override GridScriptableObject GetResourceData()
     {
         return _data;
+    }
+
+    private void PlaySound()
+    {
+        SoundManager.PlayClip(uiSound,GameManager.Instance.GetPlayer().transform.position);
     }
     
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5acb947b6189d7498350811f6d2ab54, type: 3}
   m_Name: FattyMissle
   m_EditorClassIdentifier: 
+  TurretName: "\uBBF8\uC0AC\uC77C\uD130\uB81B"
   halfRadius: 30
   Damage: 15
   attackRate: 4
