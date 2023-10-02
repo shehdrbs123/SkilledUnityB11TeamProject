@@ -7,6 +7,7 @@ public class MainSceneScript : MonoBehaviour
 {
     public void OnButtonStart()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("IntroScene");
     }
 

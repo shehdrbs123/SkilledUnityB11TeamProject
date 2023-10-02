@@ -92,12 +92,12 @@ public class ConditionManager : MonoBehaviour
 
         if (mental.IsZero())
         {
-            GameOver();
+            GameEnd("GameOverScene");
         }
 
         if (dayManager.day >= 7)
         {
-            GameClear();
+            GameEnd("GameClearScene");
         }
     }
 
@@ -111,7 +111,7 @@ public class ConditionManager : MonoBehaviour
         }
         else
         {
-            GameOver();
+            GameEnd("GameOverScene");
         }
     }
 
@@ -140,13 +140,10 @@ public class ConditionManager : MonoBehaviour
         coWarning = null;
     }
 
-    private void GameOver()
+    private void GameEnd(string sceneName)
     {
-        SceneManager.LoadScene("GameClearScene");
-    }
-
-    private void GameClear()
-    {
-        SceneManager.LoadScene("GameClearScene");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene(sceneName);
     }
 }
