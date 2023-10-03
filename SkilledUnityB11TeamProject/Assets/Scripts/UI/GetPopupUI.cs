@@ -26,7 +26,7 @@ public class GetPopupUI : MonoBehaviour
 
     private IEnumerator CoGoUp()
     {
-        while (rectTransform.localPosition.y < -80f)
+        while (rectTransform.localPosition.y < -200f)
         {
             Vector3 pos = rectTransform.localPosition;
             pos.y += 10f;

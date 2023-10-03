@@ -20,9 +20,7 @@ MonoBehaviour:
   maxStackAmount: 20
   consumables:
   - type: 1
-    value: 5
-  - type: 1
-    value: 5
+    value: 2
   equipPrefab: {fileID: 0}
   UseAudio:
   - {fileID: 8300000, guid: 08c37e27d24bda845b807595d8bdd647, type: 3}

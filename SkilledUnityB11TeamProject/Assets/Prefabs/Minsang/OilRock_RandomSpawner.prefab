@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourcePrefab: {fileID: 4943062644842783840, guid: 1e77a7127673d5749b7d46f153a59315, type: 3}
-  respawnDelay: 10
-  respawnRandomDelay: 5
-  capacity: 5
   resourceCount: 10
+  baseRespawnDelay: 10
+  randomRespawnDelay: 5
+  baseCapacity: 5
   randomCapacity: 5
   range: {fileID: 1372495033515780342}
 --- !u!1 &1372495033515780342
