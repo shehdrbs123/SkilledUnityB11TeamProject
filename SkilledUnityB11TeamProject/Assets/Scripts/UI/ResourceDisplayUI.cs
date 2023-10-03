@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourceDisplayUI : MonoBehaviour
+public class ResourceDisplayUI: MonoBehaviour
 {
 	PrefabManager prefabManager;
 
