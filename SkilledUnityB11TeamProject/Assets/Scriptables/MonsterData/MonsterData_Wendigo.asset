@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 0}
   hp: 300
-  speed: 7
+  speed: 5
   dropItem: {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}
-  dropCount: 50
+  dropCount: 100
