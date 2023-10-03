@@ -26,10 +26,10 @@ public class GetPopupUI : MonoBehaviour
 
     private IEnumerator CoGoUp()
     {
-        while (rectTransform.localPosition.y < -60f)
+        while (rectTransform.localPosition.y < -80f)
         {
             Vector3 pos = rectTransform.localPosition;
-            pos.y += 25f;
+            pos.y += 10f;
             rectTransform.localPosition = pos;
 
             yield return delay;

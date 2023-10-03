@@ -117,6 +117,8 @@ public class ConditionManager : MonoBehaviour
 
     private IEnumerator CoDisapear(GameObject battery)
     {
+        battery.GetComponentInChildren<ParticleSystem>().Play();
+
         while (battery.transform.position.y > -4.5f)
         {
             battery.transform.Translate(Vector3.down * 0.05f);
