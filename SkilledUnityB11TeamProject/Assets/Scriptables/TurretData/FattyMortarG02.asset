@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurretName: "\uACE1\uC0AC\uD3EC"
   halfRadius: 50
-  Damage: 50
+  Damage: 200
   attackRate: 20
   _moveSound: []
   _shotSound:
