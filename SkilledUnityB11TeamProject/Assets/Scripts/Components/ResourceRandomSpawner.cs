@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceRandomSpawner : ResourceSpawner
+public class ResourceRandomSpawner : MonoBehaviour
 {
+    [SerializeField] protected GameObject resourcePrefab;
+    [SerializeField] protected float respawnDelay;
+    [SerializeField] protected float respawnRandomDelay;
+    [SerializeField] protected int capacity;
+
     [Header("Random Spawner")]
     [SerializeField] private int resourceCount;
     [SerializeField] private int randomCapacity;
@@ -22,7 +27,7 @@ public class ResourceRandomSpawner : ResourceSpawner
         }
     }
 
-    public override int InitCapacity()
+    public int InitCapacity()
     {
         return capacity + Random.Range(0, randomCapacity);
     }
@@ -35,7 +40,7 @@ public class ResourceRandomSpawner : ResourceSpawner
         return pos;
     }
 
-    public override void Respawn(GameObject obj)
+    public void Respawn(GameObject obj)
     {
         StartCoroutine(CoRespawn(obj));
     }
