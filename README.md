@@ -148,10 +148,10 @@
     
     | 클래스 | 기능 |
     | -- | -- |
-    | PrefabManager | 오브젝트 풀링
-    | DayManager | 낮과 밤 구현
-    | ConditionManager | 플레이어의 컨디션과 게임 종료 플래그 체크
-    | MonsterSpawnManager | 구성된 몬스터 웨이브 정보대로 몬스터 소환
+    | [PrefabManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/PrefabManager.cs) | 오브젝트 풀링
+    | [DayManager](SkilledUnityB11TeamProject/Assets/scripts/Managers/DayManager.cs) | 낮과 밤 구현
+    | [ConditionManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/ConditionManager.cs) | 플레이어의 컨디션과 게임 종료 플래그 체크
+    | [MonsterSpawnManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/MonsterSpawnManager.cs) | 구성된 몬스터 웨이브 정보대로 몬스터 소환
     | ItemManager | 아이템의 데이터 관리
     | InteractionManager | 오브젝트의 상호작용
     | EquipManager | 플레이어의 장비 장착 관리 및 공격 기능
@@ -161,7 +161,7 @@
     
     | 클래스 | 기능 |
     | -- | -- |
-    | ResourceDisplayUI | 아이템 획득 UI 팝업 관리
+    | [ResourceDisplayUI](SkilledUnityB11TeamProject/Assets/scripts/UI/ResourceDisplayUI.cs) | 아이템 획득 UI 팝업 관리
     | ItemSlotUI | 아이템 슬롯에 들어있는 아이템 정보를 관리
     | EscBtnUI| Esc UI 활성화, 계속하기, 다시하기 버튼
 
@@ -221,15 +221,15 @@
     
     | 클래스 | 기능 |
     | -- | -- |
-    | MonsterDataSO | 몬스터 데이터를 스크립터블오브젝트로 저장해 재사용
-    | Monster | 네이게이션 에이전트로 몬스터 AI 구성 및 관리
+    | [MonsterDataSO](SkilledUnityB11TeamProject/Assets/Scriptables/Scripts/MonsterDataSO.cs) | 몬스터 데이터를 스크립터블오브젝트로 저장해 재사용
+    | [Monster](SkilledUnityB11TeamProject/Assets/Scripts/Components/Monster.cs) | 네이게이션 에이전트로 몬스터 AI 구성 및 관리
     
 
 - **자원/지형**
     
     | 클래스 | 기능 |
     | -- | -- |
-    | ResourceRandomSpawner | 정해진 자원을 무작위로 배치하는 기능
+    | [ResourceRandomSpawner](SkilledUnityB11TeamProject/Assets/Scripts/Components/ResourceRandomSpawner.cs) | 정해진 자원을 무작위로 배치하는 기능
     | Resource | 자원의 정보전달과 채취효과 기능
 
 
@@ -244,7 +244,7 @@
     
     | 클래스 | 기능 |
     | -- | -- |
-    |SoundManager|AudioClip을 전달받아 보유중인 AudioSource들로 효과음, 배경음을 재생해주는 모듈|
+    |[SoundManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/SoundManager.cs)|AudioClip을 전달받아 보유중인 AudioSource들로 효과음, 배경음을 재생해주는 모듈|
 
 ---
 
