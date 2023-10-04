@@ -11,6 +11,8 @@
 7. 사용 에셋
 
 ---
+<br>
+<br>
 
 # 1. 게임 개요 및 개발 기간
 
@@ -31,10 +33,17 @@
 
 ---
 
+
+<br>
+<br>
+
 # 2. 시연 영상
 [🔗 **영상 보러가기**]()
 
 ---
+
+<br>
+<br>
 
 # 3. 기능 명세서
 
@@ -56,6 +65,9 @@
 
 
 ---
+
+<br>
+<br>
 
 # 4. 기획 설계
 
@@ -117,6 +129,8 @@
     | 우주 결정 | 몬스터 처치 |
 
 ---
+<br>
+<br>
 
 # 5. 클래스 설명
 
@@ -124,7 +138,11 @@
     
     | 클래스 | 기능 |
     | -- | -- |
-
+    |[PlayerMovement](SkilledUnityB11TeamProject/Assets/Scripts/Components/Player/PlayerMovement.cs)|플레이어의 움직임에 관련된 기능|
+    |[InputController](SkilledUnityB11TeamProject/Assets/Scripts/Components/Player/InputController.cs)|외부 입력을 직접적으로 받아 연결된 event에 전달하는 모듈|
+    |[Equip](SkilledUnityB11TeamProject/Assets/Scripts/Components/Player/Equip.cs)|장착되는 무기의 베이스가 추상 클래스
+    |EquipTool|장착되는 무기에서 기본적으로 추가되는 클래스, 곡괭이에서 사용|
+    |BuildHammer|장착되는 무기 중 건설해머에 추가되는 클래스, 건설 UI를 띄워주는 역할|
 
 - **매니저 클래스**
     
@@ -155,23 +173,48 @@
     | ItemData | 아이템마다 정보를 부여해주는 기능
     | ItemObject | 아이템 오브젝트의 상호작용 정보를 전달해주는 기능
 
+- **포탑**
+    
+    | 클래스 | 기능 |
+    | -- | -- |
+    |TurretAIBase|모든 터렛이 기본적으로 가져야할 내용을 담은 추상 클래스|
+    |TurretAI|기본 포탑(총을 쏘는 포탑)을 구현한 포탑 AI|
+    |TurretThrowerAI|폭탄들을 발사하는 포탑들을 구현한 AI|
+
+- **포탑 폭탄**
+-   | 클래스 | 기능 |
+    | -- | -- |
+    |Bullets|Thrower에 힘을 받아 날아가는 물리적 폭탄|
+    |DamageRange|폭탄이 터진 후 데미지를 입히는 영역을 만드는 컴포넌트|
+    |FireBomb|Bullet과 같으나, 터졌을 때 DamageRange를 생성하는 폭탄|
+    |Follower|폭탄에 반유도 기능을 추가해주는 컴포넌트|
+    
+
+- **제작/건설**
+- 
+    | 클래스 | 기능 |
+    | -- | -- |
+    |CraftManager|Craft를 위한 레시피 데이터를 가져오고 공유해주는 모듈|
+    |GridPanelUI|모든 제작/건설 패널에서 사용되는 UI의 기능을 모은 컴포넌트|
+    |GridButtonUI|제작/건설패널에서 제작할 것들을 선택할 수 있는 버튼|
+    |GridScriptableObject|제작/건설 패널에서 기본적으로 사용하는 이미지, 리소스의 수 등을 보관하는 ScriptableObject|
+
 
 - **건설**
     
     | 클래스 | 기능 |
     | -- | -- |
-
-
-- **포탑**
-    
-    | 클래스 | 기능 |
-    | -- | -- |
-    
+    |BuildManager|건설 레시피를 가져오고, 건설모드시 PlayerInput을 받아 건설 동작을 할 수 있도록하는 매니져|
+    |BuildSttButtonUI|GridButtonUI를 상속받아 건설에 쓰이는 ScriptableObject를 보관,표시,동작하는 스크립트 |
+    |BuildDataSO|GridScriptableObject를 상속받고, 건설 시 완성될 오브젝트를 포함하는 Scriptable Object|
 
 - **제작**
     
     | 클래스 | 기능 |
     | -- | -- |
+    |CraftManager|Craft를 위한 레시피 데이터를 가져오고 공유해주는 모듈|
+    |CraftButtonUI|GridScriptableObject를 상속받고, 건설 시 완성될 오브젝트를 포함하는 Scriptable Object|
+    
 
 
 - **적/AI**
@@ -194,13 +237,14 @@
     
     | 클래스 | 기능 |
     | -- | -- |
-    
+    |TestScript|아이템 추가, 밤낮변경, 일자 변경 등 테스트를 위한 기능이 포함된 모듈|
+    |TextureMaker|별도의 씬 내에서 256x256크기에 맞춰 보이는 모습대로 카메라를 찍고, PNG 파일로 변환해주는 모듈|
 
 - **사운드**
     
     | 클래스 | 기능 |
     | -- | -- |
-
+    |SoundManager|AudioClip을 전달받아 보유중인 AudioSource들로 효과음, 배경음을 재생해주는 모듈|
 
 ---
 
