@@ -141,7 +141,7 @@
     |[PlayerMovement](SkilledUnityB11TeamProject/Assets/Scripts/Components/Player/PlayerMovement.cs)|플레이어의 움직임에 관련된 기능|
     |[InputController](SkilledUnityB11TeamProject/Assets/Scripts/Components/Player/InputController.cs)|외부 입력을 직접적으로 받아 연결된 event에 전달하는 모듈|
     |[Equip](SkilledUnityB11TeamProject/Assets/Scripts/Components/Player/Equip.cs)|장착되는 무기의 베이스가 추상 클래스
-    |EquipTool|장착되는 무기에서 기본적으로 추가되는 클래스, 곡괭이에서 사용|
+    |[EquipTool](SkilledUnityB11TeamProject/Assets/Scripts/Components/Player/EquipTool.cs)|장착되는 무기에서 기본적으로 추가되는 클래스, 곡괭이에서 사용|
     |BuildHammer|장착되는 무기 중 건설해머에 추가되는 클래스, 건설 UI를 띄워주는 역할|
 
 - **매니저 클래스**
@@ -152,9 +152,9 @@
     | [DayManager](SkilledUnityB11TeamProject/Assets/scripts/Managers/DayManager.cs) | 낮과 밤 구현
     | [ConditionManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/ConditionManager.cs) | 플레이어의 컨디션과 게임 종료 플래그 체크
     | [MonsterSpawnManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/MonsterSpawnManager.cs) | 구성된 몬스터 웨이브 정보대로 몬스터 소환
-    | ItemManager | 아이템의 데이터 관리
-    | InteractionManager | 오브젝트의 상호작용
-    | EquipManager | 플레이어의 장비 장착 관리 및 공격 기능
+    | [ItemManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/ItemManager.cs) | 아이템의 데이터 관리
+    | [InteractionManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/InteractionManager.cs) | 오브젝트의 상호작용
+    | [EquipManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/EquipManager.cs) | 플레이어의 장비 장착 관리 및 공격 기능
     
 
 - **UI**
@@ -162,16 +162,16 @@
     | 클래스 | 기능 |
     | -- | -- |
     | [ResourceDisplayUI](SkilledUnityB11TeamProject/Assets/scripts/UI/ResourceDisplayUI.cs) | 아이템 획득 UI 팝업 관리
-    | ItemSlotUI | 아이템 슬롯에 들어있는 아이템 정보를 관리
-    | EscBtnUI| Esc UI 활성화, 계속하기, 다시하기 버튼
+    | [ItemSlotUI](SkilledUnityB11TeamProject/Assets/Scripts/UI/ItemSlotUI.cs) | 아이템 슬롯에 들어있는 아이템 정보를 관리
+    | [EscBtnUI](SkilledUnityB11TeamProject/Assets/Scripts/UI/EscBtnUI.cs)| Esc UI 활성화, 계속하기, 다시하기 버튼
 
 - **아이템**
     
     | 클래스 | 기능 |
     | -- | -- |
-    | Inventory |  인벤토리 On/Off, 인벤토리 아이템 추가, 아이템 사용, 버리기, 장착 기능
-    | ItemData | 아이템마다 정보를 부여해주는 기능
-    | ItemObject | 아이템 오브젝트의 상호작용 정보를 전달해주는 기능
+    | [Inventory](SkilledUnityB11TeamProject/Assets/Scripts/UI/Inventory.cs) |  인벤토리 On/Off, 인벤토리 아이템 추가, 아이템 사용, 버리기, 장착 기능
+    | [ItemData](SkilledUnityB11TeamProject/Assets/Scriptables/Scripts/ItemData.cs) | 아이템마다 정보를 부여해주는 기능
+    | [ItemObject](SkilledUnityB11TeamProject/Assets/Scripts/Components/Item/ItemObject.cs) | 아이템 오브젝트의 상호작용 정보를 전달해주는 기능
 
 - **포탑**
     
@@ -230,7 +230,7 @@
     | 클래스 | 기능 |
     | -- | -- |
     | [ResourceRandomSpawner](SkilledUnityB11TeamProject/Assets/Scripts/Components/ResourceRandomSpawner.cs) | 정해진 자원을 무작위로 배치하는 기능
-    | Resource | 자원의 정보전달과 채취효과 기능
+    | [Resource](SkilledUnityB11TeamProject/Assets/Scripts/Components/Item/Resource.cs) | 자원의 정보전달과 채취효과 기능
 
 
 - **유틸리티**
