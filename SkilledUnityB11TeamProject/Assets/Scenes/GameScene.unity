@@ -8927,7 +8927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3658000633186066523, guid: e0feeb5c2c13e6e449dbe7ed69980653, type: 3}
       propertyPath: resourceCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3658000633186066523, guid: e0feeb5c2c13e6e449dbe7ed69980653, type: 3}
       propertyPath: baseRespawnDelay
