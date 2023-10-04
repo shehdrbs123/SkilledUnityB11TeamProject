@@ -13,14 +13,17 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   itemName: "\uB9F9\uBB3C"
-  description: "\uD638\uC218\uC5D0\uC11C \uD37C\uC628 \uBB3C"
+  description: "\uC544\uC9C1\uC740 \uB354\uB7EC\uC6B4 \uBB3C. \uC815\uD654\uACFC\uC815\uC774
+    \uD544\uC694\uD558\uB2E4."
   type: 2
   icon: {fileID: 21300000, guid: 6592b916f86b19e428db6f6847c7b6dd, type: 3}
   canStack: 1
   maxStackAmount: 20
   consumables:
   - type: 1
-    value: 2
+    value: 5
+  - type: 2
+    value: -1
   equipPrefab: {fileID: 0}
   UseAudio:
   - {fileID: 8300000, guid: 08c37e27d24bda845b807595d8bdd647, type: 3}

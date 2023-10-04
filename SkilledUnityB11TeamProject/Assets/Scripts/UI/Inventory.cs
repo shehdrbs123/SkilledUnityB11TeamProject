@@ -194,11 +194,14 @@ public class Inventory : MonoBehaviour
 				{
 					case ConsumableType.Hunger:
 						GameManager.Instance._conditionManager.hunger.Change(selectedItem.item.consumables[i].value);
-						//condition.Heal(selectedItem.item.consumables[i].value); 
 						break;
+
 					case ConsumableType.Thirsty:
 						GameManager.Instance._conditionManager.thirsty.Change(selectedItem.item.consumables[i].value);
-						//condition.Eat(selectedItem.item.consumables[i].value);
+						break;
+
+					case ConsumableType.Mental:
+						GameManager.Instance._conditionManager.mental.Change(selectedItem.item.consumables[i].value);
 						break;
 				}
 				SoundManager.PlayRandomClip(selectedItem.item.UseAudio,transform.position);
