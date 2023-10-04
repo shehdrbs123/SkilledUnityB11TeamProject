@@ -6,7 +6,6 @@ public class EquipTool : Equip
 {
 	public float useStamina;
 	public float attackRate;
-	private bool attacking;
 	public float attackDistance;
 	
 	[Header("Resource Gathering")]
@@ -16,18 +15,20 @@ public class EquipTool : Equip
 	public bool doesDealDamage;
 	public int damage;
 
+	[SerializeField]private AudioClip[] swingSound;
+	[SerializeField]private AudioClip[] HitSound;
+	
 	private Animator animator;
-	private Camera camera;
+	private Camera _cam;
+	private bool attacking;
+	private bool isHit;
+
+	private readonly int AnimAttack = Animator.StringToHash("Attack");
 
 	protected virtual void Awake()
 	{
-		camera = Camera.main;
+		_cam = Camera.main;
 		animator = GetComponent<Animator>();
-	}
-
-	void OnCanAttack()
-	{
-		attacking = false;
 	}
 
 	public override void OnAttackInput()
@@ -35,27 +36,43 @@ public class EquipTool : Equip
 		if (!attacking)
 		{
 			attacking = true;
-			animator.SetTrigger("Attack");
-			Invoke("OnCanAttack", attackRate);
+			animator.SetTrigger(AnimAttack);
+			Invoke(nameof(AttackDelay), attackRate);
 		}
+	}
+
+	private void AttackDelay()
+	{
+		attacking = false;
 	}
 
 	public void OnHit()
 	{
-		
-		Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-		RaycastHit hit;
+		Ray ray = _cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
-		if (Physics.Raycast(ray, out hit, attackDistance))
+		isHit = Physics.Raycast(ray, out RaycastHit hit, attackDistance);
+		if (isHit)
 		{
 			if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource))
 			{
-				GameManager.Instance.ResourceDisplayUI.resourceTxt.text = resource.itemToGive.itemName;
-				GameManager.Instance.ResourceDisplayUI.resourceDisplayImg.SetActive(true);
-				GameManager.Instance.ResourceDisplayUI.animator.SetTrigger("OnCollect");
+				if(GameManager.Instance.resourceDisplayUI != null)
+				{
+					resource.particle.Play();
+				}
 				resource.Gather();			
 			}
 		}
 	}
 
+	public void PlaySound()
+	{
+		if (isHit)
+		{
+			SoundManager.PlayRandomClip(HitSound,transform.position);
+		}
+		else
+		{
+			SoundManager.PlayRandomClip(swingSound,transform.position);
+		}
+	}
 }

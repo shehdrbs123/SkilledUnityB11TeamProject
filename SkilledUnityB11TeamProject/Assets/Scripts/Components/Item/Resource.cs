@@ -6,19 +6,48 @@ public class Resource : MonoBehaviour
 {
 	public ItemData itemToGive; 
 	public int quantityPerHit = 1;
-	public int capacity;
 
-	public void Gather()
+	public ParticleSystem particle;
+	private ResourceRandomSpawner spawner;
+
+	private int capacity;
+
+    private void Awake()
+    {
+		if (transform.parent.TryGetComponent(out ResourceRandomSpawner sp))
+		{
+			spawner = sp;
+		}
+		else
+        {
+			gameObject.SetActive(false);
+        }
+	}
+
+    private void OnEnable()
+    {
+		capacity = spawner.InitCapacity();
+    }
+
+    public void Gather()
 	{
 		for (int i = 0; i < quantityPerHit; i++)
 		{
-			if (capacity <= 0) { break; }
+			if (capacity <= 0)
+			{
+				break;
+			}
+
 			capacity -= 1;
-			//Inventory.instance.AddItem(itemToGive);
 			GameManager.Instance.inventory.AddItem(itemToGive);
+			particle.Play();
 		}
 
 		if (capacity <= 0)
-			Destroy(gameObject);
-	}
+        {
+			gameObject.SetActive(false);
+			spawner.Respawn(this.gameObject);
+		}
+
+    }
 }

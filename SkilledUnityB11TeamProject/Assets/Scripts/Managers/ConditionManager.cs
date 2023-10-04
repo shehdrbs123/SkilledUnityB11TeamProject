@@ -2,23 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public enum ConditionType
-{
-    Hunger,
-    Thirsty,
-    Mental,
-}
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Condition
 {
-    public ConditionType type;
-    [HideInInspector] public float curValue;
+    public float curValue;
     public float maxValue;
     public float startValue;
     public float decayRate;
-    public float regenRate;
     public Image uiBar;
 
     public void Initalize()
@@ -29,22 +21,28 @@ public class Condition
     public void Change(float amount)
     {
         curValue = Mathf.Clamp(curValue + amount, 0f, 100f);
+        uiBar.fillAmount = curValue / maxValue;
     }
 
-    public float GetPercentage()
+    public bool IsZero()
     {
-        return curValue / maxValue;
+        return curValue <= 0.0f;
     }
 
-    public void Update()
+    public void Decay()
     {
         Change(-1 * decayRate * Time.deltaTime);
-        // uiBar.fillAmount = GetPercentage();
     }
 }
 
 public class ConditionManager : MonoBehaviour
 {
+    [SerializeField] private Image uiCondition;
+
+    private Coroutine coWarning = null;
+    private WaitForSeconds delay = new WaitForSeconds(0.5f);
+    private bool isRed = false;
+
     [Header("Game Stat")]
     public Condition hunger;
     public Condition thirsty;
@@ -52,8 +50,16 @@ public class ConditionManager : MonoBehaviour
 
     [Header("Life")]
     public int battery;
+    public List<Image> uiBattery = new List<Image>();
 
-    private List<GameObject> batteries = new List<GameObject>();
+    private readonly List<GameObject> batteries = new List<GameObject>();
+
+    private DayManager dayManager;
+
+    private void Awake()
+    {
+        dayManager = GameManager.Instance._dayManager;
+    }
 
     private void Start()
     {
@@ -73,17 +79,25 @@ public class ConditionManager : MonoBehaviour
 
     private void Update()
     {
-        hunger.Update();
-        thirsty.Update();
+        hunger.Decay();
+        thirsty.Decay();
 
-        if (hunger.GetPercentage() <= 0.00f || thirsty.GetPercentage() <= 0.00f)
+        if (hunger.IsZero() || thirsty.IsZero())
         {
-            mental.Update();
+            mental.Decay();
+
+            if (coWarning == null)
+                coWarning = StartCoroutine(Warning());
         }
 
-        if (mental.GetPercentage() <= 0.00f)
+        if (mental.IsZero())
         {
-            GameOver();
+            GameEnd("GameOverScene");
+        }
+
+        if (dayManager.day >= 7)
+        {
+            GameEnd("GameClearScene");
         }
     }
 
@@ -93,15 +107,18 @@ public class ConditionManager : MonoBehaviour
         {
             battery -= 1;
             StartCoroutine(CoDisapear(batteries[battery]));
+            uiBattery[battery].gameObject.SetActive(false);
         }
         else
         {
-            GameOver();
+            GameEnd("GameOverScene");
         }
     }
 
     private IEnumerator CoDisapear(GameObject battery)
     {
+        battery.GetComponentInChildren<ParticleSystem>().Play();
+
         while (battery.transform.position.y > -4.5f)
         {
             battery.transform.Translate(Vector3.down * 0.05f);
@@ -111,8 +128,24 @@ public class ConditionManager : MonoBehaviour
         battery.SetActive(false);
     }
 
-    private void GameOver()
+    private IEnumerator Warning()
     {
-        Debug.Log("GAME OVER");
+        while (hunger.IsZero() || thirsty.IsZero())
+        {
+            uiCondition.color = isRed ? Color.white : Color.red;
+            yield return delay;
+            isRed = !isRed;
+        }
+
+        uiCondition.color = Color.white;
+        isRed = false;
+        coWarning = null;
+    }
+
+    private void GameEnd(string sceneName)
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene(sceneName);
     }
 }

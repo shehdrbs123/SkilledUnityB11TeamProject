@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660f0459178306243b4944bfcf008a0a, type: 3}
+  m_Name: 2_Build_FattyCannonG02
+  m_EditorClassIdentifier: 
+  Image: {fileID: 21300000, guid: 7996e2a8c839e694bbaae6d194ed453c, type: 3}
+  resoureces:
+  - {fileID: 11400000, guid: b93b9554fa18ee04eb419f3b72723f0c, type: 2}
+  - {fileID: 11400000, guid: 99a2f6e9fd851ae488e17a02c0ae01e8, type: 2}
+  - {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}
+  resourecsCount: 040000000100000002000000
+  StructurePrefab: {fileID: 1875090778556656, guid: 7191a0df8b6695d449a0f18a361bc311, type: 3}

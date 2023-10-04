@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField]private AudioClip OpenUISound;
+    [SerializeField]private AudioClip CloseUISound;
     private Dictionary<string, GameObject> _uiPrefabs;
     private Dictionary<string, GameObject> _uiInstances;
     private HashSet<GameObject> _uiCounter;
@@ -71,6 +74,7 @@ public class UIManager : MonoBehaviour
         if (_uiCounter == null)
             _uiCounter = new HashSet<GameObject>();
         _uiCounter.Add(o);
+        SoundManager.PlayClip(OpenUISound,GameManager.Instance.GetPlayer().transform.position);
         CheckInputAction();
     }
 
@@ -82,6 +86,7 @@ public class UIManager : MonoBehaviour
     public void RemoveUICount(GameObject o)
     {
         _uiCounter.Remove(o);
+        SoundManager.PlayClip(CloseUISound,GameManager.Instance.GetPlayer().transform.position);
         CheckInputAction();
     }
 
@@ -105,19 +110,6 @@ public class UIManager : MonoBehaviour
         IgnoreInput(_uiCounter.Count>0);
     }
 
-    private void AddAction(string name, ref PlayerInput playerInput)
-    {
-        InputAction action = playerInput.actions.FindAction(name);
-        if(action!=null)
-            _inputs.Add(action);
-    #if UNITY_EDITOR
-        else
-        {
-            Debug.Log($"{name}의 입력은 없습니다, 바인딩 이름을 확인해 주세요");
-        }
-    #endif
-    }
-
     private void IgnoreInput(bool ignore)
     {
         if (ignore)
@@ -134,10 +126,42 @@ public class UIManager : MonoBehaviour
             foreach (var input in _inputs)
                 input.Enable();
         }
+    }
+    
+    public IEnumerator LerpAdjustRect(RectTransform rect, float scaleX,float scaleY, float changingTime,Action callback=null)
+    {
+        float currentTime = 0;
+        Vector3 targetScale = new Vector3(scaleX, scaleY,0f);
+        float deltaScale = Time.deltaTime / changingTime;
         
+        while (Mathf.Abs(rect.localScale.x - targetScale.x)> 0.01f)
+        {
+            rect.localScale = Vector2.Lerp(rect.localScale, targetScale, deltaScale);
+            yield return null;
+        }
+        rect.localScale = targetScale;
+        callback?.Invoke();
     }
 
-   
+    public static void PopupText(string text)
+    {
+        UIManager uiManager = GameManager.Instance._uiManager;
+        GameObject popupTextPanel = uiManager.GetUI("MindTextUI");
+        CanvasGroup popupTextCanG = popupTextPanel.GetComponent<CanvasGroup>(); 
+        TMP_Text popupText = popupTextPanel.transform.GetChild(0).GetComponent<TMP_Text>();
+        popupTextCanG.alpha = 1;
+        popupText.text = text;
+        uiManager.StartCoroutine(uiManager.LerpAdjustAlpha(popupTextCanG, 0));
+    }
 
-    
+    public IEnumerator LerpAdjustAlpha(CanvasGroup group, float toAlpha)
+    {
+        while (Mathf.Abs(group.alpha - toAlpha) > 0.01f)
+        {
+            group.alpha = Mathf.Lerp(group.alpha, toAlpha, 0.01f);
+            yield return null;
+        }
+
+        group.alpha = toAlpha;
+    }
 }

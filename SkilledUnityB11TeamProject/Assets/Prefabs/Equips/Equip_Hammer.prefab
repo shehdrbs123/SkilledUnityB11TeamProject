@@ -73,6 +73,13 @@ MonoBehaviour:
   doesGatherResources: 0
   doesDealDamage: 0
   damage: 0
+  swingSound:
+  - {fileID: 8300000, guid: 5ebec1823e3a8e0458c30bbb0721cbb5, type: 3}
+  - {fileID: 8300000, guid: 2822d3c4602e0c240b80810f9dbe7c30, type: 3}
+  - {fileID: 8300000, guid: 369b001e6c0d0a04a8d75b48038b3129, type: 3}
+  - {fileID: 8300000, guid: 1f6c33602ca001f40abbfcab7f2a16df, type: 3}
+  HitSound:
+  - {fileID: 8300000, guid: 6cdf2b6afcdf03c4fb959f056819ba48, type: 3}
 --- !u!1001 &4495742476003386441
 PrefabInstance:
   m_ObjectHideFlags: 0

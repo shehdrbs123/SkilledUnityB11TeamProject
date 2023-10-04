@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum MonsterType
+{
+    GiantSpider,
+    Wendigo
+}
+
 public class Monster : MonoBehaviour
 {
     [Header("Stat")]
+    public MonsterType type;
     public MonsterDataSO data;
     [SerializeField] private int _nowHP;        // 인스펙터에서 확인용 직렬화. 추후 제거
-    private bool isAlive = true;
-    private bool isInvincible = false;
+    public bool isAlive = true;
 
     private NavMeshAgent _agent;
     private Animator _animator;
@@ -25,9 +31,8 @@ public class Monster : MonoBehaviour
     private void OnEnable()
     {
         isAlive = true;
-        isInvincible = false;
         _nowHP = data.hp;
-        _meshRenderers.material = data.material;
+        if (type == MonsterType.GiantSpider) _meshRenderers.material = data.material;
         _agent.enabled = true;
         _agent.speed = data.speed;
         _agent.isStopped = false;
@@ -35,6 +40,12 @@ public class Monster : MonoBehaviour
         gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
 
         _agent.SetDestination(data.TARGET_POSITION);
+    }
+
+    private void OnDisable()
+    {
+        gameObject.transform.position = data.SPAWN_POSITION;
+        gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
     }
 
     private void Update()
@@ -48,13 +59,14 @@ public class Monster : MonoBehaviour
     public void Hit(int damage, out bool die)
     {
         die = false;
-        if (isInvincible || !isAlive)
+        if (!isAlive)
             return;
 
         _nowHP -= damage;
 
         if (_nowHP <= 0)
         {
+            StopAllCoroutines();
             StartCoroutine(CoDie());
             die = true;
         }
@@ -67,27 +79,29 @@ public class Monster : MonoBehaviour
 
     private IEnumerator CoHitAnimation()
     {
-        isInvincible = true;
-        _agent.isStopped = true;
+        //_agent.isStopped = true;
 
-        _animator.SetTrigger(data.ANIM_HIT);
+        //_animator.SetTrigger(data.ANIM_HIT);
         _meshRenderers.material.color = Color.red;
 
         yield return data.DELAY_HIT;
 
-        isInvincible = false;
-        _agent.isStopped = false;
+        //_agent.isStopped = false;
         _meshRenderers.material.color = Color.white;
     }
 
     public IEnumerator CoDie()
     {
         isAlive = false;
-        isInvincible = true;
         _agent.isStopped = true;
         _agent.enabled = false;
 
         _animator.SetTrigger(data.ANIM_DIE);
+
+        for (int i = 0; i < data.dropCount; i++)
+        {
+            GameManager.Instance.inventory.AddItem(data.dropItem);
+        }
 
         yield return data.DELAY_DIE;
 
@@ -108,7 +122,6 @@ public class Monster : MonoBehaviour
     private IEnumerator CoAttack()
     {
         isAlive = false;
-        isInvincible = true;
         _agent.isStopped = true;
 
         _animator.SetTrigger(data.ANIM_ATTACK);

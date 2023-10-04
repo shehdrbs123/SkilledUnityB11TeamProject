@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public Inventory inventory;
     public CraftManager _craftManager;
     public ConditionManager _conditionManager;
-    public ResourceDisplayUI ResourceDisplayUI;
+    public ResourceDisplayUI resourceDisplayUI;
 
     private void Awake()
     {
@@ -55,12 +55,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         player = GameObject.FindWithTag("Player");
     }
 
     public GameObject GetPlayer()
     {
+        if (!player)
+            player = GameObject.FindWithTag("Player");
         return player;
     }
 }

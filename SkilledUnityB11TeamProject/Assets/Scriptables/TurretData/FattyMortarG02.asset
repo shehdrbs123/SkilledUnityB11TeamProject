@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5acb947b6189d7498350811f6d2ab54, type: 3}
   m_Name: FattyMortarG02
   m_EditorClassIdentifier: 
+  TurretName: "\uACE1\uC0AC\uD3EC"
   halfRadius: 50
-  Damage: 40
-  attackRate: 5
+  Damage: 200
+  attackRate: 20
+  _moveSound: []
+  _shotSound:
+  - {fileID: 8300000, guid: e05ddaf6fbc2abe4db29d4d2a927051f, type: 3}
+  - {fileID: 8300000, guid: 8ce0ab9dbec26f247a3612a9aae23427, type: 3}
+  - {fileID: 8300000, guid: 5eb47c2e5bfc95b4caf44b65964a0522, type: 3}
+  - {fileID: 8300000, guid: 7b900d8866fd9664daed7b95a03058e7, type: 3}

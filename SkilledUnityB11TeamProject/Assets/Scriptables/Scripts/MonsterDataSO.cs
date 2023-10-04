@@ -20,5 +20,6 @@ public class MonsterDataSO : ScriptableObject
     public Material material;
     public int hp;
     public float speed;
-    public GameObject[] dropResources;
+    public ItemData dropItem;
+    public int dropCount;
 }

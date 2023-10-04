@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class GridPanelManager : MonoBehaviour
 {
-    public abstract int GetElementsCount();
-    public abstract ScriptableObject GetData(int idx);
+    public abstract int GetElementsCount(GridPanelType type);
+    public abstract ScriptableObject GetData(GridPanelType type, int idx);
     public Action OnOperated;
 }

@@ -102,15 +102,14 @@ public class Projectile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
-        {
-            Vector3 dir = other.transform.position - transform.position;
-            //Vector3 knockBackPos = other.transform.position * (-dir.normalized * knockBack);
-            Vector3 knockBackPos = other.transform.position + (dir.normalized * knockBack);
-            knockBackPos.y = 1;
-            other.transform.position = knockBackPos;
-            Explosion();
-        }
+        Vector3 dir = other.transform.position - transform.position;
+        //Vector3 knockBackPos = other.transform.position * (-dir.normalized * knockBack);
+        Vector3 knockBackPos = other.transform.position + (dir.normalized * knockBack);
+        knockBackPos.y = 1;
+        //other.transform.position = knockBackPos;
+        Monster mon = other.GetComponent<Monster>();
+        //mon.Hit();
+        Explosion();
     }
 
     public void Explosion()

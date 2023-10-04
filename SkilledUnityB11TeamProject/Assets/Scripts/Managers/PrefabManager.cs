@@ -25,6 +25,12 @@ public enum PoolType
     SFXAudio,              // 효과음
     Battery,               // 배터리
     BangParticle,
+    HowitzerBullet,
+    MissleBullet,
+    FireBombBullet,
+    DamageRange,
+    M_Wendigo,
+    GetUI
 }
 
 public class PrefabManager : MonoBehaviour

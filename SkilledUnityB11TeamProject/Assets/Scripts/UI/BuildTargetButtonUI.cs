@@ -36,7 +36,7 @@ public class BuildTargetButtonUI : GridButtonUI
     {
         for (int i = 0; i < dataSo.resoureces.Length; ++i)
         {
-            _inventory.RemoveItem(dataSo.resoureces[i],dataSo.resourecsCount[i]);
+            _inventory.ComsumeItem(dataSo.resoureces[i],dataSo.resourecsCount[i]);
         }
         
         _buildManager.OnOperated -= ComsumeItem;
@@ -47,32 +47,24 @@ public class BuildTargetButtonUI : GridButtonUI
         SetImage(dataSo.Image);
     }
 
-    public override void Init(ScriptableObject data, Transform parent, UnityAction PanelOff)
+    public override void Init(ScriptableObject data, Transform parentContent, UnityAction PanelOff,UnityAction UpdateButtons)
     {
+        base.Init(data, parentContent, PanelOff, UpdateButtons);
         _button = GetComponent<Button>();
 
         dataSo = data as BuildDataSO;
         _button.onClick.AddListener(CreateBuild);
         _button.onClick.AddListener(PanelOff);
             
-        transform.SetParent(parent,false);
+        transform.SetParent(parentContent,false);
         transform.localScale = Vector3.one;
-        
         UpdateButton();
     }
 
-    public override void UpdateButton()
+    
+
+    public override GridScriptableObject GetResourceData()
     {
-        if (!_inventory)
-            _inventory = GameManager.Instance.GetPlayer().GetComponent<Inventory>();
-        for (int i = 0; i < dataSo.resoureces.Length; ++i)
-        {
-            if(!_inventory.HasItems(dataSo.resoureces[i],dataSo.resourecsCount[i]))
-            {
-                ButtonEnable(false);
-                return;
-            }
-        }
-        ButtonEnable(true);        
+        return _data;
     }
 }

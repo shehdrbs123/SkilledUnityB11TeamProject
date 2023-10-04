@@ -11,7 +11,8 @@ public enum ItemType
 public enum ConsumableType
 {
     Hunger,
-	Thirsty
+	Thirsty,
+	Mental
 }
 [System.Serializable]
 public class ItemDataConsumable
@@ -38,4 +39,7 @@ public class ItemData : ScriptableObject
 
 	[Header("Equip")]
 	public GameObject equipPrefab;
+
+	[Header("UseAudio")] 
+	public AudioClip[] UseAudio;
 }

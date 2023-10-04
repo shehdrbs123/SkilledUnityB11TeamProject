@@ -4,14 +4,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourceDisplayUI : MonoBehaviour
+public class ResourceDisplayUI: MonoBehaviour
 {
-	public Animator animator;
-	public TextMeshProUGUI resourceTxt;
-	public GameObject resourceDisplayImg;
-	private void Awake()
+	PrefabManager prefabManager;
+
+    private void Start()
+    {
+        prefabManager = GameManager.Instance.prefabManager;
+    }
+
+    public void ShowGetResource(ItemData item)
 	{
-		animator = GetComponent<Animator>();	
-		GameManager.Instance.ResourceDisplayUI = this;
+        GameObject obj = prefabManager.SpawnFromPool(PoolType.GetUI);
+        obj.SetActive(true);
+        obj.GetComponent<GetPopupUI>().Initial(item);
 	}
 }

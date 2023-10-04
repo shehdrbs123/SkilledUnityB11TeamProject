@@ -1,14 +1,15 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 
 public class Bullets : MonoBehaviour
 {
-    [SerializeField]private LayerMask targetLayerMask;
-    [FormerlySerializedAs("explosionHalfRadius")] [SerializeField]private float explosionRadius;
-    [SerializeField]private float damage;
-    private PrefabManager _prefabManager;
+    [SerializeField] protected BulletDataSO _bulletData;
+
+
+    protected PrefabManager _prefabManager;
     
     private void Start()
     {
@@ -19,21 +20,26 @@ public class Bullets : MonoBehaviour
     {
         PlayDestroyParticle();
         Explosion();
+        PlaySound();
         gameObject.SetActive(false);
     }
 
-    private void Explosion()
+    protected virtual void Explosion()
     {
-        Collider[] recognizedMonster = Physics.OverlapSphere(transform.position, explosionRadius, targetLayerMask);
+        Collider[] recognizedMonster = Physics.OverlapSphere(transform.position, _bulletData.explosionRadius, _bulletData.targetLayerMask);
 
         for (int i = 0; i < recognizedMonster.Length; ++i)
         {
-            Debug.Log(recognizedMonster[i].name);
             Vector3 distance = recognizedMonster[i].transform.position - transform.position;
-            float damageRate = distance.magnitude / explosionRadius;
+            float damageRate = distance.magnitude / _bulletData.explosionRadius;
             Monster monster = recognizedMonster[i].gameObject.GetComponent<Monster>();
-            monster.Hit((int)(damageRate * damage),out bool isDie);
+            monster.Hit((int)(damageRate * _bulletData.damage),out bool isDie);
         }
+    }
+
+    protected void PlaySound()
+    {
+        SoundManager.PlayRandomClip(_bulletData.HitSound,transform.position);
     }
 
     private void PlayDestroyParticle()
@@ -47,6 +53,6 @@ public class Bullets : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position,explosionRadius);
+        Gizmos.DrawWireSphere(transform.position,_bulletData.explosionRadius);
     }
 }

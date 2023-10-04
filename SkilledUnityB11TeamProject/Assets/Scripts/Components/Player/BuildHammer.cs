@@ -7,17 +7,12 @@ public class BuildHammer : EquipTool
 {
     private BuildManager _buildManager;
     private UIManager _uiManager;
+    
     protected override void Awake()
     {
         base.Awake();
         _buildManager = GameManager.Instance._buildManager;
         _uiManager = GameManager.Instance._uiManager;
-    }
-
-    public override void OnAttackInput()
-    {
-        base.OnAttackInput();
-        
     }
 
     public override void OnFire2Input()

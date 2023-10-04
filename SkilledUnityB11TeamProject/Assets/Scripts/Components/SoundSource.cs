@@ -9,7 +9,13 @@ public class SoundSource : MonoBehaviour
     public void Play(AudioClip clip, float soundEffectVolume, float soundEffectPitchVariance)
     {
         if (_audioSource == null)
+        {
             _audioSource = GetComponent<AudioSource>();
+            _audioSource.maxDistance = 50f;
+            _audioSource.spatialBlend = 1;
+            _audioSource.spread = 5f;
+        }
+            
 
         CancelInvoke();
         _audioSource.clip = clip;

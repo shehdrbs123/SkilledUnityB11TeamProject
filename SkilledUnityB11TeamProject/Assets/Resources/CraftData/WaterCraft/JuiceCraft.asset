@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2a3ce60c3b55a45a73e8c22eb9ff60, type: 3}
+  m_Name: JuiceCraft
+  m_EditorClassIdentifier: 
+  Image: {fileID: 21300000, guid: ead321638c94d4f4d86e9aa96ea94d14, type: 3}
+  resoureces:
+  - {fileID: 11400000, guid: b93b9554fa18ee04eb419f3b72723f0c, type: 2}
+  - {fileID: 11400000, guid: 2d40a21bc5f84f14f9005d45efacc8d1, type: 2}
+  - {fileID: 11400000, guid: afb10b6f7b17d8b45b4d8dcc591e64d3, type: 2}
+  resourecsCount: 050000000200000003000000
+  ResultItem: {fileID: 11400000, guid: abb919f413f1a224892a28fb9a8eef76, type: 2}
