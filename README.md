@@ -134,6 +134,9 @@
     | DayManager | 낮과 밤 구현
     | ConditionManager | 플레이어의 컨디션과 게임 종료 플래그 체크
     | MonsterSpawnManager | 구성된 몬스터 웨이브 정보대로 몬스터 소환
+    | ItemManager | 아이템의 데이터 관리
+    | InteractionManager | 오브젝트의 상호작용
+    | EquipManager | 플레이어의 장비 장착 관리 및 공격 기능
     
 
 - **UI**
@@ -141,12 +144,14 @@
     | 클래스 | 기능 |
     | -- | -- |
     | ResourceDisplayUI | 아이템 획득 UI 팝업 관리
-
+    | ItemSlotUI | 아이템 슬롯에 들어있는 아이템 정보를 관리
+    | EscBtnUI| Esc UI 활성화, 계속하기, 다시하기 버튼
 
 - **인벤토리**
     
     | 클래스 | 기능 |
     | -- | -- |
+    | Inventory |  인벤토리 On/Off, 인벤토리 아이템 추가, 아이템 사용, 버리기, 장착 기능
 
 
 - **건설**
