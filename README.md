@@ -1,5 +1,7 @@
 # ReadMe
 
+# [🎮다운로드](https://github.com/shehdrbs123/SkilledUnityB11TeamProject/releases/tag/RELEASES)
+
 ### 목차
 
 1. 게임 개요 및 개발 기간
