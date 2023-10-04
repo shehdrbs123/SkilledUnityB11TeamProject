@@ -177,43 +177,44 @@
     
     | 클래스 | 기능 |
     | -- | -- |
-    |TurretAIBase|모든 터렛이 기본적으로 가져야할 내용을 담은 추상 클래스|
-    |TurretAI|기본 포탑(총을 쏘는 포탑)을 구현한 포탑 AI|
-    |TurretThrowerAI|폭탄들을 발사하는 포탑들을 구현한 AI|
+    |[TurretAIBase](SkilledUnityB11TeamProject/Assets/Scripts/Components/Turrets/TurretAIBase.cs)|모든 터렛이 기본적으로 가져야할 내용을 담은 추상 클래스|
+    |[TurretAI](SkilledUnityB11TeamProject/Assets/Scripts/Components/Turrets/TurretsAI.cs)|기본 포탑(총을 쏘는 포탑)을 구현한 포탑 AI|
+    |[TurretThrowerAI](SkilledUnityB11TeamProject/Assets/Scripts/Components/Turrets/TurretThrowerAI.cs)|폭탄들을 발사하는 포탑들을 구현한 AI|
 
 - **포탑 폭탄**
 -   | 클래스 | 기능 |
     | -- | -- |
-    |Bullets|Thrower에 힘을 받아 날아가는 물리적 폭탄|
-    |DamageRange|폭탄이 터진 후 데미지를 입히는 영역을 만드는 컴포넌트|
-    |FireBomb|Bullet과 같으나, 터졌을 때 DamageRange를 생성하는 폭탄|
-    |Follower|폭탄에 반유도 기능을 추가해주는 컴포넌트|
+    |[Bullets](SkilledUnityB11TeamProject/Assets/Scripts/Components/Bullets/Bullets.cs)|Thrower에 힘을 받아 날아가는 물리적 폭탄|
+    |[DamageRange](SkilledUnityB11TeamProject/Assets/Scripts/Components/Bullets/DamageRange.cs)|폭탄이 터진 후 데미지를 입히는 영역을 만드는 컴포넌트|
+    |[FireBomb](SkilledUnityB11TeamProject/Assets/Scripts/Components/Bullets/FireBomb.cs)|Bullet과 같으나, 터졌을 때 DamageRange를 생성하는 폭탄|
+    |[Follower](SkilledUnityB11TeamProject/Assets/Scripts/Components/Bullets/Follower.cs)|폭탄에 반유도 기능을 추가해주는 컴포넌트|
     
 
 - **제작/건설**
 - 
     | 클래스 | 기능 |
     | -- | -- |
-    |CraftManager|Craft를 위한 레시피 데이터를 가져오고 공유해주는 모듈|
-    |GridPanelUI|모든 제작/건설 패널에서 사용되는 UI의 기능을 모은 컴포넌트|
-    |GridButtonUI|제작/건설패널에서 제작할 것들을 선택할 수 있는 버튼|
-    |GridScriptableObject|제작/건설 패널에서 기본적으로 사용하는 이미지, 리소스의 수 등을 보관하는 ScriptableObject|
+    |[CraftManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/CraftManager.cs)|Craft를 위한 레시피 데이터를 가져오고 공유해주는 모듈|
+    |[GridPanelUI](SkilledUnityB11TeamProject/Assets/Scripts/UI/GridPanelUI.cs)|모든 제작/건설 패널에서 사용되는 UI의 기능을 모은 컴포넌트|
+    |[GridButtonUI](SkilledUnityB11TeamProject/Assets/Scripts/UI/GridButtonUI.cs)|제작/건설패널에서 제작할 것들을 선택할 수 있는 버튼|
+    |[GridScriptableObject](SkilledUnityB11TeamProject/Assets/Scriptables/Scripts/GridScriptableObject.cs)|제작/건설 패널에서 기본적으로 사용하는 이미지, 리소스의 수 등을 보관하는 ScriptableObject|
 
 
 - **건설**
     
     | 클래스 | 기능 |
     | -- | -- |
-    |BuildManager|건설 레시피를 가져오고, 건설모드시 PlayerInput을 받아 건설 동작을 할 수 있도록하는 매니져|
-    |BuildSttButtonUI|GridButtonUI를 상속받아 건설에 쓰이는 ScriptableObject를 보관,표시,동작하는 스크립트 |
-    |BuildDataSO|GridScriptableObject를 상속받고, 건설 시 완성될 오브젝트를 포함하는 Scriptable Object|
+    |[BuildManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/BuildManager.cs)|건설 레시피를 가져오고, 건설모드시 PlayerInput을 받아 건설 동작을 할 수 있도록하는 매니져|
+    |[BuildTargetButtonUI](SkilledUnityB11TeamProject/Assets/Scripts/UI/BuildTargetButtonUI.cs)|GridButtonUI를 상속받아 건설에 쓰이는 ScriptableObject를 보관,표시,동작하는 스크립트 |
+    |[BuildDataSO](SkilledUnityB11TeamProject/Assets/Scriptables/Scripts/BuildDataSO.cs)|GridScriptableObject를 상속받고, 건설 시 완성될 오브젝트를 포함하는 Scriptable Object|
 
 - **제작**
     
     | 클래스 | 기능 |
     | -- | -- |
-    |CraftManager|Craft를 위한 레시피 데이터를 가져오고 공유해주는 모듈|
-    |CraftButtonUI|GridScriptableObject를 상속받고, 건설 시 완성될 오브젝트를 포함하는 Scriptable Object|
+    |[CraftManager](SkilledUnityB11TeamProject/Assets/Scripts/Managers/CraftManager.cs)|Craft를 위한 레시피 데이터를 가져오고 공유해주는 모듈|
+    |[CraftButtonUI](SkilledUnityB11TeamProject/Assets/Scripts/UI/CraftButtonUI.cs)|GridButtonUI를 상속받고, 제작에 쓰이는 ScriptableObject를 보관,표시,동작하는 스크립트|
+    |[CraftDataSO](SkilledUnityB11TeamProject/Assets/Scriptables/Scripts/CraftDataSO.cs)|GridScriptableObject를 상속받고, 제작 시 완성될 Item을 포함하는 Scriptable Object|
     
 
 
@@ -237,8 +238,8 @@
     
     | 클래스 | 기능 |
     | -- | -- |
-    |TestScript|아이템 추가, 밤낮변경, 일자 변경 등 테스트를 위한 기능이 포함된 모듈|
-    |TextureMaker|별도의 씬 내에서 256x256크기에 맞춰 보이는 모습대로 카메라를 찍고, PNG 파일로 변환해주는 모듈|
+    |[TestScript](SkilledUnityB11TeamProject/Assets/Scripts/Test/TestScript.cs)|아이템 추가, 밤낮변경, 일자 변경 등 테스트를 위한 기능이 포함된 모듈|
+    |[TextureMaker](SkilledUnityB11TeamProject/Assets/Scripts/TextureMaker/Editor/TextureMakeES.cs)|별도의 씬 내에서 256x256크기에 맞춰 보이는 모습대로 카메라를 찍고, PNG 파일로 변환해주는 모듈|
 
 - **사운드**
     
