@@ -13834,6 +13834,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 889955291167440014, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
+      propertyPath: isNight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3292718435623128802, guid: 8eaf6a737205a07438e2fc1ef7260753, type: 3}
       propertyPath: m_RootOrder
       value: 0

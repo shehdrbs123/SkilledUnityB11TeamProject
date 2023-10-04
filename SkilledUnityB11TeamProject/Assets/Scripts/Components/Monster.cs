@@ -36,16 +36,14 @@ public class Monster : MonoBehaviour
         _agent.enabled = true;
         _agent.speed = data.speed;
         _agent.isStopped = false;
-        gameObject.transform.position = data.SPAWN_POSITION;
-        gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
+        transform.SetPositionAndRotation(data.SPAWN_POSITION, Quaternion.Euler(0, -180, 0));
 
         _agent.SetDestination(data.TARGET_POSITION);
     }
 
     private void OnDisable()
     {
-        gameObject.transform.position = data.SPAWN_POSITION;
-        gameObject.transform.rotation = Quaternion.Euler(0, -180, 0);
+        transform.SetPositionAndRotation(data.SPAWN_POSITION, Quaternion.Euler(0, -180, 0));
     }
 
     private void Update()
@@ -79,14 +77,10 @@ public class Monster : MonoBehaviour
 
     private IEnumerator CoHitAnimation()
     {
-        //_agent.isStopped = true;
-
-        //_animator.SetTrigger(data.ANIM_HIT);
         _meshRenderers.material.color = Color.red;
 
         yield return data.DELAY_HIT;
 
-        //_agent.isStopped = false;
         _meshRenderers.material.color = Color.white;
     }
 

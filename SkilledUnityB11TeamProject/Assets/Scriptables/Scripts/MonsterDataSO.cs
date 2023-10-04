@@ -13,7 +13,6 @@ public class MonsterDataSO : ScriptableObject
     public readonly WaitForSeconds DELAY_ATTACK = new WaitForSeconds(0.833f);
 
     public readonly int ANIM_DIE = Animator.StringToHash("IsDie");
-    public readonly int ANIM_HIT = Animator.StringToHash("IsHit");
     public readonly int ANIM_ATTACK = Animator.StringToHash("IsAttack");
 
     [Header("Info")]

@@ -36,8 +36,8 @@ public class DayManager : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI textDay;
 
-    private float dayStart = 0.3f;
-    private float nightStart = 0.7f;
+    private readonly float dayStart = 0.3f;
+    private readonly float nightStart = 0.7f;
 
     private void Start()
     {

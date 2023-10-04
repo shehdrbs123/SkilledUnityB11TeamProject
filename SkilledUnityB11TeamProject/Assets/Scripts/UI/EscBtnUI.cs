@@ -22,12 +22,14 @@ public class EscBtnUI : BaseUI
 	{
 		if (escWindow.activeInHierarchy)
 		{
+			Time.timeScale = 1f;
 			GameManager.Instance._uiManager.RemoveUICount(gameObject);
 			escWindow.SetActive(false);
 			onOpenEsc?.Invoke();
 		}
 		else
 		{
+			Time.timeScale = 0f;
 			GameManager.Instance._uiManager.AddUICount(gameObject);
 			escWindow.SetActive(true);
 			onCloseEsc?.Invoke();
